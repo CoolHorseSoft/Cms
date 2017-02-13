@@ -18,3 +18,9 @@
 /CoolHorse.Cms.WebClient/CoolHorse.Cms.WebClient.csproj.user
 /CoolHorse.Cms.WebClient/Web.Release.config
 /CoolHorse.Cms.WebClient/Web.Debug.config
+/Backup/Web.Release.config
+/Backup/Web.Debug.config
+/Backup/CoolHorse.Cms.WebClient.csproj.user
+/CoolHorse.Cms.WebClient/bin
+/CoolHorse.Cms.WebClient/obj/Debug
+*.htm
