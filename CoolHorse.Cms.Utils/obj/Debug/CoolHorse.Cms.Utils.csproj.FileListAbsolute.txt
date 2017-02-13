@@ -1,5 +1,0 @@
-D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Utils\bin\Debug\CoolHorse.Cms.Utils.dll
-D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Utils\bin\Debug\CoolHorse.Cms.Utils.pdb
-D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Utils\obj\Debug\CoolHorse.Cms.Utils.csprojResolveAssemblyReference.cache
-D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Utils\obj\Debug\CoolHorse.Cms.Utils.dll
-D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Utils\obj\Debug\CoolHorse.Cms.Utils.pdb
