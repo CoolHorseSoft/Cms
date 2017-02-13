@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
+﻿using System.Web.Configuration;
+
+namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 {
     using System;
     using System.Collections.Generic;
@@ -9,12 +11,21 @@
 
     public class SqlServerProvider : ProviderBase,IDataStorageProvider
     {
-        private readonly ISqlServerDbConnector _dbConnector = new SqlServerDbConnector("Data Source=.;Initial Catalog=CoolHorse_Cms;User ID=serk0sa;Password=Serk0Ltd!;");
+        private readonly ISqlServerDbConnector _dbConnector;
+
+        public SqlServerProvider()
+        {
+            var connectionString = WebConfigurationManager.ConnectionStrings["Cms"].ConnectionString;
+            _dbConnector =  new SqlServerDbConnector(connectionString);
+        }
+
+        #region Interface Implemented
+
         public CategoryModel AddCategory(CategoryModel categoryModel)
         {
             var script = $"INSERT INTO CATEGORY(Title,Description) VALUES( '{categoryModel.Title}', '{categoryModel.Description}' );SELECT @@IDENTITY;";
 
-            categoryModel.Id =  _dbConnector.GetIntegerValue(new SqlCommand(script));
+            categoryModel.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
             return categoryModel;
         }
@@ -37,6 +48,7 @@
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
         {
             throw new NotImplementedException();
-        }
+        } 
+        #endregion
     }
 }
