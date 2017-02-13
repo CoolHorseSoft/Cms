@@ -5,11 +5,11 @@
 
     public abstract class BusinessCoreBase<TModel, TKey> where TModel : ModelBase<TKey>
     {
-        protected virtual TModel DataModels { get; set; } = null;
+        public virtual TModel DataModels { get; set; } = null;
 
         #region Public Methods
 
-        protected abstract void SaveChanges(ChangeAction action);
+        public abstract void SaveChanges(ChangeAction action);
 
         #endregion
     }
