@@ -1,0 +1,7 @@
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\bin\Debug\CoolHorse.Cms.DataStorageServices.dll
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\bin\Debug\CoolHorse.Cms.DataStorageServices.pdb
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\bin\Debug\CoolHorse.Cms.Models.dll
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\bin\Debug\CoolHorse.Cms.Models.pdb
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\obj\Debug\CoolHorse.Cms.DataStorageServices.csprojResolveAssemblyReference.cache
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\obj\Debug\CoolHorse.Cms.DataStorageServices.dll
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.DataStorageServices\obj\Debug\CoolHorse.Cms.DataStorageServices.pdb

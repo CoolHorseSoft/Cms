@@ -1,0 +1,5 @@
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Models\bin\Debug\CoolHorse.Cms.Models.dll
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Models\bin\Debug\CoolHorse.Cms.Models.pdb
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Models\obj\Debug\CoolHorse.Cms.Models.csprojResolveAssemblyReference.cache
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Models\obj\Debug\CoolHorse.Cms.Models.dll
+D:\OpenSource\CoolHorse\Cms\CoolHorse.Cms.Models\obj\Debug\CoolHorse.Cms.Models.pdb
