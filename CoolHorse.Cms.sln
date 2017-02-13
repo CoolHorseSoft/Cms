@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogEngine.Core", "..\..\Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogEngine.NET", "..\..\BlogEngine.NET-master\BlogEngine\BlogEngine.NET\BlogEngine.NET.csproj", "{5F3C7419-FA8B-4563-850A-C56B324CF18A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.WebClient", "CoolHorse.Cms.WebClient\CoolHorse.Cms.WebClient.csproj", "{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5F3C7419-FA8B-4563-850A-C56B324CF18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3C7419-FA8B-4563-850A-C56B324CF18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3C7419-FA8B-4563-850A-C56B324CF18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

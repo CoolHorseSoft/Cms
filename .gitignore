@@ -14,3 +14,7 @@
 /packages
 /CoolHorse.Cms.Tests/bin/Debug
 /CoolHorse.Cms.Tests/obj/Debug
+/CoolHorse.Cms.BusinessCore/bin
+/CoolHorse.Cms.WebClient/CoolHorse.Cms.WebClient.csproj.user
+/CoolHorse.Cms.WebClient/Web.Release.config
+/CoolHorse.Cms.WebClient/Web.Debug.config
