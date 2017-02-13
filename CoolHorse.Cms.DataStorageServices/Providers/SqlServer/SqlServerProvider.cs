@@ -1,11 +1,10 @@
-﻿using System.Web.Configuration;
-
-namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
+﻿namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 {
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Configuration.Provider;
+    using System.Web.Configuration;
 
     using Models;
 
