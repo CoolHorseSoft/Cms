@@ -6,7 +6,7 @@
 
     public class Category:BusinessCoreBase<CategoryModel, int>
     {
-        protected override void SaveChanges(ChangeAction action)
+        public override void SaveChanges(ChangeAction action)
         {
             DataStorageService.AddCategory(this.DataModels);
         }

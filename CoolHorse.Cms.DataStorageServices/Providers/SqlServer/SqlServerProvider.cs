@@ -3,15 +3,16 @@
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
+    using System.Configuration.Provider;
 
     using Models;
 
-    public class SqlServerProvider : IDataStorageProvider
+    public class SqlServerProvider : ProviderBase,IDataStorageProvider
     {
-        private readonly ISqlServerDbConnector _dbConnector = new SqlServerDbConnector("");
+        private readonly ISqlServerDbConnector _dbConnector = new SqlServerDbConnector("Data Source=.;Initial Catalog=CoolHorse_Cms;User ID=serk0sa;Password=Serk0Ltd!;");
         public CategoryModel AddCategory(CategoryModel categoryModel)
         {
-            var script = $"INSERT INTO CATEGORY SELECT {categoryModel.Title} {categoryModel.Description};SELECT @@IDENTITY;";
+            var script = $"INSERT INTO CATEGORY(Title,Description) VALUES( '{categoryModel.Title}', '{categoryModel.Description}' );SELECT @@IDENTITY;";
 
             categoryModel.Id =  _dbConnector.GetIntegerValue(new SqlCommand(script));
 

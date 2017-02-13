@@ -3,3 +3,14 @@
 ################################################################################
 
 /CoolHorse.Cms.Models/bin/Debug
+/CoolHorse.Cms.Models/obj/Debug
+/CoolHorse.Cms.DataStorageServices/bin/Debug
+/CoolHorse.Cms.DataStorageServices/obj/Debug
+/CoolHorse.Cms.BusinessCore/bin/Debug
+/CoolHorse.Cms.BusinessCore/obj/Debug
+/CoolHorse.Cms.Utils/bin/Debug
+/CoolHorse.Cms.Utils/obj/Debug
+/.vs/config
+/packages
+/CoolHorse.Cms.Tests/bin/Debug
+/CoolHorse.Cms.Tests/obj/Debug
