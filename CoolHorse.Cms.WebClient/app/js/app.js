@@ -13,7 +13,7 @@ if (typeof $ === 'undefined') { throw new Error('This application\'s JavaScript 
 // APP START
 // ----------------------------------- 
 
-var App = angular.module('angle', [
+var App = angular.module('cmsAdmin', [
     'ngRoute',
     'ngAnimate',
     'ngStorage',
@@ -7615,7 +7615,7 @@ App.service('vectorMap', function() {
 // angle to myAppName
 // ----------------------------------- 
 
-var myApp = angular.module('myAppName', ['angle']);
+var myApp = angular.module('myAppName', ['cmsAdmin']);
 
 myApp.run(["$log", function($log) {
 
