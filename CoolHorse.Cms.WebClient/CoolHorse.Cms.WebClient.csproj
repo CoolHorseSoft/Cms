@@ -222,6 +222,7 @@
     <Content Include="Html\sidebar.html" />
     <Content Include="Html\Templates\fonts\fontawesome-webfont.svg" />
     <Content Include="Html\Templates\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Html\Templates\images\01.jpg" />
     <Content Include="Html\Templates\images\logo-single.png" />
     <Content Include="Html\Templates\images\logo.png" />
     <Content Include="Html\Templates\Index.html" />
