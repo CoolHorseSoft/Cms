@@ -212,6 +212,17 @@
     <Content Include="app\views\widgets.html" />
     <Content Include="base.js" />
     <Content Include="cmsAdmin.js" />
+    <Content Include="CmsAdmin\images\01.jpg" />
+    <Content Include="CmsAdmin\images\logo-single.png" />
+    <Content Include="CmsAdmin\images\logo.png" />
+    <Content Include="CmsAdmin\index.htm" />
+    <Content Include="CmsAdmin\Pages\topnavbar.htm" />
+    <Content Include="CmsAdmin\scripts\admin.js" />
+    <Content Include="CmsAdmin\scripts\base.js" />
+    <Content Include="CmsAdmin\styles\app.css" />
+    <Content Include="CmsAdmin\styles\bootstrap.css" />
+    <Content Include="CmsAdmin\styles\font-awesome.min.css" />
+    <Content Include="CmsAdmin\styles\simple-line-icons.css" />
     <Content Include="config.js" />
     <Content Include="directive.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1151,6 +1162,36 @@
   <ItemGroup>
     <Content Include="Html\Templates\fonts\Simple-Line-Icons.woff" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\Simple-Line-Icons.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\Simple-Line-Icons.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\Simple-Line-Icons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\Simple-Line-Icons.woff" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1178,24 +1219,6 @@
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56597</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56580</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
@@ -1207,6 +1230,25 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1643</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
