@@ -220,7 +220,18 @@
     <Content Include="Html\footer.html" />
     <Content Include="Html\offsidebar.html" />
     <Content Include="Html\sidebar.html" />
+    <Content Include="Html\Templates\fonts\fontawesome-webfont.svg" />
+    <Content Include="Html\Templates\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Html\Templates\images\logo-single.png" />
+    <Content Include="Html\Templates\images\logo.png" />
+    <Content Include="Html\Templates\Index.html" />
+    <Content Include="Html\Templates\scripts\base.js" />
+    <Content Include="Html\Templates\styles\app.css" />
+    <Content Include="Html\Templates\styles\bootstrap.css" />
+    <Content Include="Html\Templates\styles\font-awesome.min.css" />
+    <Content Include="Html\Templates\styles\simple-line-icons.css" />
     <Content Include="Html\top-navbar.html" />
+    <Content Include="default.htm" />
     <Content Include="index.html" />
     <Content Include="master\gulpfile.js" />
     <Content Include="master\js\app.init.js" />
@@ -1114,6 +1125,30 @@
     <Content Include="master\sass\themes\theme-h.scss" />
     <Content Include="master\vendor.base.json" />
     <Content Include="master\vendor.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\fontawesome-webfont.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\fontawesome-webfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\fontawesome-webfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\fontawesome-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\Simple-Line-Icons.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\Simple-Line-Icons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Templates\fonts\Simple-Line-Icons.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
