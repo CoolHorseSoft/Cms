@@ -1,6 +1,18 @@
-﻿<!-- START Sidebar (left)-->
+﻿<!-- Inline template with sidebar items markup and ng-directives-->
+<script type="text/ng-template" id="sidebar-renderer.html">
+    <span ng-if="item.heading">{{item.text}}</span>
+    <a ng-if="!item.heading" ng-href="{{$state.href(item.sref, item.params)}}" title="{{item.text}}">
+        <em ng-if="item.icon" class="{{item.icon}}"></em>
+    <div ng-if="item.alert" ng-class="item.label || 'label label-success'" class="pull-right">{{item.alert}}</div>
+    <span>{{item.text}}</span></a>
+    <ul ng-if="item.submenu" collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)" class="nav sidebar-subnav">
+        <li class="sidebar-subnav-header">{{item.text}}</li>
+        <li ng-repeat="item in item.submenu" ng-include="'sidebar-renderer.html'" ng-class="getMenuItemPropClasses(item)" ng-init="pIndex=(pIndex+'-'+$index); inSubmenu = true" ng-click="toggleCollapse(pIndex)"></li>
+    </ul>
+</script>
+<!-- START Sidebar (left)-->
 <div class="aside-inner">
-    <nav class="sidebar">
+    <nav sidebar="" sidebar-anyclick-close="" class="sidebar">
         <!-- START sidebar nav-->
         <ul class="nav">
             <!-- START user info-->
@@ -10,111 +22,21 @@
                         <!-- User picture-->
                         <div class="user-block-picture">
                             <div class="user-block-status">
-                                <img src="images/01.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
+                                <img ng-src="{{user.picture}}" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
                                 <div class="circle circle-success circle-lg"></div>
                             </div>
                         </div>
                         <!-- Name and Job-->
                         <div class="user-block-info">
-                            <span class="user-block-name">Alexandre</span>
-                            <span class="user-block-role">Tester</span>
+                            <span class="user-block-name">Welcome {{user.name}}</span>
+                            <span class="user-block-role">{{user.job}}</span>
                         </div>
                     </div>
                 </div>
             </li>
             <!-- END user info-->
-            <li class="ng-scope nav-heading">
-                <span class="ng-binding ng-scope">Main Navigation</span>
-            </li>
-
-            <li class="ng-scope  active">
-                <a title="Dashboard" class="ng-scope">
-                    <em class="icon-speedometer"></em>
-                    <div class="pull-right ng-binding ng-scope label label-info">3</div>
-                    <span class="ng-binding">Dashboard</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-grid"></em>
-                    <div class="pull-right ng-binding ng-scope label label-success">30</div>
-                    <span class="ng-binding">Widgets</span>
-                </a>
-            </li>
-
-            <li class="ng-scope nav-heading">
-                <span class="ng-binding ng-scope">Components</span>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Dashboard" class="ng-scope">
-                    <em class="icon-doc"></em>
-                    <span class="ng-binding">Pages</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-cup"></em>
-                    <div class="pull-right ng-binding ng-scope label label-success">new</div>
-                    <span class="ng-binding">Extras</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Dashboard" class="ng-scope">
-                    <em class="fa fa-folder-open-o"></em>
-                    <span class="ng-binding">Multilevel</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-graduation"></em>
-                    <span class="ng-binding">Documentation</span>
-                </a>
-            </li>
-
-            <li class="ng-scope nav-heading">
-                <span class="ng-binding ng-scope">More</span>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Dashboard" class="ng-scope">
-                    <em class="icon-chemistry"></em>
-                    <span class="ng-binding">Elements</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-note"></em>
-                    <div class="pull-right ng-binding ng-scope label label-success">new</div>
-                    <span class="ng-binding">Forms</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Dashboard" class="ng-scope">
-                    <em class="icon-graph"></em>
-                    <span class="ng-binding">Charts</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-grid"></em>
-                    <span class="ng-binding">Table</span>
-                </a>
-            </li>
-
-            <li class="ng-scope">
-                <a title="Widgets" class="ng-scope" href="#">
-                    <em class="icon-map"></em>
-                    <span class="ng-binding">Maps</span>
-                </a>
-            </li>
+            <!-- Iterates over all sidebar items-->
+            <li ng-class="getMenuItemPropClasses(item)" ng-repeat="item in menuItems" ng-init="pIndex = $index" ng-include="'sidebar-renderer.html'" ng-click="toggleCollapse(pIndex, true)"></li>
         </ul>
         <!-- END sidebar nav-->
     </nav>

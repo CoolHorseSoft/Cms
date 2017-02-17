@@ -14,6 +14,6 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     $stateProvider
     .state('app', {
         url: '/app',
-        templateUrl: helper.basepath('category.htm')
+        templateUrl: helper.basepath('app.htm')
     });
 } ]);
