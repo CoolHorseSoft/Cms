@@ -6,7 +6,6 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     // You may have to set <base> tag in index and a routing configuration in your server
     $locationProvider.html5Mode(false);
 
-    // defaults to dashboard
     $urlRouterProvider.otherwise('/app');
 
     // 
@@ -16,9 +15,5 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     .state('app', {
         url: '/app',
         templateUrl: helper.basepath('category.htm')
-    })
-    .state('category', {
-        url: '/category',
-        templateUrl: helper.basepath('category1.htm')
     });
 } ]);
