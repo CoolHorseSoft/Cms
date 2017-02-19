@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/app-rtl.css" data-ng-if="app.layout.isRTL">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
+    <link rel="stylesheet" href="styles/ng-grid.css"><!--grid-->
     <link rel="stylesheet" ng-href="{{app.layout.theme}}" ng-if="app.layout.theme">
 </head>
 <body ng-class="{'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed,'aside-collapsed' : app.layout.isCollapsed, 'aside-float': app.layout.isFloat}">
@@ -26,6 +27,7 @@
     </div>
 
     <script src="scripts/base.js"></script>
+    <script src="scripts/ng-grid.min.js"></script>
     <script src="scripts/admin.js"></script>
     <script src="scripts/constants.js"></script>
     <script src="scripts/providers.js"></script>

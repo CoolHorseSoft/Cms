@@ -1,12 +1,13 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('admin', ['ui.router', 'ui.bootstrap', 'ngGrid']);
 
-app.run(["$rootScope", "$state", function ($rootScope, $state) {
+app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
+    $rootScope.$templateCache = $templateCache;
 
     $rootScope.app = {
-        year : ((new Date()).getFullYear()),
+        year: ((new Date()).getFullYear()),
         name: "CoolHorse Soft Co.,Ltd",
         layout: {
             isCollapsed: false,

@@ -87,6 +87,15 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                                "submenu": [
                                    { "text": "Horizontal Nav", "sref": "app-h.dashboard_v2" }
                                ]
+                           },
+                           {
+                               "text": "基础配置",
+                               "heading": "true"
+                           },
+                           {
+                               "text": "类别管理",
+                               "sref": "category",
+                               "icon": "icon-speedometer"
                            }
       ];
 
@@ -136,4 +145,102 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
           return (typeof $index === 'string') && !($index.indexOf('-') < 0);
       }
 
-  }]);
+  } ]);
+
+  app.controller('NGGridController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+
+      $scope.filterOptions = {
+          filterText: "",
+          useExternalFilter: true
+      };
+      $scope.totalServerItems = 0;
+      $scope.pagingOptions = {
+          pageSizes: [3,250, 500, 1000],  // page size options
+          pageSize: 3,              // default page size
+          currentPage: 1                 // initial page
+      };
+
+      $scope.gridOptions = {
+          data: 'myData',
+          enablePaging: true,
+          showFooter: true,
+          rowHeight: 36,
+          headerRowHeight: 38,
+          totalServerItems: 'totalServerItems',
+          pagingOptions: $scope.pagingOptions,
+          filterOptions: $scope.filterOptions
+      };
+
+      $scope.setPagingData = function (data, page, pageSize) {
+          // calc for pager
+          var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+          // Store data from server
+          $scope.myData = pagedData;
+          // Update server side data length
+          $scope.totalServerItems = data.length;
+
+          if (!$scope.$$phase) {
+              $scope.$apply();
+          }
+
+      };
+
+      $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+          $timeout(function () {
+              var largeLoad = [{
+                  "name": "Ether",
+                  "amount": 42,
+                  "status": "paid"
+              }, {
+                  "name": "Alma",
+                  "amount": 43,
+                  "status": "pending"
+              }, {
+                  "name": "Jared",
+                  "amount": 21,
+                  "status": "pending"
+              }, {
+                  "name": "Moroni",
+                  "amount": 50,
+                  "status": "paid"
+              }, {
+                  "name": "Tiancum",
+                  "amount": 47,
+                  "status": "pending"
+              }, {
+                  "name": "Jacob",
+                  "amount": 27,
+                  "status": "paid"
+              }, {
+                  "name": "Nephi",
+                  "amount": 29,
+                  "status": "pending"
+              }];
+              if (searchText) {
+                  var ft = searchText.toLowerCase();
+                  
+                  var data = largeLoad.filter(function (item) {
+                      return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                  });
+                  $scope.setPagingData(data, page, pageSize);
+              } else {
+                  $scope.setPagingData(largeLoad, page, pageSize);
+              }
+          }, 100);
+      };
+
+
+      $scope.$watch('pagingOptions', function (newVal, oldVal) {
+          if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+              $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          }
+      }, true);
+      $scope.$watch('filterOptions', function (newVal, oldVal) {
+          if (newVal !== oldVal) {
+              $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          }
+      }, true);
+
+      $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+  } ]);
