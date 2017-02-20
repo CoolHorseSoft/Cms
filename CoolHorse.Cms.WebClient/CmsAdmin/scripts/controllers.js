@@ -158,10 +158,6 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
 
 app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 
-    $scope.filterOptions = {
-        filterText: "",
-        useExternalFilter: true
-    };
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
         pageSizes: [3,250, 500, 1000],  // page size options
@@ -178,7 +174,7 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         multiSelect:false,
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
-        filterOptions: $scope.filterOptions
+        selectedItems: []
     };
 
     $scope.setPagingData = function (data, page, pageSize) {
@@ -257,21 +253,13 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
-            controller: function ($scope) {
-                $scope.show = function () {
-                    $scope.closeThisDialog();
-                }
-            }
+            scope:$scope
         });
     }
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 
-    $scope.filterOptions = {
-        filterText: "",
-        useExternalFilter: true
-    };
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
         pageSizes: [3, 250, 500, 1000],  // page size options
@@ -288,7 +276,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', fun
         multiSelect: false,
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
-        filterOptions: $scope.filterOptions
+        selectedItems: []
     };
 
     $scope.setPagingData = function (data, page, pageSize) {
@@ -367,11 +355,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', fun
         dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
-            controller: function ($scope) {
-                $scope.show = function () {
-                    $scope.closeThisDialog();
-                }
-            }
+            scope:$scope
         });
     }
-}]);
+} ]);
