@@ -1,5 +1,20 @@
-﻿<h3>ngGrid</h3>
-<h4>JSON + Pager + Item selection example</h4>
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <button type="button" class="mb-sm btn btn-green">新增</button>
+        <button type="button" class="mb-sm btn btn-primary">修改</button>
+        <button type="button" class="mb-sm btn btn-default">删除</button>
+        <form class="form-horizontal ng-pristine ng-valid">
+            <div class="input-group">
+                <input type="text" placeholder="输入搜索条件..." class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <em class="fa fa-search"></em>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
 <div class="panel panel-default">
    <div ng-controller="NGGridController" class="table-responsive">
       <div ng-grid="gridOptions"></div>
