@@ -23,5 +23,13 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url: '/news',
         controller: 'NewsController',
         templateUrl: helper.basepath('news.htm')
+    }).state('productlist', {
+        url: '/productlist',
+        controller: 'ProductListController',
+        templateUrl: helper.basepath('productlist.htm')
+    }).state('productdetail', {
+        url: '/productdetail',
+        controller: 'ProductDetailController',
+        templateUrl: helper.basepath('productdetail.htm')
     });
 } ]);

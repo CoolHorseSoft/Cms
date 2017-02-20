@@ -105,6 +105,15 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                                "text": "新闻列表",
                                "sref": "news",
                                "icon": "icon-grid"
+                           },
+                           {
+                               "text": "产品管理",
+                               "heading": "true"
+                           },
+                           {
+                               "text": "产品列表",
+                               "sref": "productlist",
+                               "icon": "icon-layers"
                            }
       ];
 
@@ -358,4 +367,105 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', fun
             scope:$scope
         });
     }
+} ]);
+
+app.controller('ProductListController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+
+    $scope.totalServerItems = 0;
+    $scope.pagingOptions = {
+        pageSizes: [3, 250, 500, 1000],  // page size options
+        pageSize: 12,              // default page size
+        currentPage: 1                 // initial page
+    };
+
+    $scope.gridOptions = {
+        data: 'myData',
+        enablePaging: true,
+        showFooter: true,
+        rowHeight: 36,
+        headerRowHeight: 38,
+        multiSelect: false,
+        totalServerItems: 'totalServerItems',
+        pagingOptions: $scope.pagingOptions,
+        selectedItems: []
+    };
+
+    $scope.setPagingData = function (data, page, pageSize) {
+        // calc for pager
+        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+        // Store data from server
+        $scope.myData = pagedData;
+        // Update server side data length
+        $scope.totalServerItems = data.length;
+
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+
+    };
+
+    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+        $timeout(function () {
+            var largeLoad = [{
+                "ProductName": "Product One",
+                "Description": "Description Description Description Description",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "ProductName": "Product One",
+                "Description": "Description Description Description Description",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "ProductName": "Product One",
+                "Description": "Description Description Description Description",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "ProductName": "Product One",
+                "Description": "Description Description Description Description",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "ProductName": "Product One",
+                "Description": "Description Description Description Description",
+                "LastUpdated": "2017-04-20"
+            }];
+            if (searchText) {
+                var ft = searchText.toLowerCase();
+
+                var data = largeLoad.filter(function (item) {
+                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                });
+                $scope.setPagingData(data, page, pageSize);
+            } else {
+                $scope.setPagingData(largeLoad, page, pageSize);
+            }
+        }, 100);
+    };
+
+
+    $scope.$watch('pagingOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+    $scope.$watch('filterOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+
+    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+    $scope.openDialog = function (templateId) {
+        dialog.open({
+            template: templateId,
+            className: 'ngdialog-theme-default',
+            scope: $scope
+        });
+    }
+
+    $scope.openDetail = function () {
+        window.location.href = "#/productdetail";
+    }
+} ]);
+
+app.controller('ProductDetailController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 } ]);
