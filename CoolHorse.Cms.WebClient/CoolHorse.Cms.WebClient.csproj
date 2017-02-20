@@ -236,6 +236,9 @@
     <Content Include="CmsAdmin\scripts\controllers.js" />
     <Content Include="CmsAdmin\scripts\directives.js" />
     <Content Include="CmsAdmin\scripts\modernizr.js" />
+    <Content Include="CmsAdmin\styles\ngDialog-theme-default.min.css" />
+    <Content Include="CmsAdmin\styles\ngDialog.min.css" />
+    <Content Include="CmsAdmin\scripts\ngDialog.min.js" />
     <Content Include="CmsAdmin\styles\ng-grid.css" />
     <Content Include="CmsAdmin\scripts\ng-grid.min.js" />
     <Content Include="CmsAdmin\scripts\providers.js" />

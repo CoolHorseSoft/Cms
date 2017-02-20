@@ -1,6 +1,6 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'ui.bootstrap', 'ngGrid']);
+var app = angular.module('admin', ['ui.router', 'ui.bootstrap', 'ngGrid', 'ngDialog']);
 
 app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
