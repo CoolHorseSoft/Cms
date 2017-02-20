@@ -1,31 +1,29 @@
 ﻿<script type="text/ng-template" id="InserOrUpdate.html">
-    <div id="modal-add-cat" class="modal fade in" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" ng-click="closeThisDialog()"><i class="fa fa-times"></i></button>
-                    <h4 class="modal-title ng-binding">Add new category</h4>
+    <div id="modal-add-cat" class="ngdialog ngdialog-theme-default ng-scope" style="display: block; padding-right: 17px;">
+        <div class="ngdialog-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="closeThisDialog()"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title ng-binding">Add new category</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="txtSlug" class="ng-binding">Title</label>
+                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" id="txtSlug" name="txtSlug" focus-me="focusInput" aria-required="true" aria-invalid="false">
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="txtSlug" class="ng-binding">Title</label>
-                        <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" id="txtSlug" name="txtSlug" focus-me="focusInput" aria-required="true" aria-invalid="false">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtExcerpt" class="ng-binding">Description</label>
-                        <textarea class="form-control ng-pristine ng-untouched ng-valid" id="txtExcerpt" rows="4" name="txtExcerpt"> </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="selAuthors" class="ng-binding">Parent</label>
-                        <select id="selAuthors" class="form-control ng-pristine ng-valid ng-touched">
-                            <option value="" class="ng-binding">-- select --</option>
-                            <option value="0">DI</option>
-                        </select>
-                    </div>
-                    <div class="modal-buttons">
-                        <button type="button" ng-click="show()" class="btn btn-success ng-binding">Save</button>
-                        <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
-                    </div>
+                <div class="form-group">
+                    <label for="txtExcerpt" class="ng-binding">Description</label>
+                    <textarea class="form-control ng-pristine ng-untouched ng-valid" id="txtExcerpt" rows="4" name="txtExcerpt"> </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="selAuthors" class="ng-binding">Parent</label>
+                    <select id="selAuthors" class="form-control ng-pristine ng-valid ng-touched">
+                        <option value="" class="ng-binding">-- select --</option>
+                        <option value="0">DI</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" ng-click="show()" class="btn btn-success ng-binding">Save</button>
+                    <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -34,7 +32,6 @@
 
 <script type="text/ng-template" id="DeleteConfirm.html">
     <div id="modal-del-cat" class="ngdialog ngdialog-theme-default ng-scope">
-        <div class="ngdialog-overlay"></div>
         <div class="ngdialog-content">
             <p>You can do whatever you want when I close, however that happens.</p>
             <div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>
