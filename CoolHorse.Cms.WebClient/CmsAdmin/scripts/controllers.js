@@ -96,6 +96,15 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                                "text": "类别管理",
                                "sref": "category",
                                "icon": "icon-speedometer"
+                           },
+                           {
+                               "text": "新闻管理",
+                               "heading": "true"
+                           },
+                           {
+                               "text": "新闻列表",
+                               "sref": "news",
+                               "icon": "icon-grid"
                            }
       ];
 
@@ -147,7 +156,7 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
 
   } ]);
 
-app.controller('NGGridController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 
     $scope.filterOptions = {
         filterText: "",
@@ -244,21 +253,6 @@ app.controller('NGGridController', ['$scope', '$http', '$timeout', 'ngDialog', f
 
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
-    $scope.openDialog = function(templateId) {
-        dialog.open({
-            template: templateId,
-            className: 'ngdialog-theme-default ngdialog-theme-dadao',
-            controller: function ($scope) {
-                $scope.show = function () {
-                    $scope.closeThisDialog(); 
-                }
-            }
-        });
-    }
-
-}]);
-
-app.controller('NgDialogController', ['$scope', 'ngDialog', function ($scope, dialog) {
     $scope.openDialog = function (templateId) {
         dialog.open({
             template: templateId,
@@ -270,5 +264,114 @@ app.controller('NgDialogController', ['$scope', 'ngDialog', function ($scope, di
             }
         });
     }
+}]);
 
+app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+
+    $scope.filterOptions = {
+        filterText: "",
+        useExternalFilter: true
+    };
+    $scope.totalServerItems = 0;
+    $scope.pagingOptions = {
+        pageSizes: [3, 250, 500, 1000],  // page size options
+        pageSize: 12,              // default page size
+        currentPage: 1                 // initial page
+    };
+
+    $scope.gridOptions = {
+        data: 'myData',
+        enablePaging: true,
+        showFooter: true,
+        rowHeight: 36,
+        headerRowHeight: 38,
+        multiSelect: false,
+        totalServerItems: 'totalServerItems',
+        pagingOptions: $scope.pagingOptions,
+        filterOptions: $scope.filterOptions
+    };
+
+    $scope.setPagingData = function (data, page, pageSize) {
+        // calc for pager
+        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+        // Store data from server
+        $scope.myData = pagedData;
+        // Update server side data length
+        $scope.totalServerItems = data.length;
+
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+
+    };
+
+    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+        $timeout(function () {
+            var largeLoad = [{
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }, {
+                "Title": "TitleDemo TileDemo",
+                "Author": "Ale",
+                "LastUpdated": "2017-04-20"
+            }];
+            if (searchText) {
+                var ft = searchText.toLowerCase();
+
+                var data = largeLoad.filter(function (item) {
+                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                });
+                $scope.setPagingData(data, page, pageSize);
+            } else {
+                $scope.setPagingData(largeLoad, page, pageSize);
+            }
+        }, 100);
+    };
+
+
+    $scope.$watch('pagingOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+    $scope.$watch('filterOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+
+    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+    $scope.openDialog = function (templateId) {
+        dialog.open({
+            template: templateId,
+            className: 'ngdialog-theme-default',
+            controller: function ($scope) {
+                $scope.show = function () {
+                    $scope.closeThisDialog();
+                }
+            }
+        });
+    }
 }]);

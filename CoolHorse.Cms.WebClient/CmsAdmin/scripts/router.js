@@ -17,6 +17,11 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         templateUrl: helper.basepath('app.htm')
     }).state('category', {
         url: '/category',
+        controller: 'CategoryController',
         templateUrl: helper.basepath('category.htm')
+    }).state('news', {
+        url: '/news',
+        controller: 'NewsController',
+        templateUrl: helper.basepath('news.htm')
     });
 } ]);
