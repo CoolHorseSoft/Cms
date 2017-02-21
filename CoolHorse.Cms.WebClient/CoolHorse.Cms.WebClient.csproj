@@ -1320,7 +1320,11 @@
   <ItemGroup>
     <Content Include="CmsAdmin\fonts\Simple-Line-Icons.woff" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Cms\images\" />
+    <Folder Include="Cms\scripts\" />
+    <Folder Include="Cms\styles\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="CmsAdmin\scripts\tinymce\langs\readme.md" />
     <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.eot" />

@@ -54,40 +54,7 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                  (isActive(item) ? ' active' : '');
       };
 
-      $scope.menuItems = [
-                           {
-                               "text": "Main Navigation",
-                               "heading": "true"
-                           },
-                           {
-                               "text": "Dashboard",
-                               "sref": "#",
-                               "icon": "icon-speedometer",
-                               "alert": "3",
-                               "label": "label label-info",
-                               "submenu": [
-                                   { "text": "Dashboard v1", "sref": "#" },
-                                   { "text": "Dashboard v2", "sref": "#" },
-                                   { "text": "Dashboard v3", "sref": "#" }
-                               ]
-                           },
-                           {
-                               "text": "Widgets",
-                               "sref": "#",
-                               "icon": "icon-grid",
-                               "alert": "30",
-                               "label": "label label-success",
-                               "translate": "sidebar.nav.WIDGETS"
-                           },
-                           {
-                               "text": "Layouts",
-                               "sref": "#",
-                               "icon": "icon-layers",
-                               "submenu": [
-                                   { "text": "Horizontal Nav", "sref": "app-h.dashboard_v2" }
-                               ]
-                           },
-                           {
+      $scope.menuItems = [{
                                "text": "基础配置",
                                "heading": "true"
                            },
