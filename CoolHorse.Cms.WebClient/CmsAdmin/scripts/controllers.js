@@ -18,7 +18,6 @@ app.controller('UserBlockController', ['$scope', function ($scope) {
 
 }]);
 
-
 app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', '$timeout', 'Utils',
   function ($rootScope, $scope, $state, $http, $timeout, Utils) {
 
@@ -114,6 +113,15 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                                "text": "产品列表",
                                "sref": "productlist",
                                "icon": "icon-layers"
+                           },
+                           {
+                               "text": "页面管理",
+                               "heading": "true"
+                           },
+                           {
+                               "text": "页面列表",
+                               "sref": "pagelist",
+                               "icon": "icon-speedometer"
                            }
       ];
 
@@ -468,4 +476,108 @@ app.controller('ProductListController', ['$scope', '$http', '$timeout', 'ngDialo
 } ]);
 
 app.controller('ProductDetailController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+}]);
+
+app.controller('PageListController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+
+    $scope.totalServerItems = 0;
+    $scope.pagingOptions = {
+        pageSizes: [3, 250, 500, 1000],  // page size options
+        pageSize: 3,              // default page size
+        currentPage: 1                 // initial page
+    };
+
+    $scope.gridOptions = {
+        data: 'myData',
+        enablePaging: true,
+        showFooter: true,
+        rowHeight: 36,
+        headerRowHeight: 38,
+        multiSelect: false,
+        totalServerItems: 'totalServerItems',
+        pagingOptions: $scope.pagingOptions,
+        selectedItems: []
+    };
+
+    $scope.setPagingData = function (data, page, pageSize) {
+        // calc for pager
+        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+        // Store data from server
+        $scope.myData = pagedData;
+        // Update server side data length
+        $scope.totalServerItems = data.length;
+
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+
+    };
+
+    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+        $timeout(function () {
+            var largeLoad = [
+                {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }, {
+                    "PageTitle": "Page One Title Page One Title",
+                    "LastUpdated": "2017-04-20"
+                }
+            ];
+            if (searchText) {
+                var ft = searchText.toLowerCase();
+
+                var data = largeLoad.filter(function (item) {
+                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                });
+                $scope.setPagingData(data, page, pageSize);
+            } else {
+                $scope.setPagingData(largeLoad, page, pageSize);
+            }
+        }, 100);
+    };
+
+
+    $scope.$watch('pagingOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+    $scope.$watch('filterOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+
+    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+    $scope.openDialog = function (templateId) {
+        dialog.open({
+            template: templateId,
+            className: 'ngdialog-theme-default',
+            scope: $scope
+        });
+    }
+
+    $scope.openDetail = function () {
+        window.location.href = "#/page";
+    }
 } ]);
+
+app.controller('PageController', function () {
+});
