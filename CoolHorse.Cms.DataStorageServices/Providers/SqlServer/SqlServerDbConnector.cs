@@ -42,7 +42,7 @@
         {
             if (cmds == null)
             {
-                throw new ArgumentNullException(nameof(cmds));
+                throw new ArgumentNullException("cmds");
             }
 
             if (cmds.Count < 1)
@@ -75,7 +75,7 @@
 
         public void ExecuteCommandsAsParallel(List<SqlCommand> cmds, IDbTransaction transaction = null, ParallelOptions options = null)
         {
-            if (cmds == null) throw new ArgumentNullException(nameof(cmds));
+            if (cmds == null) throw new ArgumentNullException("cmds");
             if (cmds.Count == 0) return;
 
             if (transaction == null)
@@ -109,7 +109,7 @@
 
         public void ExecuteCommandsAsParallel(ConcurrentBag<List<SqlCommand>> sqlCommandsList, ParallelOptions options = null)
         {
-            if (sqlCommandsList == null) throw new ArgumentNullException(nameof(sqlCommandsList));
+            if (sqlCommandsList == null) throw new ArgumentNullException("sqlCommandsList");
             if (sqlCommandsList.Count == 0) return;
 
             //MaxDegreeOfParallelism to 1000 is too big, we need to change

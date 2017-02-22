@@ -22,7 +22,7 @@
 
         public CategoryModel AddCategory(CategoryModel categoryModel)
         {
-            var script = $"INSERT INTO CATEGORY(Title,Description) VALUES( '{categoryModel.Title}', '{categoryModel.Description}' );SELECT @@IDENTITY;";
+            var script = "INSERT INTO CATEGORY(Title,Description) VALUES( '" + categoryModel.Title +"', '" + categoryModel.Description + "' );SELECT @@IDENTITY;";
 
             categoryModel.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 

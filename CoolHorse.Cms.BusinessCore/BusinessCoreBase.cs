@@ -5,7 +5,7 @@
 
     public abstract class BusinessCoreBase<TModel, TKey> where TModel : ModelBase<TKey>
     {
-        public virtual TModel DataModels { get; set; } = null;
+        public virtual TModel DataModels { get; set; }
 
         #region Public Methods
 
