@@ -22,5 +22,6 @@ G:\CoolHorse\cms\CoolHorse.Cms.Api\bin\System.Web.Razor.xml
 G:\CoolHorse\cms\CoolHorse.Cms.Api\bin\System.Web.WebPages.xml
 G:\CoolHorse\cms\CoolHorse.Cms.Api\bin\System.Web.WebPages.Deployment.xml
 G:\CoolHorse\cms\CoolHorse.Cms.Api\bin\System.Web.WebPages.Razor.xml
+G:\CoolHorse\cms\CoolHorse.Cms.Api\obj\Debug\CoolHorse.Cms.Api.csprojResolveAssemblyReference.cache
 G:\CoolHorse\cms\CoolHorse.Cms.Api\obj\Debug\CoolHorse.Cms.Api.dll
 G:\CoolHorse\cms\CoolHorse.Cms.Api\obj\Debug\CoolHorse.Cms.Api.pdb
