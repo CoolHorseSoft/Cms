@@ -57,7 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="3rdParties\Newtonsoft.Json.dll" />
     <Content Include="app\css\app-rtl.css" />
     <Content Include="app\css\app.css" />
     <Content Include="app\css\bootstrap-rtl.css" />
@@ -211,8 +210,6 @@
     <Content Include="app\views\todo.html" />
     <Content Include="app\views\typo.html" />
     <Content Include="app\views\widgets.html" />
-    <Content Include="base.js" />
-    <Content Include="cmsAdmin.js" />
     <Content Include="CmsAdmin\images\01.jpg" />
     <Content Include="CmsAdmin\images\05.jpg" />
     <Content Include="CmsAdmin\images\06.jpg" />
@@ -352,189 +349,9 @@
     <Content Include="CmsAdmin\styles\theme-f.css" />
     <Content Include="CmsAdmin\styles\theme-g.css" />
     <Content Include="CmsAdmin\styles\theme-h.css" />
-    <Content Include="Cms\about.html" />
-    <Content Include="Cms\fonts\fontawesome-webfont.svg" />
-    <Content Include="Cms\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Cms\img\404-bg.jpg" />
-    <Content Include="Cms\img\404.png" />
-    <Content Include="Cms\img\about-bg.jpg" />
-    <Content Include="Cms\img\address.png" />
-    <Content Include="Cms\img\arrow-o.png" />
-    <Content Include="Cms\img\author.png" />
-    <Content Include="Cms\img\b1.jpg" />
-    <Content Include="Cms\img\b2.jpg" />
-    <Content Include="Cms\img\b3.jpg" />
-    <Content Include="Cms\img\b4.jpg" />
-    <Content Include="Cms\img\blog-bg.jpg" />
-    <Content Include="Cms\img\blog-single-bg.jpg" />
-    <Content Include="Cms\img\bs-1.jpg" />
-    <Content Include="Cms\img\c1.jpg" />
-    <Content Include="Cms\img\c2.jpg" />
-    <Content Include="Cms\img\c3.jpg" />
-    <Content Include="Cms\img\cards.jpg" />
-    <Content Include="Cms\img\cart-o.png" />
-    <Content Include="Cms\img\checkbox-checked.png" />
-    <Content Include="Cms\img\checkbox.png" />
-    <Content Include="Cms\img\checkout-bg.jpg" />
-    <Content Include="Cms\img\client-1.png" />
-    <Content Include="Cms\img\client-2.png" />
-    <Content Include="Cms\img\comment-circle.png" />
-    <Content Include="Cms\img\contact-bg.jpg" />
-    <Content Include="Cms\img\cross.jpg" />
-    <Content Include="Cms\img\envelope.png" />
-    <Content Include="Cms\img\f-team1.png" />
-    <Content Include="Cms\img\f-team2.png" />
-    <Content Include="Cms\img\f1.jpg" />
-    <Content Include="Cms\img\f2.jpg" />
-    <Content Include="Cms\img\f3.jpg" />
-    <Content Include="Cms\img\f4.jpg" />
-    <Content Include="Cms\img\f5.jpg" />
-    <Content Include="Cms\img\f6.jpg" />
-    <Content Include="Cms\img\fax.png" />
-    <Content Include="Cms\img\fix1-a.png" />
-    <Content Include="Cms\img\fix1-b.png" />
-    <Content Include="Cms\img\fix2-a.png" />
-    <Content Include="Cms\img\fix2-b.png" />
-    <Content Include="Cms\img\fix3-a.png" />
-    <Content Include="Cms\img\fix3-b.png" />
-    <Content Include="Cms\img\fix4-a.png" />
-    <Content Include="Cms\img\fix4-b.png" />
-    <Content Include="Cms\img\fix5-a.png" />
-    <Content Include="Cms\img\fix5-b.png" />
-    <Content Include="Cms\img\fix6-a.png" />
-    <Content Include="Cms\img\fix6-b.png" />
-    <Content Include="Cms\img\fixtures-bg.jpg" />
-    <Content Include="Cms\img\flag-1.png" />
-    <Content Include="Cms\img\flag-2.png" />
-    <Content Include="Cms\img\footbal.png" />
-    <Content Include="Cms\img\footer-bg.jpg" />
-    <Content Include="Cms\img\fs-1.jpg" />
-    <Content Include="Cms\img\fs-2.jpg" />
-    <Content Include="Cms\img\fs-3.jpg" />
-    <Content Include="Cms\img\fs-4.jpg" />
-    <Content Include="Cms\img\fs-5.jpg" />
-    <Content Include="Cms\img\fs-6.jpg" />
-    <Content Include="Cms\img\g-1.jpg" />
-    <Content Include="Cms\img\g-10.jpg" />
-    <Content Include="Cms\img\g-11.jpg" />
-    <Content Include="Cms\img\g-12.jpg" />
-    <Content Include="Cms\img\g-2.jpg" />
-    <Content Include="Cms\img\g-3.jpg" />
-    <Content Include="Cms\img\g-4.jpg" />
-    <Content Include="Cms\img\g-5.jpg" />
-    <Content Include="Cms\img\g-6.jpg" />
-    <Content Include="Cms\img\g-7.jpg" />
-    <Content Include="Cms\img\g-8.jpg" />
-    <Content Include="Cms\img\g-9.jpg" />
-    <Content Include="Cms\img\g1.jpg" />
-    <Content Include="Cms\img\g2.jpg" />
-    <Content Include="Cms\img\g3.jpg" />
-    <Content Include="Cms\img\g4.jpg" />
-    <Content Include="Cms\img\g5.jpg" />
-    <Content Include="Cms\img\g6.jpg" />
-    <Content Include="Cms\img\g7.jpg" />
-    <Content Include="Cms\img\gallery-bg.jpg" />
-    <Content Include="Cms\img\heart-circle.png" />
-    <Content Include="Cms\img\heart-o.png" />
-    <Content Include="Cms\img\login.png" />
-    <Content Include="Cms\img\logo-m.png" />
-    <Content Include="Cms\img\logo.png" />
-    <Content Include="Cms\img\ls-1.jpg" />
-    <Content Include="Cms\img\ls-2.jpg" />
-    <Content Include="Cms\img\lu-1.jpg" />
-    <Content Include="Cms\img\lu-2.jpg" />
-    <Content Include="Cms\img\lu-3.jpg" />
-    <Content Include="Cms\img\mail-o.png" />
-    <Content Include="Cms\img\mail.png" />
-    <Content Include="Cms\img\mp1.jpg" />
-    <Content Include="Cms\img\mp2.jpg" />
-    <Content Include="Cms\img\mt-team1-a.png" />
-    <Content Include="Cms\img\mt-team1-b.png" />
-    <Content Include="Cms\img\my-cart-1.jpg" />
-    <Content Include="Cms\img\my-cart-2.jpg" />
-    <Content Include="Cms\img\my-cart-bg.jpg" />
-    <Content Include="Cms\img\next-match-bg.jpg" />
-    <Content Include="Cms\img\nm1.png" />
-    <Content Include="Cms\img\nm2.png" />
-    <Content Include="Cms\img\phone.png" />
-    <Content Include="Cms\img\play-circle.png" />
-    <Content Include="Cms\img\player-1.jpg" />
-    <Content Include="Cms\img\player-2.jpg" />
-    <Content Include="Cms\img\player-3.jpg" />
-    <Content Include="Cms\img\price-range.png" />
-    <Content Include="Cms\img\quote-bg.jpg" />
-    <Content Include="Cms\img\radio-selected.png" />
-    <Content Include="Cms\img\radio.png" />
-    <Content Include="Cms\img\result-bg.jpg" />
-    <Content Include="Cms\img\s1.jpg" />
-    <Content Include="Cms\img\s1.png" />
-    <Content Include="Cms\img\s2.jpg" />
-    <Content Include="Cms\img\s2.png" />
-    <Content Include="Cms\img\s3.jpg" />
-    <Content Include="Cms\img\s3.png" />
-    <Content Include="Cms\img\s4.png" />
-    <Content Include="Cms\img\s5.png" />
-    <Content Include="Cms\img\sb-team-a.jpg" />
-    <Content Include="Cms\img\sb-team-b.jpg" />
-    <Content Include="Cms\img\share.png" />
-    <Content Include="Cms\img\shop-bg.jpg" />
-    <Content Include="Cms\img\shop-single-bg.jpg" />
-    <Content Include="Cms\img\sign.png" />
-    <Content Include="Cms\img\sm-arrow.png" />
-    <Content Include="Cms\img\sm-shirt.png" />
-    <Content Include="Cms\img\sp-1.jpg" />
-    <Content Include="Cms\img\sp-2.jpg" />
-    <Content Include="Cms\img\sp-3.jpg" />
-    <Content Include="Cms\img\sp-4.jpg" />
-    <Content Include="Cms\img\ss-1.jpg" />
-    <Content Include="Cms\img\sul-1.jpg" />
-    <Content Include="Cms\img\sul-2.jpg" />
-    <Content Include="Cms\img\sul-3.jpg" />
-    <Content Include="Cms\img\team-1.png" />
-    <Content Include="Cms\img\team-2.png" />
-    <Content Include="Cms\img\timeline.png" />
-    <Content Include="Cms\img\tp-1.png" />
-    <Content Include="Cms\img\tp-10.png" />
-    <Content Include="Cms\img\tp-11.png" />
-    <Content Include="Cms\img\tp-12.png" />
-    <Content Include="Cms\img\tp-2.png" />
-    <Content Include="Cms\img\tp-3.png" />
-    <Content Include="Cms\img\tp-4.png" />
-    <Content Include="Cms\img\tp-5.png" />
-    <Content Include="Cms\img\tp-6.png" />
-    <Content Include="Cms\img\tp-7.png" />
-    <Content Include="Cms\img\tp-8.png" />
-    <Content Include="Cms\img\tp-9.png" />
-    <Content Include="Cms\img\tp-bg.png" />
-    <Content Include="Cms\img\um-1.jpg" />
-    <Content Include="Cms\img\um-2.jpg" />
-    <Content Include="Cms\img\um-3.jpg" />
-    <Content Include="Cms\img\up-down.png" />
-    <Content Include="Cms\img\vs-bg.jpg" />
-    <Content Include="Cms\img\yellow-card.png" />
-    <Content Include="Cms\index.htm" />
-    <Content Include="config.js" />
-    <Content Include="directive.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Html\app.html" />
-    <Content Include="Html\footer.html" />
-    <Content Include="Html\offsidebar.html" />
-    <Content Include="Html\sidebar.html" />
-    <Content Include="Html\Templates\fonts\fontawesome-webfont.svg" />
-    <Content Include="Html\Templates\fonts\Simple-Line-Icons.svg" />
-    <Content Include="Html\Templates\images\01.jpg" />
-    <Content Include="Html\Templates\images\logo-single.png" />
-    <Content Include="Html\Templates\images\logo.png" />
-    <Content Include="Html\Templates\Index.html" />
-    <Content Include="Html\Templates\scripts\base.js" />
-    <Content Include="Html\Templates\styles\app.css" />
-    <Content Include="Html\Templates\styles\bootstrap.css" />
-    <Content Include="Html\Templates\styles\font-awesome.min.css" />
-    <Content Include="Html\Templates\styles\simple-line-icons.css" />
-    <Content Include="Html\top-navbar.html" />
     <Content Include="default.htm" />
-    <Content Include="index.html" />
     <Content Include="master\gulpfile.js" />
     <Content Include="master\js\app.init.js" />
     <Content Include="master\js\custom\custom.js" />
@@ -637,7 +454,6 @@
     <Content Include="server\editor\source\css\style.css" />
     <Content Include="server\editor\source\index.html" />
     <Content Include="server\editor\source\js\script.js" />
-    <Content Include="services.js" />
     <Content Include="vendor\ag-grid\dist\angular-grid.css" />
     <Content Include="vendor\ag-grid\dist\angular-grid.js" />
     <Content Include="vendor\ag-grid\dist\theme-dark.css" />
@@ -1429,30 +1245,6 @@
     <Content Include="master\vendor.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Html\Templates\fonts\fontawesome-webfont.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\fontawesome-webfont.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\fontawesome-webfont.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\fontawesome-webfont.woff2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\FontAwesome.otf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\Simple-Line-Icons.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\Simple-Line-Icons.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Html\Templates\fonts\Simple-Line-Icons.woff" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="CmsAdmin\fonts\fontawesome-webfont.eot" />
   </ItemGroup>
   <ItemGroup>
@@ -1482,11 +1274,7 @@
   <ItemGroup>
     <Content Include="CmsAdmin\fonts\Simple-Line-Icons.woff" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cms\images\" />
-    <Folder Include="Cms\scripts\" />
-    <Folder Include="Cms\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="CmsAdmin\scripts\tinymce\langs\readme.md" />
     <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.eot" />
@@ -1506,15 +1294,6 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Cms\fonts\fontawesome-webfont.eot" />
-    <Content Include="Cms\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Cms\fonts\fontawesome-webfont.woff" />
-    <Content Include="Cms\fonts\FontAwesome.otf" />
-    <Content Include="Cms\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Cms\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Cms\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
