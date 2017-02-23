@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,6 +65,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\logo-single.png" />
     <Content Include="images\logo.png" />
@@ -83,7 +85,9 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\ui-bootstrap.js" />
     <Content Include="Scripts\web.js" />
+    <Content Include="views\topcarousel.htm" />
     <Content Include="views\topnavbar.htm" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -1,12 +1,21 @@
-﻿//ui.router  Provide route services
-//ui.bootstrap Provide the collapse directive
-var app = angular.module('web', []);
+﻿var app = angular.module('web', ['ui.bootstrap']);
 
 app.run(["$rootScope", function ($rootScope) {
     $rootScope.app = {
         layout: {
             isBoxed: true,
-            isFixed: true
+            isFixed: false
         }
     }
-} ]);
+}]);
+
+app.controller('MyCarouselController', ['$scope', function ($scope) {
+    var slides = $scope.slides = [];
+    $scope.addSlide = function () {
+        slides.push({ image: 'http://www.csdlc.com/images/up_images/20144258427.jpg' });
+        slides.push({ image: 'http://www.csdlc.com/images/up_images/201442584232.jpg' });
+        slides.push({ image: 'http://www.csdlc.com/images/up_images/201442584218.jpg' });
+    };
+    $scope.addSlide();
+    $scope.myInterval = 1000;
+}]);

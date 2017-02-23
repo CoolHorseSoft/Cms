@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html ng-app="web">
 <head>
-    <link rel="stylesheet" href="content/bootstrap.css">
+    <link rel="stylesheet" href="content/bootstrap.min.css">
     <link rel="stylesheet" href="content/font-awesome.min.css">
     <link rel="stylesheet" href="content/app.css">
     <title>Web</title>
@@ -10,10 +10,14 @@
 
     <div class="wrapper ng-scope">
         <header class="topnavbar-wrapper" ng-include="'views/topnavbar.htm'"></header>
+
+        <div class="container" ng-include="'views/topcarousel.htm'"></div>
+
     </div>
 
-    <script src="Scripts/jquery-3.1.1.js"></script>
-    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/ui-bootstrap.js"></script>
     <script src="Scripts/web.js"></script>
 </body>
 </html>
