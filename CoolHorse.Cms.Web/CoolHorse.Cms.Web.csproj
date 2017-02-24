@@ -58,6 +58,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="productdetails.html" />
+    <Content Include="newsdetails.html" />
+    <Content Include="contact.html" />
+    <Content Include="products.html" />
+    <Content Include="news.html" />
+    <Content Include="about.html" />
+    <Content Include="views\address.htm" />
+    <Content Include="views\newsreader.htm" />
+    <Content Include="views\timeline.htm" />
     <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.min.css" />
