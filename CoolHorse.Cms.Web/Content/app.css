@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * 
  * Angle - Bootstrap Admin App + AngularJS
@@ -10910,4 +10910,8 @@ fieldset[disabled] flatdoc .button.active {
 flatdoc .button .badge {
   color: #23b7e5;
   background-color: #ffffff;
+}
+
+.footer {
+    border-top: 1px solid #e5e5e5;
 }

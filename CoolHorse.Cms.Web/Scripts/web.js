@@ -4,7 +4,7 @@ app.run(["$rootScope", function ($rootScope) {
     $rootScope.app = {
         layout: {
             isBoxed: true,
-            isFixed: false
+            isFixed: true
         }
     }
 }]);
@@ -17,5 +17,5 @@ app.controller('MyCarouselController', ['$scope', function ($scope) {
         slides.push({ image: 'http://www.csdlc.com/images/up_images/201442584218.jpg' });
     };
     $scope.addSlide();
-    $scope.myInterval = 1000;
+    $scope.myInterval = 10000;
 }]);

@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html ng-app="web">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="content/bootstrap.min.css">
     <link rel="stylesheet" href="content/font-awesome.min.css">
     <link rel="stylesheet" href="content/app.css">
@@ -8,15 +10,39 @@
 </head>
 <body ng-class="{'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed}">
 
-    <div class="wrapper ng-scope">
+    <div class="wrapper">
         <header class="topnavbar-wrapper" ng-include="'views/topnavbar.htm'"></header>
 
-        <div class="container" ng-include="'views/topcarousel.htm'"></div>
+        <div class=" pt-xl" ng-include="'views/topcarousel.htm'"></div>
 
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/sectionslogan.htm'"></section>
+        </div>
+
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/productshow.htm'"></section>
+        </div>
+
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/2newssection.htm'"></section>
+        </div>
+
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/sectionslogan.htm'"></section>
+        </div>
+
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/productshow.htm'"></section>
+        </div>
+
+        <div class="">
+            <section class="ng-scope pt-xl" ng-include="'views/footer.htm'"></section>
+        </div>
     </div>
 
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/ui-bootstrap.js"></script>
     <script src="Scripts/web.js"></script>
 </body>
