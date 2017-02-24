@@ -66,6 +66,7 @@
     <Content Include="about.html" />
     <Content Include="views\address.htm" />
     <Content Include="views\newsreader.htm" />
+    <Content Include="views\product.htm" />
     <Content Include="views\timeline.htm" />
     <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
