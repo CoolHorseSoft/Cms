@@ -2,6 +2,7 @@
 {
     using Models;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Configuration.Provider;
     using System.Data;
@@ -46,7 +47,7 @@
 
             var models = PopulateModels(ds);
 
-            return models.Count == 1 ? models.FirstOrDefault() : null;
+            return models.Count == 1 ? models.First() : null;
         }
 
         public IEnumerable<CategoryModel> GetAllCategories()
