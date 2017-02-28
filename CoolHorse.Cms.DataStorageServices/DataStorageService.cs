@@ -6,7 +6,7 @@
     using Providers;
     using System.Web.Configuration;
 
-    public static class DataStorageService
+    public static partial class DataStorageService
     {
         private static IDataStorageProvider _provider = null;
         private static DataStorageProviderCollection _providers;
@@ -25,33 +25,6 @@
             }
         }
 
-        #region Category
-        public static CategoryModel AddCategory(CategoryModel categoryModel)
-        {
-            return Provider.AddCategory(categoryModel);
-        }
-
-        public static CategoryModel UpdateCategory(CategoryModel categoryModel)
-        {
-            return Provider.UpdateCategory(categoryModel);
-        }
-
-        public static bool DeleteCategory(int id)
-        {
-            return Provider.DeleteCategory(id);
-        }
-
-        public static CategoryModel FindCategoryById(int id)
-        {
-            return Provider.FindCategoryById(id);
-        }
-
-        public static IEnumerable<CategoryModel> GetAllCategories()
-        {
-            return Provider.GetAllCategories();
-        }
-        #endregion
-
         #region Private helpers
         private static void LoadProviders()
         {
@@ -64,7 +37,7 @@
                     if (_provider == null)
                     {
                         // Get a reference to the <blogProvider> section
-                        var section =(DataStorageProviderSection)WebConfigurationManager.GetSection("CmsServices/dataStorageProvider");
+                        var section = (DataStorageProviderSection)WebConfigurationManager.GetSection("CmsServices/dataStorageProvider");
 
                         // Load registered providers and point _provider
                         // to the default provider

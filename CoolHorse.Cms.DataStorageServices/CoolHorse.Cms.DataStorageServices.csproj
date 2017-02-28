@@ -41,6 +41,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStorageServices\CategoryDataStorage.cs" />
     <Compile Include="DataStorageService.cs" />
     <Compile Include="IDataStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

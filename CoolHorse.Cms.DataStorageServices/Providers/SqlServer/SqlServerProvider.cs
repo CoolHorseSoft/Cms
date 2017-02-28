@@ -1,14 +1,12 @@
-﻿using System.Data;
-
-namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
+﻿namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 {
+    using Models;
     using System;
     using System.Collections.Generic;
-    using System.Data.SqlClient;
     using System.Configuration.Provider;
+    using System.Data;
+    using System.Data.SqlClient;
     using System.Web.Configuration;
-
-    using Models;
 
     public class SqlServerProvider : ProviderBase,IDataStorageProvider
     {
@@ -33,12 +31,22 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public bool DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            var script = "DELETE FROM CATEGORY WHERE Id = " + id;
+
+            _dbConnector.ExecuteCommand(new SqlCommand(script));
+
+            return true;
         }
 
         public CategoryModel FindCategoryById(int id)
         {
-            throw new NotImplementedException();
+            var script = "SELECT * FROM CATEGORY WHERE Id = " + id;
+
+            var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
+
+            var models = PopulateModels(ds);
+
+            return models.Count == 1 ? models.FirstOrDefault() : null;
         }
 
         public IEnumerable<CategoryModel> GetAllCategories()
@@ -47,7 +55,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
-            return PopulateModel(ds);
+            return PopulateModels(ds);
         }
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
@@ -56,7 +64,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
         } 
         #endregion
 
-        public IEnumerable<CategoryModel> PopulateModel(DataSet ds)
+        private IList<CategoryModel> PopulateModels(DataSet ds)
         {
             var models = new List<CategoryModel>();
 
