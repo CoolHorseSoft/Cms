@@ -46,7 +46,7 @@
             return Provider.FindCategoryById(id);
         }
 
-        public static IList<CategoryModel> GetAllCategories()
+        public static IEnumerable<CategoryModel> GetAllCategories()
         {
             return Provider.GetAllCategories();
         }

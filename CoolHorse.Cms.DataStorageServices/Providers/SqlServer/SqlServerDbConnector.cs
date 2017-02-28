@@ -106,7 +106,6 @@
             throw new NotSupportedException("Execute Command As Parallel with a Transaction.");
         }
 
-
         public void ExecuteCommandsAsParallel(ConcurrentBag<List<SqlCommand>> sqlCommandsList, ParallelOptions options = null)
         {
             if (sqlCommandsList == null) throw new ArgumentNullException("sqlCommandsList");
@@ -218,6 +217,22 @@
 
             Guid.TryParse(Convert.ToString(value), out result);
             return result;
+        }
+
+        public DataSet ExecuteCommandsDataSet(SqlCommand cmd)
+        {
+            var ds = new DataSet();
+            using (SqlConnection cn = CreateConnection())
+            {
+                cn.Open();
+                cmd.Connection = cn;
+
+                var sqlDataAdapter = new SqlDataAdapter(cmd);
+
+                sqlDataAdapter.Fill(ds);
+
+                return ds;
+            }
         }
 
         private object GetValue(SqlCommand cmd, IDbTransaction transaction = null)

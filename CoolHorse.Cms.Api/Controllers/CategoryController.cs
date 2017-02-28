@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.Api.Controllers
+﻿using CoolHorse.Cms.BusinessCore;
+
+namespace CoolHorse.Cms.Api.Controllers
 {
     using CoolHorse.Cms.Models;
     using System.Collections.Generic;
@@ -9,16 +11,9 @@
     {
         public IEnumerable<CategoryModel> Get()
         {
-            var result = new List<CategoryModel>();
+            var category = new Category();
 
-            var category = new CategoryModel();
-            category.Description = "Description";
-            category.Title = "Title";
-            category.Id = 1;
-
-            result.Add(category);
-
-            return result;
+            return category.GetAll();
         }
     }
 }

@@ -25,7 +25,7 @@
             throw new System.NotImplementedException();
         }
 
-        public IList<CategoryModel> GetAllCategories()
+        public IEnumerable<CategoryModel> GetAllCategories()
         {
             throw new System.NotImplementedException();
         }

@@ -15,7 +15,7 @@
 
         CategoryModel FindCategoryById(int id);
 
-        IList<CategoryModel> GetAllCategories();
+        IEnumerable<CategoryModel> GetAllCategories();
 
         #endregion
     }

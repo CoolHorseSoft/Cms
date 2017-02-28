@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
+﻿using System.Data;
+
+namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 {
     using System;
     using System.Collections.Generic;
@@ -39,9 +41,13 @@
             throw new NotImplementedException();
         }
 
-        public IList<CategoryModel> GetAllCategories()
+        public IEnumerable<CategoryModel> GetAllCategories()
         {
-            throw new NotImplementedException();
+            var script = "SELECT * FROM CATEGORY;";
+
+            var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
+
+            return PopulateModel(ds);
         }
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
@@ -49,5 +55,27 @@
             throw new NotImplementedException();
         } 
         #endregion
+
+        public IEnumerable<CategoryModel> PopulateModel(DataSet ds)
+        {
+            var models = new List<CategoryModel>();
+
+            if (ds != null)
+            {
+                foreach (DataRow rowItem in ds.Tables[0].Rows)
+                {
+                    var model = new CategoryModel();
+                    model.Description = rowItem["Description"].ToString();
+                    model.ParentId = int.Parse(rowItem["ParentId"].ToString());
+                    model.Id = int.Parse(rowItem["Id"].ToString());
+                    model.Title = rowItem["Title"].ToString();
+                    model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());
+                    model.DateUpdated = DateTime.Parse(rowItem["DateUpdated"].ToString());
+                    models.Add(model);
+                }
+            }
+
+            return models;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.BusinessCore
+﻿using System.Collections.Generic;
+
+namespace CoolHorse.Cms.BusinessCore
 {
     using Models;
     using Utils;
@@ -9,6 +11,11 @@
         public override void SaveChanges(ChangeAction action)
         {
             DataStorageService.AddCategory(this.DataModels);
+        }
+
+        public override IEnumerable<CategoryModel> GetAll()
+        {
+            return DataStorageService.GetAllCategories();
         }
     }
 }

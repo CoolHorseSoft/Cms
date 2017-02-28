@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.BusinessCore
+﻿using System.Collections.Generic;
+
+namespace CoolHorse.Cms.BusinessCore
 {
     using Models;
     using Utils;
@@ -10,6 +12,8 @@
         #region Public Methods
 
         public abstract void SaveChanges(ChangeAction action);
+
+        public abstract IEnumerable<TModel> GetAll();
 
         #endregion
     }

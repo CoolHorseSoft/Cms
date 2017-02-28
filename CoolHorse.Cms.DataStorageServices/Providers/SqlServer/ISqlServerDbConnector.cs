@@ -26,5 +26,6 @@
         DateTime GetDateTimeValue(SqlParameter parameter);
         Guid GetGuidValue(SqlCommand cmd, IDbTransaction transaction = null);
         byte GetByteValue(SqlCommand cmd, IDbTransaction transaction = null);
+        DataSet ExecuteCommandsDataSet(SqlCommand cmd);
     }
 }

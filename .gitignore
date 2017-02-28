@@ -24,11 +24,10 @@
 /CoolHorse.Cms.WebClient/bin
 /CoolHorse.Cms.WebClient/obj/Debug
 /UpgradeLog.htm
-/CoolHorse.Cms.Api/bin/Debug
-/CoolHorse.Cms.Api/obj/Debug
+/CoolHorse.Cms.Api/bin
+/CoolHorse.Cms.Api/obj
 /CoolHorse.Cms.Api/Web.Release.config
 /CoolHorse.Cms.Api/Web.Debug.config
 /CoolHorse.Cms.Web/bin
+/CoolHorse.Cms.Web/obj
 *.pdb
-/CoolHorse.Cms.Web/obj/Debug/CoolHorse.Cms.Web.dll
-/CoolHorse.Cms.Web/obj/Debug/CoolHorse.Cms.Web.csproj.FileListAbsolute.txt
