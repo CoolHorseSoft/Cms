@@ -3,17 +3,20 @@
 namespace CoolHorse.Cms.BusinessCore
 {
     using Models;
-    using Utils;
 
     public abstract class BusinessCoreBase<TModel, TKey> where TModel : ModelBase<TKey>
     {
-        public virtual TModel DataModels { get; set; }
+        #region Public Abstract Methods
 
-        #region Public Methods
+        public abstract TModel Create(TModel model);
 
-        public abstract void SaveChanges(ChangeAction action);
+        public abstract TModel Update(TModel model);
+
+        public abstract bool Delete(TKey key);
 
         public abstract IEnumerable<TModel> GetAll();
+
+        public abstract TModel GetByKey(TKey key);
 
         #endregion
     }

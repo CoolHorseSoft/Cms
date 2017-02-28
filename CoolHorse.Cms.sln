@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.Models", "Coo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.Utils", "CoolHorse.Cms.Utils\CoolHorse.Cms.Utils.csproj", "{3B90A718-390C-43DA-908D-7918D4CE8ED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.Tests", "CoolHorse.Cms.Tests\CoolHorse.Cms.Tests.csproj", "{0A12D271-B445-40F6-B9BD-24A378BF261B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.WebClient", "CoolHorse.Cms.WebClient\CoolHorse.Cms.WebClient.csproj", "{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolHorse.Cms.Api", "CoolHorse.Cms.Api\CoolHorse.Cms.Api.csproj", "{2D509546-D716-43D8-BD67-3FB9656AAE9D}"
@@ -39,10 +37,6 @@ Global
 		{3B90A718-390C-43DA-908D-7918D4CE8ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B90A718-390C-43DA-908D-7918D4CE8ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B90A718-390C-43DA-908D-7918D4CE8ED3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A12D271-B445-40F6-B9BD-24A378BF261B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A12D271-B445-40F6-B9BD-24A378BF261B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A12D271-B445-40F6-B9BD-24A378BF261B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A12D271-B445-40F6-B9BD-24A378BF261B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCDBF716-31D8-4D3E-96F0-13EA00E46CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
