@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -210,7 +211,24 @@
     <Content Include="Admin\styles\theme-f.css" />
     <Content Include="Admin\styles\theme-g.css" />
     <Content Include="Admin\styles\theme-h.css" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\bg1.jpg" />
+    <Content Include="images\bg4.jpg" />
+    <Content Include="images\bg5.jpg" />
+    <Content Include="images\bg7.jpg" />
+    <Content Include="images\bg8.jpg" />
+    <Content Include="images\logo-single.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\ui-bootstrap.js" />
+    <Content Include="Scripts\web.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -218,46 +236,27 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Web\about.html" />
-    <Content Include="Web\contact.html" />
-    <Content Include="Web\Content\app.css" />
-    <Content Include="Web\Content\bootstrap-theme.min.css" />
-    <Content Include="Web\Content\bootstrap.min.css" />
-    <Content Include="Web\Content\font-awesome.min.css" />
-    <Content Include="Web\fonts\fontawesome-webfont.svg" />
-    <Content Include="Web\images\bg1.jpg" />
-    <Content Include="Web\images\bg4.jpg" />
-    <Content Include="Web\images\bg5.jpg" />
-    <Content Include="Web\images\bg7.jpg" />
-    <Content Include="Web\images\bg8.jpg" />
-    <Content Include="Web\images\logo-single.png" />
-    <Content Include="Web\images\logo.png" />
-    <Content Include="Web\index.html" />
-    <Content Include="Web\news.html" />
-    <Content Include="Web\newsdetails.html" />
-    <Content Include="Web\productdetails.html" />
-    <Content Include="Web\products.html" />
-    <Content Include="Web\Scripts\angular.min.js" />
-    <Content Include="Web\Scripts\bootstrap.min.js" />
-    <Content Include="Web\Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Web\Scripts\ui-bootstrap.js" />
-    <Content Include="Web\Scripts\web.js" />
-    <Content Include="Web\views\2newssection.htm" />
-    <Content Include="Web\views\address.htm" />
-    <Content Include="Web\views\banner.htm" />
-    <Content Include="Web\views\footer.htm" />
-    <Content Include="Web\views\newslist.htm" />
-    <Content Include="Web\views\newsreader.htm" />
-    <Content Include="Web\views\product.htm" />
-    <Content Include="Web\views\productshow.htm" />
-    <Content Include="Web\views\sectionslogan.htm" />
-    <Content Include="Web\views\timeline.htm" />
-    <Content Include="Web\views\topcarousel.htm" />
-    <Content Include="Web\views\topnavbar.htm" />
+    <Content Include="about.html" />
+    <Content Include="contact.html" />
+    <Content Include="index.html" />
+    <Content Include="news.html" />
+    <Content Include="newsdetails.html" />
+    <Content Include="productdetails.html" />
+    <Content Include="products.html" />
+    <Content Include="views\2newssection.htm" />
+    <Content Include="views\address.htm" />
+    <Content Include="views\banner.htm" />
+    <Content Include="views\footer.htm" />
+    <Content Include="views\newslist.htm" />
+    <Content Include="views\newsreader.htm" />
+    <Content Include="views\product.htm" />
+    <Content Include="views\productshow.htm" />
+    <Content Include="views\sectionslogan.htm" />
+    <Content Include="views\timeline.htm" />
+    <Content Include="views\topcarousel.htm" />
+    <Content Include="views\topnavbar.htm" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -330,19 +329,11 @@
     <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web\fonts\fontawesome-webfont.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web\fonts\fontawesome-webfont.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web\fonts\fontawesome-webfont.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web\fonts\fontawesome-webfont.woff2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web\fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

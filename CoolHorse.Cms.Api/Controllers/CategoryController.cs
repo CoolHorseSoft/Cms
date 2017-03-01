@@ -1,13 +1,13 @@
 ﻿namespace CoolHorse.Cms.Api.Controllers
 {
-    using CoolHorse.Cms.Models;
+    using Models;
     using System.Collections.Generic;
     using System.Web.Http;
-    using CoolHorse.Cms.BusinessCore;
+    using BusinessCore;
 
     public class CategoryController : ApiController
     {
-        private Category _category = null;
+        private readonly Category _category = null;
 
         public CategoryController()
         {
