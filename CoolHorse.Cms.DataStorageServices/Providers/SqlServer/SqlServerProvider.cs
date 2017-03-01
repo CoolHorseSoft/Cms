@@ -61,7 +61,11 @@
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
         {
-            throw new NotImplementedException();
+            var script = "UPDATE CATEGORY SET ParentId = "+categoryModel.ParentId + ", Title='" + categoryModel.Title + "'";
+
+            _dbConnector.ExecuteCommand(new SqlCommand(script));
+
+            return categoryModel;
         } 
         #endregion
 

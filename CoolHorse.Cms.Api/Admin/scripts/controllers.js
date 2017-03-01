@@ -213,8 +213,12 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
 
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
+    $scope.saveFromDialog = function(data) {
+        debugger;
+    }
+
     $scope.openDialog = function (templateId) {
-        dialog.open({
+        var dialogOpen = dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
             scope:$scope
