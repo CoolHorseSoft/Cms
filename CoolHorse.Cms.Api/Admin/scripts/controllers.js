@@ -176,45 +176,22 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     };
 
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+        var ngGridResourcePath = '/api/category';
+
         $timeout(function () {
-            var largeLoad = [{
-                "name": "Ether",
-                "amount": 42,
-                "status": "paid"
-            }, {
-                "name": "Alma",
-                "amount": 43,
-                "status": "pending"
-            }, {
-                "name": "Jared",
-                "amount": 21,
-                "status": "pending"
-            }, {
-                "name": "Moroni",
-                "amount": 50,
-                "status": "paid"
-            }, {
-                "name": "Tiancum",
-                "amount": 47,
-                "status": "pending"
-            }, {
-                "name": "Jacob",
-                "amount": 27,
-                "status": "paid"
-            }, {
-                "name": "Nephi",
-                "amount": 29,
-                "status": "pending"
-            }];
+
             if (searchText) {
                 var ft = searchText.toLowerCase();
-                  
-                var data = largeLoad.filter(function (item) {
-                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                $http.get(ngGridResourcePath).success(function (largeLoad) {
+                    var data = largeLoad.filter(function (item) {
+                        return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                    });
+                    $scope.setPagingData(data, page, pageSize);
                 });
-                $scope.setPagingData(data, page, pageSize);
             } else {
-                $scope.setPagingData(largeLoad, page, pageSize);
+                $http.get(ngGridResourcePath).success(function (largeLoad) {
+                    $scope.setPagingData(largeLoad, page, pageSize);
+                });
             }
         }, 100);
     };
