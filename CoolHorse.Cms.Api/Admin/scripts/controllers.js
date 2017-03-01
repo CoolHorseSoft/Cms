@@ -158,7 +158,10 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         multiSelect:false,
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
-        selectedItems: []
+        selectedItems: [],
+        columnDefs: [
+            { field: 'Title', displayName: '标题' }
+        ]
     };
 
     $scope.setPagingData = function (data, page, pageSize) {
@@ -196,12 +199,12 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         }, 100);
     };
 
-
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
+
     $scope.$watch('filterOptions', function (newVal, oldVal) {
         if (newVal !== oldVal) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
