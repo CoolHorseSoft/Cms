@@ -211,10 +211,10 @@
     <Content Include="Admin\styles\theme-f.css" />
     <Content Include="Admin\styles\theme-g.css" />
     <Content Include="Admin\styles\theme-h.css" />
-    <Content Include="Content\app.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="styles\app.css" />
+    <Content Include="styles\bootstrap-theme.min.css" />
+    <Content Include="styles\bootstrap.min.css" />
+    <Content Include="styles\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\bg1.jpg" />
@@ -224,11 +224,11 @@
     <Content Include="images\bg8.jpg" />
     <Content Include="images\logo-single.png" />
     <Content Include="images\logo.png" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\ui-bootstrap.js" />
-    <Content Include="Scripts\web.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-3.1.1.min.js" />
+    <Content Include="scripts\ui-bootstrap.js" />
+    <Content Include="scripts\web.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
