@@ -4,7 +4,7 @@
     $scope.toggleUserBlock = function () {
         $scope.$broadcast('toggleUserBlock');
     };
-} ]);
+}]);
 
 app.controller('UserBlockController', ['$scope', function ($scope) {
 
@@ -55,9 +55,9 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
       };
 
       $scope.menuItems = [{
-                               "text": "基础配置",
-                               "heading": "true"
-                           },
+          "text": "基础配置",
+          "heading": "true"
+      },
                            {
                                "text": "类别管理",
                                "sref": "category",
@@ -138,25 +138,16 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
           return (typeof $index === 'string') && !($index.indexOf('-') < 0);
       }
 
-  } ]);
+  }]);
 
 app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
-
-    $scope.totalServerItems = 0;
-    $scope.pagingOptions = {
-        pageSizes: [3,250, 500, 1000],  // page size options
-        pageSize: 12,              // default page size
-        currentPage: 1                 // initial page
-    };
-
-    $scope.gridOptions = {
+    $scope.gridOption = {
         data: 'myData',
         rowHeight: 36,
         headerRowHeight: 38,
         multiSelect: false,
-        enableRowSelection:true,
-        totalServerItems: 'totalServerItems',
-        pagingOptions: $scope.pagingOptions,
+        keepLastSelected: false,
+        showSelectionCheckbox: true,
         selectedItems: [],
         columnDefs: [
             { field: 'Title', displayName: '标题' },
@@ -164,65 +155,74 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         ]
     };
 
-    $scope.setPagingData = function (data, page, pageSize) {
-        // calc for pager
-        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        // Store data from server
-        $scope.myData = pagedData;
-        // Update server side data length
-        $scope.totalServerItems = data.length;
+    $scope.dialog = {};
 
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
-
-    };
-
-    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        var ngGridResourcePath = '/api/category';
+    $scope.getData = function () {
+        var ngGridResourcePath = '/api/category/GetAll';
 
         $timeout(function () {
-
-            if (searchText) {
-                var ft = searchText.toLowerCase();
-                $http.get(ngGridResourcePath).success(function (largeLoad) {
-                    var data = largeLoad.filter(function (item) {
-                        return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-                    });
-                    $scope.setPagingData(data, page, pageSize);
-                });
-            } else {
-                $http.get(ngGridResourcePath).success(function (largeLoad) {
-                    $scope.setPagingData(largeLoad, page, pageSize);
-                });
-            }
+            $http.get(ngGridResourcePath).success(function (largeLoad) {
+                $scope.myData = largeLoad;
+            });
         }, 100);
     };
 
-    $scope.$watch('pagingOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+    $scope.getData();
+
+    $scope.saveFromDialog = function (data) {
+        if (data) {
+            data.Id >= 0 ? updateCategory(data) : createCategory(data);
         }
-    }, true);
 
-    $scope.$watch('filterOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
-
-    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-
-    $scope.saveFromDialog = function(data) {
-        debugger;
+        $scope.dialog.close();
     }
 
-    $scope.openDialog = function (templateId) {
-        var dialogOpen = dialog.open({
+    $scope.deleteFromDialog = function (data) {
+        if (data) {
+            deleteCategory(data);
+        }
+
+        $scope.dialog.close();
+    }
+
+    var updateCategory = function (category) {
+        $http.post('/api/category/update/', category).success(function () {$scope.getData();});
+    }
+
+    var deleteCategory = function (category) {
+        $http.post('/api/category/Delete/', category.Id).success(function () { $scope.getData(); });
+    }
+
+    var createCategory = function (category) {
+        $http.post('/api/category/create/', category).success(function () { $scope.getData(); });
+    }
+
+    var openDialog = function (templateId, data) {
+        $scope.dialog = dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
-            scope:$scope
+            scope: $scope,
+            data: data
         });
+    }
+
+    $scope.createCategory = function () {
+        var newItem = { Id: -1, Title: '', Description: '' };
+        openDialog('InserOrUpdate.html', newItem);
+    }
+
+    $scope.deleteCategory = function () {
+        if ($scope.gridOption.selectedItems.length <= 0) {
+            return;
+        }
+        openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
+    }
+
+    $scope.updateCategory = function () {
+        if ($scope.gridOption.selectedItems.length <= 0) {
+            return;
+        }
+        openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
     }
 }]);
 
@@ -323,10 +323,10 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', 'ngDialog', fun
         dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
-            scope:$scope
+            scope: $scope
         });
     }
-} ]);
+}]);
 
 app.controller('ProductListController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 
@@ -424,7 +424,7 @@ app.controller('ProductListController', ['$scope', '$http', '$timeout', 'ngDialo
     $scope.openDetail = function () {
         window.location.href = "#/productdetail";
     }
-} ]);
+}]);
 
 app.controller('ProductDetailController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
 }]);
@@ -528,7 +528,7 @@ app.controller('PageListController', ['$scope', '$http', '$timeout', 'ngDialog',
     $scope.openDetail = function () {
         window.location.href = "#/page";
     }
-} ]);
+}]);
 
 app.controller('PageController', function () {
 });

@@ -6,14 +6,14 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="txtSlug" class="ng-binding">Title</label>
-                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="$parent.gridOptions.selectedItems[0].Title">
+                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.Title">
                 </div>
                 <div class="form-group">
                     <label for="txtExcerpt" class="ng-binding">Description</label>
-                    <textarea class="form-control ng-pristine ng-untouched ng-valid" id="txtExcerpt" rows="4" ng-model="$parent.gridOptions.selectedItems[0].Description"> </textarea>
+                    <textarea class="form-control ng-pristine ng-untouched ng-valid" id="txtExcerpt" rows="4" ng-model="ngDialogData.Description"> </textarea>
                 </div>
                 <div class="modal-buttons">
-                    <button type="button" ng-click="saveFromDialog($parent.gridOptions.selectedItems[0])" class="btn btn-success ng-binding">Save</button>
+                    <button type="button" ng-click="saveFromDialog(ngDialogData)" class="btn btn-success ng-binding">Save</button>
                     <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
                 </div>
             </div>
@@ -22,16 +22,16 @@
 <script type="text/ng-template" id="DeleteConfirm.html">
     <div class="ngdialog-content">
             <p>You can do whatever you want when I close, however that happens.</p>
-            <div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>
+            <div><button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">Close Me</button></div>
     </div>
 </script>
 <div class="panel panel-default">
     <div class="panel-body">
-        <button type="button" class="mb-sm btn btn-green" ng-click="openDialog('InserOrUpdate.html')">
+        <button type="button" class="mb-sm btn btn-green" ng-click="createCategory()">
             新增</button>
-        <button type="button" class="mb-sm btn btn-primary" ng-click="openDialog('InserOrUpdate.html')">
+        <button type="button" class="mb-sm btn btn-primary" ng-click="updateCategory()">
             修改</button>
-        <button type="button" class="mb-sm btn btn-default" ng-click="openDialog('DeleteConfirm.html')">
+        <button type="button" class="mb-sm btn btn-default" ng-click="deleteCategory()">
             删除</button>
         <form class="form-horizontal ng-pristine ng-valid">
         <div class="input-group">
@@ -47,7 +47,7 @@
 </div>
 <div class="panel panel-default">
     <div class="table-responsive">
-        <div ng-grid="gridOptions">
+        <div ng-grid="gridOption">
         </div>
     </div>
 </div>

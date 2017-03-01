@@ -61,7 +61,7 @@
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
         {
-            var script = "UPDATE CATEGORY SET Title='" + categoryModel.Title + "',Description = '" + categoryModel.Description + "'";
+            var script = "UPDATE CATEGORY SET Title='" + categoryModel.Title + "',Description = '" + categoryModel.Description + "' WHERE Id =" + categoryModel.Id;
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 

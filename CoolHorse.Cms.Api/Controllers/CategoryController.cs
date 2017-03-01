@@ -33,6 +33,12 @@
         }
 
         [HttpPost]
+        public CategoryModel Create([FromBody]CategoryModel model)
+        {
+            return _category.Create(model);
+        }
+
+        [HttpPost]
         public bool Delete([FromBody]int id)
         {
             return _category.Delete(id);
