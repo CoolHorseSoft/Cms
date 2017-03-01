@@ -8,11 +8,9 @@
     {
         #region Properties
         [DataMember]
-        public int ParentId { get; set; }
-
-        [DataMember]
         public string Title { get; set; }
 
+        [DataMember]
         public string Description { get; set; }
         #endregion
     }

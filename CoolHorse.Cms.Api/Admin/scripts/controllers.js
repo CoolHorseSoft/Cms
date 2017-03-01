@@ -151,16 +151,16 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
 
     $scope.gridOptions = {
         data: 'myData',
-        enablePaging: true,
-        showFooter: true,
         rowHeight: 36,
         headerRowHeight: 38,
-        multiSelect:false,
+        multiSelect: false,
+        enableRowSelection:true,
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
         selectedItems: [],
         columnDefs: [
-            { field: 'Title', displayName: '标题' }
+            { field: 'Title', displayName: '标题' },
+            { field: 'Description', displayName: '类别描述' }
         ]
     };
 

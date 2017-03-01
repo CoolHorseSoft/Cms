@@ -28,6 +28,4 @@
 /CoolHorse.Cms.Api/obj
 /CoolHorse.Cms.Api/Web.Release.config
 /CoolHorse.Cms.Api/Web.Debug.config
-/CoolHorse.Cms.Web/bin
-/CoolHorse.Cms.Web/obj
 *.pdb

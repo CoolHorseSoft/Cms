@@ -61,7 +61,7 @@
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
         {
-            var script = "UPDATE CATEGORY SET ParentId = "+categoryModel.ParentId + ", Title='" + categoryModel.Title + "'";
+            var script = "UPDATE CATEGORY SET Title='" + categoryModel.Title + "',Description = '" + categoryModel.Description + "'";
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -79,7 +79,6 @@
                 {
                     var model = new CategoryModel();
                     model.Description = rowItem["Description"].ToString();
-                    model.ParentId = int.Parse(rowItem["ParentId"].ToString());
                     model.Id = int.Parse(rowItem["Id"].ToString());
                     model.Title = rowItem["Title"].ToString();
                     model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());
