@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="CategoryModel.cs" />
     <Compile Include="ModelBase.cs" />
+    <Compile Include="ProductModel.cs" />
+    <Compile Include="NewsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

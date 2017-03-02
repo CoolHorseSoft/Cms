@@ -1,0 +1,32 @@
+﻿IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[Category]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].[Category](
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[ParentId] INT NOT NULL DEFAULT (0),
+	[Title] NVARCHAR(100) NOT NULL,
+	[Description] NVARCHAR(4000) NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+
+IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[News]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].News(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[Title] NVARCHAR(1000) NOT NULL,
+	[Content] NVARCHAR(MAX) NOT NULL,
+	[CategoryId] INT NOT NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+
+IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[Product]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].Product(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[Title] NVARCHAR(1000) NOT NULL,
+	[CategoryId] INT NOT NULL,
+	[Content] NVARCHAR(MAX) NOT NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO

@@ -36,7 +36,7 @@
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
-            var models = PopulateModels(ds);
+            var models = PopulateCategory(ds);
 
             return models.Count == 1 ? models.First() : null;
         }
@@ -47,7 +47,7 @@
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
-            return PopulateModels(ds);
+            return PopulateCategory(ds);
         }
 
         public CategoryModel UpdateCategory(CategoryModel categoryModel)
@@ -60,7 +60,7 @@
         }
         #endregion
 
-        private IList<CategoryModel> PopulateModels(DataSet ds)
+        private IList<CategoryModel> PopulateCategory(DataSet ds)
         {
             var models = new List<CategoryModel>();
 

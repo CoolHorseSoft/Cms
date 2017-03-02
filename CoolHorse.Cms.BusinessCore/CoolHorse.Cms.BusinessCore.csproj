@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessCoreBase.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="News.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
