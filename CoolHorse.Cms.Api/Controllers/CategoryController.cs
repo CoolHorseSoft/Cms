@@ -14,6 +14,10 @@
             _category = new Category();
         }
 
+        /// <summary>
+        /// Get all category
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<CategoryModel> GetAll()
         {
@@ -26,6 +30,12 @@
             return _category.GetByKey(id);
         }
 
+        /// <summary>
+        /// Update a category
+        /// </summary>
+        /// <param name="model"></param>
+        /// <see cref="CategoryModel"/>
+        /// <returns></returns>
         [HttpPost]
         public CategoryModel Update([FromBody]CategoryModel model)
         {

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Swagger.Net.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Swagger.Net.WebApi.Controllers.TagsController.Get">
+            <summary>
+            Get all of the Tags
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Swagger.Net.WebApi.Controllers.TagsController.Get(System.Int32)">
+            <summary>
+            Get a single Tag by it's id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Swagger.Net.WebApi.Controllers.TagsController.Post(System.String)">
+            <summary>
+            Create a new Tag
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Swagger.Net.WebApi.Controllers.TagsController.Put(System.Int32,System.String)">
+            <summary>
+            Update a Tag by it's id
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Swagger.Net.WebApi.Controllers.TagsController.Delete(System.Int32)">
+            <summary>
+            Remove a Tag by it's id
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>

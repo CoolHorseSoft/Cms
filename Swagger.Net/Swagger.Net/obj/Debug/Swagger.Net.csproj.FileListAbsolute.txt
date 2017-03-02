@@ -1,0 +1,11 @@
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\Swagger.Net.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\Swagger.Net.pdb
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Net.Http.Formatting.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Web.Http.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Web.Http.WebHost.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Net.Http.Formatting.xml
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Web.Http.xml
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\bin\Debug\System.Web.Http.WebHost.xml
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\obj\Debug\Swagger.Net.dll
+D:\OpenSource\CoolHorse\cms\Swagger.Net\Swagger.Net\obj\Debug\Swagger.Net.pdb

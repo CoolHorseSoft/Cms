@@ -1,6 +1,5 @@
 ﻿namespace CoolHorse.Cms.Models
 {
-    using System;
     using System.Runtime.Serialization;
 
     [DataContract]
