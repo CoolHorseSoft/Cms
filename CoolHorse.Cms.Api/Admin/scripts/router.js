@@ -23,6 +23,11 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url: '/news',
         controller: 'NewsController',
         templateUrl: helper.basepath('news.htm')
+    }).state('newsdetail', {
+        url: '/newsdetail',
+        controller: 'NewsDetailsController',
+        templateUrl: helper.basepath('newsdetail.htm'),
+        params: { newsModel: null }
     }).state('productlist', {
         url: '/productlist',
         controller: 'ProductListController',

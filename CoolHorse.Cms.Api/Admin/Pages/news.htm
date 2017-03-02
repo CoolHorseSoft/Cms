@@ -1,30 +1,7 @@
-﻿<script type="text/ng-template" id="InserOrUpdate.html">
-        <div class="ngdialog-content">
-            <div class="modal-header">
-                <h4 class="modal-title ng-binding">Add new category</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="txtSlug" class="ng-binding">Title</label>
-                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="$parent.gridOptions.selectedItems[0].Title">
-                </div>
-                <div class="form-group">
-                    <label for="txtExcerpt" class="ng-binding">Description</label>
-                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="$parent.gridOptions.selectedItems[0].Author">
-                </div>
-                
-                <div class="modal-buttons">
-                    <button type="button" ng-click="closeThisDialog()" class="btn btn-success ng-binding">Save</button>
-                    <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
-                </div>
-            </div>
-        </div>
-</script>
-
-<script type="text/ng-template" id="DeleteConfirm.html">
+﻿<script type="text/ng-template" id="DeleteConfirm.html">
     <div class="ngdialog-content">
             <p>You can do whatever you want when I close, however that happens.</p>
-            <div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>
+            <div><button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">Close Me</button></div>
     </div>
 </script>
 
@@ -32,9 +9,9 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <button type="button" class="mb-sm btn btn-green" ng-click="openDialog('InserOrUpdate.html')">新增</button>
-        <button type="button" class="mb-sm btn btn-primary" ng-click="openDialog('InserOrUpdate.html')">修改</button>
-        <button type="button" class="mb-sm btn btn-default" ng-click="openDialog('DeleteConfirm.html')">删除</button>
+        <button type="button" class="mb-sm btn btn-green" ng-click="edit(true)">新增</button>
+        <button type="button" class="mb-sm btn btn-primary" ng-click="edit(false)">修改</button>
+        <button type="button" class="mb-sm btn btn-default" ng-click="deleteNews()">删除</button>
         <form class="form-horizontal ng-pristine ng-valid">
             <div class="input-group">
                 <input type="text" placeholder="输入搜索条件..." class="form-control">

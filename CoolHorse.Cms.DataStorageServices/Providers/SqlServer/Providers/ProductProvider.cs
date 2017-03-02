@@ -13,7 +13,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
     {
         public ProductModel AddProduct(ProductModel model)
         {
-            var script =$"INSERT INTO Product(Title,Content,CategoryId) VALUES('{model.Title}','{model.Content}',{model.CategoryId})";
+            var script = string.Format("INSERT INTO Product(Title,Content,CategoryId) VALUES('{0}','{1}',{2});SELECT @@IDENTITY;",model.Title,model.Content,model.CategoryId);
 
             model.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
@@ -22,7 +22,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public ProductModel UpdateProduct(ProductModel model)
         {
-            var script = $"UPDATE Product SET Title='{ model.Title}',Content = '{ model.Content}',CategoryId = {model.CategoryId} WHERE Id =" + model.Id;
+            var script = string.Format("UPDATE Product SET Title='{0}',Content = '{1}',CategoryId = {2} WHERE Id ={3}", model.Title, model.Content, model.CategoryId, model.Id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -31,7 +31,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public bool DeleteProduct(int id)
         {
-            var script =$"DELETE FROM Product WHERE Id = {id}";
+            var script = string.Format("DELETE FROM Product WHERE Id = {0}", id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -40,7 +40,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public ProductModel FindProductById(int id)
         {
-            var script =$"SELECT * FROM Product WHERE Id = {id}";
+            var script = string.Format("SELECT * FROM Product WHERE Id = {0}", id);
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 

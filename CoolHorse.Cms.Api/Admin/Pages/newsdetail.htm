@@ -1,0 +1,22 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <button type="button" class="mb-sm btn btn-green" ng-click="save()">
+            保存
+        </button>
+        <button type="button" class="mb-sm btn btn-primary" ng-click="cancel()">
+            取消
+        </button>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="newpost-content">
+        <div class="newpost-title">
+            <input type="text" id="txtTitle" ng-model="newsModel.Title" name="txtTitle" placeholder="Title of post..." class="form-control ng-pristine ng-valid valid ng-touched">
+        </div>
+        <div class="editor-wrapper">
+            <textarea style="opacity: 0; height: 480px; width: 100%; " id="txtContent" class="post" aria-hidden="true" ng-model="newsModel.Content"></textarea>
+        </div>
+    </div>
+</div>
+<script src="scripts/tinymce/tinymce.min.js"></script>
+<script src="scripts/tinymce/editor.js"></script>

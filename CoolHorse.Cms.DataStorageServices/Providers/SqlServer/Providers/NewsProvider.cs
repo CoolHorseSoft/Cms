@@ -13,7 +13,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
     {
         public NewsModel AddNews(NewsModel model)
         {
-            var script =$"INSERT INTO News(Title,Content,CategoryId) VALUES('{model.Title}','{model.Content}',{model.CategoryId});SELECT @@IDENTITY;";
+            var script = string.Format("INSERT INTO News(Title,Content,CategoryId) VALUES('{0}','{1}',{2});SELECT @@IDENTITY;",model.Title,model.Content,model.CategoryId);
 
             model.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
@@ -22,7 +22,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public NewsModel UpdateNews(NewsModel model)
         {
-            var script = $"UPDATE News SET Title='{ model.Title}',Content = '{ model.Content}',CategoryId = {model.CategoryId} WHERE Id =" + model.Id;
+            var script = string.Format("UPDATE News SET Title='{0}',Content = '{1}',CategoryId = {2} WHERE Id ={3}",model.Title,model.Content,model.CategoryId,model.Id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -31,7 +31,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public bool DeleteNews(int id)
         {
-            var script =$"DELETE FROM News WHERE Id = {id}";
+            var script =string.Format("DELETE FROM News WHERE Id = {0}",id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -40,7 +40,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public NewsModel FindNewsById(int id)
         {
-            var script =$"SELECT * FROM News WHERE Id = {id}";
+            var script =string.Format("SELECT * FROM News WHERE Id = {0}",id);
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
