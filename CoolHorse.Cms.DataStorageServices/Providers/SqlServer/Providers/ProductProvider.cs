@@ -67,7 +67,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
                 foreach (DataRow rowItem in ds.Tables[0].Rows)
                 {
                     var model = new ProductModel();
-                    model.Description = rowItem["Description"].ToString();
+                    model.Content = rowItem["Content"].ToString();
                     model.Id = int.Parse(rowItem["Id"].ToString());
                     model.Title = rowItem["Title"].ToString();
                     model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());

@@ -106,11 +106,10 @@
     <Content Include="Admin\Pages\app.htm" />
     <Content Include="Admin\Pages\category.htm" />
     <Content Include="Admin\Pages\chat.htm" />
+    <Content Include="Admin\Pages\newsdetail.htm" />
     <Content Include="Admin\Pages\footernavbar.htm" />
     <Content Include="Admin\Pages\leftnavbar.htm" />
-    <Content Include="Admin\Pages\news.htm" />
-    <Content Include="Admin\Pages\page.htm" />
-    <Content Include="Admin\Pages\pagelist.htm" />
+    <Content Include="Admin\Pages\newslist.htm" />
     <Content Include="Admin\Pages\productdetail.htm" />
     <Content Include="Admin\Pages\productlist.htm" />
     <Content Include="Admin\Pages\rightsidebar.htm" />

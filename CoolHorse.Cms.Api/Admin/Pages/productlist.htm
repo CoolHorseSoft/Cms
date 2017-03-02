@@ -1,32 +1,31 @@
 ﻿<script type="text/ng-template" id="DeleteConfirm.html">
     <div class="ngdialog-content">
             <p>You can do whatever you want when I close, however that happens.</p>
-            <div><button type="button" class="btn btn-primary" ng-click="closeThisDialog(1)">Close Me</button></div>
+            <div><button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">Close Me</button></div>
     </div>
 </script>
+
+
+
 <div class="panel panel-default">
     <div class="panel-body">
-        <button type="button" class="mb-sm btn btn-green" ng-click="openDetail()">
-            新增</button>
-        <button type="button" class="mb-sm btn btn-primary" ng-click="openDetail()">
-            修改</button>
-        <button type="button" class="mb-sm btn btn-default" ng-click="openDialog('DeleteConfirm.html')">
-            删除</button>
+        <button type="button" class="mb-sm btn btn-green" ng-click="edit(true)">新增</button>
+        <button type="button" class="mb-sm btn btn-primary" ng-click="edit(false)">修改</button>
+        <button type="button" class="mb-sm btn btn-default" ng-click="delete()">删除</button>
         <form class="form-horizontal ng-pristine ng-valid">
-        <div class="input-group">
-            <input type="text" placeholder="输入搜索条件..." class="form-control">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default">
-                    <em class="fa fa-search"></em>
-                </button>
-            </span>
-        </div>
+            <div class="input-group">
+                <input type="text" placeholder="输入搜索条件..." class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <em class="fa fa-search"></em>
+                    </button>
+                </span>
+            </div>
         </form>
     </div>
 </div>
 <div class="panel panel-default">
     <div class="table-responsive">
-        <div ng-grid="gridOptions">
-        </div>
+        <div ng-grid="gridOptions"></div>
     </div>
 </div>

@@ -80,15 +80,6 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                                "text": "产品列表",
                                "sref": "productlist",
                                "icon": "icon-layers"
-                           },
-                           {
-                               "text": "页面管理",
-                               "heading": "true"
-                           },
-                           {
-                               "text": "页面列表",
-                               "sref": "pagelist",
-                               "icon": "icon-speedometer"
                            }
       ];
 
@@ -227,9 +218,11 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state,dialog) {
+    $scope.totalServerItems = 0;
+
     $scope.pagingOptions = {
         pageSizes: [250, 500, 1000],  // page size options
-        pageSize: 12,              // default page size
+        pageSize: 5,              // default page size
         currentPage: 1                 // initial page
     };
 
@@ -238,7 +231,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
     $scope.gridOptions = {
         data: 'myData',
         enablePaging: true,
-        showFooter: false,
+        showFooter: true,
         rowHeight: 36,
         headerRowHeight: 38,
         multiSelect: false,
@@ -246,6 +239,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
         keepLastSelected: false,
         showSelectionCheckbox: true,
         selectedItems: [],
+        totalServerItems:'totalServerItems',
         columnDefs: [
             { field: 'Title', displayName: '标题' },
             { field: 'Content', displayName: '内容' }
@@ -293,7 +287,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
         });
     }
 
-    $scope.deleteNews = function () {
+    $scope.delete = function () {
         if ($scope.gridOptions.selectedItems.length <= 0) {
             return;
         }
@@ -302,155 +296,56 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
 
     $scope.edit = function (isNew) {
         if (isNew) {
-            $state.go('newsdetail', { newsModel: { Title: "", Content: "", Id: -1 } });
+            $state.go('newsdetail', { model: { Title: "", Content: "", Id: -1 } });
         }
         else {
             if ($scope.gridOptions.selectedItems.length <= 0) {
                 return;
             }
-            $state.go('newsdetail', { newsModel: $scope.gridOptions.selectedItems[0] });
+            $state.go('newsdetail', { model: $scope.gridOptions.selectedItems[0] });
         }
     }
 
     $scope.deleteFromDialog = function (data) {
         if (data) {
-            deleteNews(data);
+            deleteData(data);
         }
 
         $scope.dialog.close();
     }
 
-    var deleteNews = function (news) {
-        $http.post('/api/news/Delete', news.Id).success(function () {
+    var deleteData = function (model) {
+        $http.post('/api/news/Delete', model.Id).success(function () {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
         });
     }
 }]);
 
 app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
-    $scope.newsModel = $stateParams.newsModel;
+    $scope.model = $stateParams.model;
 
     $scope.cancel = function () { $state.go('news'); };
 
     $scope.save = function () {
-        $scope.newsModel.Content = tinymce.get('txtContent').getContent();
-        if ($scope.newsModel.Id <= 0) {
-            $http.post('/api/news/create', $scope.newsModel).success(function () { $state.go('news'); });
+        $scope.model.Content = tinymce.get('txtContent').getContent();
+        if ($scope.model.Id <= 0) {
+            $http.post('/api/news/create', $scope.model).success(function () { $state.go('news'); });
         } else {
-            $http.post('/api/news/update', $scope.newsModel).success(function () { $state.go('news'); });
+            $http.post('/api/news/update', $scope.model).success(function () { $state.go('news'); });
         }        
     };
 }]);
 
-app.controller('ProductListController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
-
-    $scope.totalServerItems = 0;
+app.controller('ProductListController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {
     $scope.pagingOptions = {
-        pageSizes: [3, 250, 500, 1000],  // page size options
+        pageSizes: [250, 500, 1000],  // page size options
         pageSize: 12,              // default page size
         currentPage: 1                 // initial page
     };
 
-    $scope.gridOptions = {
-        data: 'myData',
-        enablePaging: true,
-        showFooter: true,
-        rowHeight: 36,
-        headerRowHeight: 38,
-        multiSelect: false,
-        totalServerItems: 'totalServerItems',
-        pagingOptions: $scope.pagingOptions,
-        selectedItems: []
-    };
-
-    $scope.setPagingData = function (data, page, pageSize) {
-        // calc for pager
-        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        // Store data from server
-        $scope.myData = pagedData;
-        // Update server side data length
-        $scope.totalServerItems = data.length;
-
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
-
-    };
-
-    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        $timeout(function () {
-            var largeLoad = [{
-                "ProductName": "Product One",
-                "Description": "Description Description Description Description",
-                "LastUpdated": "2017-04-20"
-            }, {
-                "ProductName": "Product One",
-                "Description": "Description Description Description Description",
-                "LastUpdated": "2017-04-20"
-            }, {
-                "ProductName": "Product One",
-                "Description": "Description Description Description Description",
-                "LastUpdated": "2017-04-20"
-            }, {
-                "ProductName": "Product One",
-                "Description": "Description Description Description Description",
-                "LastUpdated": "2017-04-20"
-            }, {
-                "ProductName": "Product One",
-                "Description": "Description Description Description Description",
-                "LastUpdated": "2017-04-20"
-            }];
-            if (searchText) {
-                var ft = searchText.toLowerCase();
-
-                var data = largeLoad.filter(function (item) {
-                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-                });
-                $scope.setPagingData(data, page, pageSize);
-            } else {
-                $scope.setPagingData(largeLoad, page, pageSize);
-            }
-        }, 100);
-    };
-
-
-    $scope.$watch('pagingOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
-    $scope.$watch('filterOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
-
-    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-
-    $scope.openDialog = function (templateId) {
-        dialog.open({
-            template: templateId,
-            className: 'ngdialog-theme-default',
-            scope: $scope
-        });
-    }
-
-    $scope.openDetail = function () {
-        window.location.href = "#/productdetail";
-    }
-}]);
-
-app.controller('ProductDetailController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
-}]);
-
-app.controller('PageListController', ['$scope', '$http', '$timeout','$state', 'ngDialog', function ($scope, $http, $timeout,$state, dialog) {
-
     $scope.totalServerItems = 0;
-    $scope.pagingOptions = {
-        pageSizes: [3, 250, 500, 1000],  // page size options
-        pageSize: 3,              // default page size
-        currentPage: 1                 // initial page
-    };
+
+    $scope.dialog = {};
 
     $scope.gridOptions = {
         data: 'myData',
@@ -459,9 +354,15 @@ app.controller('PageListController', ['$scope', '$http', '$timeout','$state', 'n
         rowHeight: 36,
         headerRowHeight: 38,
         multiSelect: false,
-        totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
-        selectedItems: []
+        keepLastSelected: false,
+        showSelectionCheckbox: true,
+        totalServerItems: 'totalServerItems',
+        selectedItems: [],
+        columnDefs: [
+            { field: 'Title', displayName: '产品名称' },
+            { field: 'Content', displayName: '产品介绍' }
+        ]
     };
 
     $scope.setPagingData = function (data, page, pageSize) {
@@ -479,70 +380,77 @@ app.controller('PageListController', ['$scope', '$http', '$timeout','$state', 'n
     };
 
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        $timeout(function () {
-            var largeLoad = [
-                {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }, {
-                    "PageTitle": "Page One Title Page One Title",
-                    "LastUpdated": "2017-04-20"
-                }
-            ];
-            if (searchText) {
-                var ft = searchText.toLowerCase();
+        var ngGridResourcePath = '/api/product/GetAll';
 
-                var data = largeLoad.filter(function (item) {
-                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-                });
-                $scope.setPagingData(data, page, pageSize);
-            } else {
+        $timeout(function () {
+            $http.get(ngGridResourcePath).success(function (largeLoad) {
                 $scope.setPagingData(largeLoad, page, pageSize);
-            }
+            });
         }, 100);
     };
-
 
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
-    $scope.$watch('filterOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
 
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
-    $scope.openDialog = function (templateId) {
-        dialog.open({
+    var openDialog = function (templateId, data) {
+        $scope.dialog = dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',
-            scope: $scope
+            scope: $scope,
+            data: data
         });
     }
 
-    $scope.openDetail = function () {
-        //$state.go(
+    $scope.delete = function () {
+        if ($scope.gridOptions.selectedItems.length <= 0) {
+            return;
+        }
+        openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0]);
+    }
+
+    $scope.edit = function (isNew) {
+        if (isNew) {
+            $state.go('productdetail', { model: { Title: "", Content: "", Id: -1 } });
+        }
+        else {
+            if ($scope.gridOptions.selectedItems.length <= 0) {
+                return;
+            }
+            $state.go('productdetail', { model: $scope.gridOptions.selectedItems[0] });
+        }
+    }
+
+    $scope.deleteFromDialog = function (data) {
+        if (data) {
+            deleteData(data);
+        }
+
+        $scope.dialog.close();
+    }
+
+    var deleteData = function (model) {
+        $http.post('/api/product/Delete', model.Id).success(function () {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+        });
     }
 }]);
 
-app.controller('PageController', function () {
-});
+app.controller('ProductDetailController', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
+    $scope.model = $stateParams.model;
+
+    $scope.cancel = function () { $state.go('productlist'); };
+
+    $scope.save = function () {
+        $scope.model.Content = tinymce.get('txtContent').getContent();
+        if ($scope.model.Id <= 0) {
+            $http.post('/api/product/create', $scope.model).success(function () { $state.go('productlist'); });
+        } else {
+            $http.post('/api/product/update', $scope.model).success(function () { $state.go('productlist'); });
+        }
+    };
+}]);

@@ -14,9 +14,6 @@
 
         [DataMember]
         public string Content { get; set; }
-
-        [DataMember]
-        public string Description { get; set; }
         #endregion
     }
 }

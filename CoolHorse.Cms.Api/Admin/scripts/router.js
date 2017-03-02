@@ -6,7 +6,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     // You may have to set <base> tag in index and a routing configuration in your server
     $locationProvider.html5Mode(false);
 
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/category');
 
     // 
     // Application Routes
@@ -22,12 +22,12 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     }).state('news', {
         url: '/news',
         controller: 'NewsController',
-        templateUrl: helper.basepath('news.htm')
+        templateUrl: helper.basepath('newslist.htm')
     }).state('newsdetail', {
         url: '/newsdetail',
         controller: 'NewsDetailsController',
         templateUrl: helper.basepath('newsdetail.htm'),
-        params: { newsModel: null }
+        params: { model: null }
     }).state('productlist', {
         url: '/productlist',
         controller: 'ProductListController',
@@ -35,14 +35,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     }).state('productdetail', {
         url: '/productdetail',
         controller: 'ProductDetailController',
-        templateUrl: helper.basepath('productdetail.htm')
-    }).state('pagelist', {
-        url: '/pagelist',
-        controller: 'PageListController',
-        templateUrl: helper.basepath('pagelist.htm')
-    }).state('page', {
-        url: '/page',
-        controller: 'PageController',
-        templateUrl: helper.basepath('page.htm')
+        templateUrl: helper.basepath('productdetail.htm'),
+        params: { model: null }
     });
 } ]);
