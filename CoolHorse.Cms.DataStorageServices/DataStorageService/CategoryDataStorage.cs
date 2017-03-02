@@ -1,6 +1,6 @@
 ﻿namespace CoolHorse.Cms.DataStorageServices
 {
-    using CoolHorse.Cms.Models;
+    using Models;
     using System.Collections.Generic;
 
     public static partial class DataStorageService
