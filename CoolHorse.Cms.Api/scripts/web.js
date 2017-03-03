@@ -1,4 +1,4 @@
-﻿var app = angular.module('web', ['ui.bootstrap']);
+﻿var app = angular.module('web', ['ui.bootstrap', 'ngSanitize']);
 
 app.run(["$rootScope", function ($rootScope) {
     $rootScope.app = {
@@ -18,4 +18,15 @@ app.controller('MyCarouselController', ['$scope', function ($scope) {
     };
     $scope.addSlide();
     $scope.myInterval = 10000;
+}]);
+
+app.controller('webNewsDetailsController', ['$scope', '$http', function ($scope, $http) {
+    $scope.model = {};
+
+    $http({
+        method: 'GET',
+        url: '/api/news/GetById/6'
+    }).then(function (model) {
+        $scope.model = model.data;
+    });
 }]);
