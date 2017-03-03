@@ -241,11 +241,11 @@
     <Content Include="images\bg8.jpg" />
     <Content Include="images\logo-single.png" />
     <Content Include="images\logo.png" />
-    <Content Include="images\scripts\angular.min.js" />
-    <Content Include="images\scripts\bootstrap.min.js" />
-    <Content Include="images\scripts\jquery-3.1.1.min.js" />
-    <Content Include="images\scripts\ui-bootstrap.js" />
-    <Content Include="images\scripts\web.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-3.1.1.min.js" />
+    <Content Include="scripts\ui-bootstrap.js" />
+    <Content Include="scripts\web.js" />
     <Content Include="SwaggerUI\css\screen.css" />
     <Content Include="SwaggerUI\images\pet_store_api.png" />
     <Content Include="SwaggerUI\images\wordnik_api.png" />
