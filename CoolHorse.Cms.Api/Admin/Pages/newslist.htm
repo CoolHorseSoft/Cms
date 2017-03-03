@@ -1,7 +1,10 @@
 ﻿<script type="text/ng-template" id="DeleteConfirm.html">
     <div class="ngdialog-content">
-            <p>You can do whatever you want when I close, however that happens.</p>
-            <div><button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">Close Me</button></div>
+        <p>确定删除该条新闻？</p>
+        <div>
+            <button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">删除</button>
+            <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">取消</button>
+        </div>
     </div>
 </script>
 
