@@ -109,146 +109,135 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\fonts\fontawesome-webfont.svg" />
-    <Content Include="Admin\fonts\Simple-Line-Icons.svg" />
-    <Content Include="Admin\images\01.jpg" />
-    <Content Include="Admin\images\05.jpg" />
-    <Content Include="Admin\images\06.jpg" />
-    <Content Include="Admin\images\07.jpg" />
-    <Content Include="Admin\images\08.jpg" />
-    <Content Include="Admin\images\09.jpg" />
-    <Content Include="Admin\images\10.jpg" />
-    <Content Include="Admin\images\bg10.jpg" />
-    <Content Include="Admin\images\bg7.jpg" />
-    <Content Include="Admin\images\bg8.jpg" />
-    <Content Include="Admin\images\logo-single.png" />
-    <Content Include="Admin\images\logo.png" />
-    <Content Include="Admin\index.htm" />
-    <Content Include="Admin\Pages\app.htm" />
-    <Content Include="Admin\Pages\category.htm" />
-    <Content Include="Admin\Pages\chat.htm" />
-    <Content Include="Admin\Pages\newsdetail.htm" />
-    <Content Include="Admin\Pages\footernavbar.htm" />
-    <Content Include="Admin\Pages\leftnavbar.htm" />
-    <Content Include="Admin\Pages\newslist.htm" />
-    <Content Include="Admin\Pages\productdetail.htm" />
-    <Content Include="Admin\Pages\productlist.htm" />
-    <Content Include="Admin\Pages\rightsidebar.htm" />
-    <Content Include="Admin\Pages\settings.htm" />
-    <Content Include="Admin\Pages\topnavbar.htm" />
-    <Content Include="Admin\scripts\admin.js" />
-    <Content Include="Admin\scripts\base.js" />
-    <Content Include="Admin\scripts\constants.js" />
-    <Content Include="Admin\scripts\controllers.js" />
-    <Content Include="Admin\scripts\directives.js" />
-    <Content Include="Admin\scripts\modernizr.js" />
-    <Content Include="Admin\scripts\ng-grid.min.js" />
-    <Content Include="Admin\scripts\ngDialog.min.js" />
-    <Content Include="Admin\scripts\providers.js" />
-    <Content Include="Admin\scripts\router.js" />
-    <Content Include="Admin\scripts\screenfull.js" />
-    <Content Include="Admin\scripts\services.js" />
-    <Content Include="Admin\scripts\tinymce\editor.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\advlist\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\anchor\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\autolink\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\autoresize\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\autosave\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\bbcode\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\charmap\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\code\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\colorpicker\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\contextmenu\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\directionality\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
-    <Content Include="Admin\scripts\tinymce\plugins\emoticons\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\example\dialog.html" />
-    <Content Include="Admin\scripts\tinymce\plugins\example\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\example_dependency\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\filemanager\filemgr.png" />
-    <Content Include="Admin\scripts\tinymce\plugins\filemanager\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\fullpage\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\fullscreen\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\hr\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\imagetools\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\image\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\importcss\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\layer\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\link\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\lists\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\media\moxieplayer.swf" />
-    <Content Include="Admin\scripts\tinymce\plugins\media\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\nonbreaking\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\noneditable\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\pagebreak\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\paste\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\preview\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\print\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\save\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\searchreplace\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.dev.svg" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.svg" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\langs\en.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\langs\fr_FR.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\plugin.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\style\style.css" />
-    <Content Include="Admin\scripts\tinymce\plugins\spellchecker\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\tabfocus\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\table\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\template\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\textcolor\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\textpattern\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
-    <Content Include="Admin\scripts\tinymce\plugins\visualblocks\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\visualchars\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\plugins\wordcount\plugin.min.js" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\content.inline.min.css" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\content.min.css" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\img\anchor.gif" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\img\loader.gif" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\img\object.gif" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\img\trans.gif" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\skin.min.css" />
-    <Content Include="Admin\scripts\tinymce\themes\modern\theme.min.js" />
-    <Content Include="Admin\scripts\tinymce\tinymce.min.js" />
-    <Content Include="Admin\styles\app-rtl.css" />
-    <Content Include="Admin\styles\app.css" />
-    <Content Include="Admin\styles\bootstrap-rtl.css" />
-    <Content Include="Admin\styles\bootstrap.css" />
-    <Content Include="Admin\styles\font-awesome.min.css" />
-    <Content Include="Admin\styles\ng-grid.css" />
-    <Content Include="Admin\styles\ngDialog-theme-default.min.css" />
-    <Content Include="Admin\styles\ngDialog.min.css" />
-    <Content Include="Admin\styles\simple-line-icons.css" />
-    <Content Include="Admin\styles\theme-a.css" />
-    <Content Include="Admin\styles\theme-b.css" />
-    <Content Include="Admin\styles\theme-c.css" />
-    <Content Include="Admin\styles\theme-d.css" />
-    <Content Include="Admin\styles\theme-e.css" />
-    <Content Include="Admin\styles\theme-f.css" />
-    <Content Include="Admin\styles\theme-g.css" />
-    <Content Include="Admin\styles\theme-h.css" />
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.svg" />
+    <Content Include="CmsAdmin\images\01.jpg" />
+    <Content Include="CmsAdmin\images\05.jpg" />
+    <Content Include="CmsAdmin\images\06.jpg" />
+    <Content Include="CmsAdmin\images\07.jpg" />
+    <Content Include="CmsAdmin\images\08.jpg" />
+    <Content Include="CmsAdmin\images\09.jpg" />
+    <Content Include="CmsAdmin\images\10.jpg" />
+    <Content Include="CmsAdmin\images\bg10.jpg" />
+    <Content Include="CmsAdmin\images\bg7.jpg" />
+    <Content Include="CmsAdmin\images\bg8.jpg" />
+    <Content Include="CmsAdmin\images\logo-single.png" />
+    <Content Include="CmsAdmin\images\logo.png" />
+    <Content Include="CmsAdmin\index.htm" />
+    <Content Include="CmsAdmin\Pages\app.htm" />
+    <Content Include="CmsAdmin\Pages\category.htm" />
+    <Content Include="CmsAdmin\Pages\footernavbar.htm" />
+    <Content Include="CmsAdmin\Pages\leftnavbar.htm" />
+    <Content Include="CmsAdmin\Pages\newsdetail.htm" />
+    <Content Include="CmsAdmin\Pages\newslist.htm" />
+    <Content Include="CmsAdmin\Pages\productdetail.htm" />
+    <Content Include="CmsAdmin\Pages\productlist.htm" />
+    <Content Include="CmsAdmin\Pages\rightsidebar.htm" />
+    <Content Include="CmsAdmin\Pages\settings.htm" />
+    <Content Include="CmsAdmin\Pages\topnavbar.htm" />
+    <Content Include="CmsAdmin\scripts\admin.js" />
+    <Content Include="CmsAdmin\scripts\base.js" />
+    <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />
+    <Content Include="CmsAdmin\scripts\modernizr.js" />
+    <Content Include="CmsAdmin\scripts\ng-grid.min.js" />
+    <Content Include="CmsAdmin\scripts\ngDialog.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\editor.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\example\dialog.html" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\filemanager\filemgr.png" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\filemanager\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.dev.svg" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.svg" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\langs\en.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\langs\fr_FR.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\plugin.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\style\style.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="CmsAdmin\scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="CmsAdmin\scripts\tinymce\tinymce.min.js" />
+    <Content Include="CmsAdmin\styles\app.css" />
+    <Content Include="CmsAdmin\styles\bootstrap.css" />
+    <Content Include="CmsAdmin\styles\font-awesome.min.css" />
+    <Content Include="CmsAdmin\styles\ng-grid.css" />
+    <Content Include="CmsAdmin\styles\ngDialog-theme-default.min.css" />
+    <Content Include="CmsAdmin\styles\ngDialog.min.css" />
+    <Content Include="CmsAdmin\styles\theme-a.css" />
+    <Content Include="CmsAdmin\styles\theme-b.css" />
+    <Content Include="CmsAdmin\styles\theme-c.css" />
+    <Content Include="CmsAdmin\styles\theme-d.css" />
+    <Content Include="CmsAdmin\styles\theme-e.css" />
+    <Content Include="CmsAdmin\styles\theme-f.css" />
+    <Content Include="CmsAdmin\styles\theme-g.css" />
+    <Content Include="CmsAdmin\styles\theme-h.css" />
     <Content Include="scripts\angular-sanitize.min.js" />
     <Content Include="styles\app.css" />
     <Content Include="styles\bootstrap-theme.min.css" />
@@ -327,60 +316,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\fonts\fontawesome-webfont.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\fontawesome-webfont.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\fontawesome-webfont.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\fontawesome-webfont.woff2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\FontAwesome.otf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\Simple-Line-Icons.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\Simple-Line-Icons.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\fonts\Simple-Line-Icons.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\langs\readme.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Admin\scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -389,6 +324,51 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\fontawesome-webfont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\langs\readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\plugins\sh4tinymce\fonts\sh4tinymce.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

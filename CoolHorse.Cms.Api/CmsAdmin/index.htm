@@ -2,12 +2,10 @@
 <html ng-app="admin">
 <head>
     <title>CmsAdmin</title>
-    <link rel="stylesheet" href="styles/bootstrap.css" data-ng-if="!app.layout.isRTL">
-    <link rel="stylesheet" href="styles/bootstrap-rtl.css" data-ng-if="app.layout.isRTL">
-    <link rel="stylesheet" href="styles/app.css" data-ng-if="!app.layout.isRTL">
-    <link rel="stylesheet" href="styles/app-rtl.css" data-ng-if="app.layout.isRTL">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/simple-line-icons.css">
     <link rel="stylesheet" href="styles/ng-grid.css"><!--grid-->
     <link rel="stylesheet" href="styles/ngDialog-theme-default.min.css">
     <link rel="stylesheet" href="styles/ngDialog.min.css">
@@ -22,23 +20,17 @@
         <aside ng-include="'Pages/rightsidebar.htm'" class="offsidebar"></aside>
 
         <section>
-            <div ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="content-wrapper"></div>
+            <div ui-view="" autoscroll="false" class="content-wrapper"></div>
         </section>
 
         <footer ng-include="'Pages/footernavbar.htm'"></footer>
     </div>
 
+    <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/base.js"></script>
     <script src="scripts/ng-grid.min.js"></script>
     <script src="scripts/ngDialog.min.js"></script>
     <script src="scripts/admin.js"></script>
-    <script src="scripts/constants.js"></script>
-    <script src="scripts/providers.js"></script>
-    <script src="scripts/router.js"></script>
-    <script src="scripts/controllers.js"></script>
-    <script src="scripts/services.js"></script>
-    <script src="scripts/directives.js"></script>
-    <script src="scripts/screenfull.js"></script>
     <script src="scripts/modernizr.js"></script><!--This is used to hide the right side bar-->
 </body>
 </html>

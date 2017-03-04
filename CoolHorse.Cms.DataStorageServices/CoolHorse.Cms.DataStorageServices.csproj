@@ -49,16 +49,16 @@
     <Compile Include="IDataStorageProvider\INewsDataStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IDataStorageProvider\ICategoryDataStorageProvider.cs" />
-    <Compile Include="Providers\Access\AccessProvider.cs" />
-    <Compile Include="Providers\DataStorageProviderCollection.cs" />
-    <Compile Include="Providers\DataStorageProviderSection.cs" />
-    <Compile Include="Providers\SqlServer\ISqlServerDbConnector.cs" />
-    <Compile Include="Providers\SqlServer\Providers\ProductProvider.cs" />
-    <Compile Include="Providers\SqlServer\Providers\NewsProvider.cs" />
-    <Compile Include="Providers\SqlServer\Providers\CategoryProvider.cs" />
-    <Compile Include="Providers\SqlServer\SqlServerDbConnector.cs" />
-    <Compile Include="Providers\SqlServer\SqlServerProvider.cs" />
-    <Compile Include="Providers\Xml\XmlProvider.cs" />
+    <Compile Include="DataStorageProvider\Access\AccessProvider.cs" />
+    <Compile Include="DataStorageProvider\DataStorageProviderCollection.cs" />
+    <Compile Include="DataStorageProvider\DataStorageProviderSection.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\ISqlServerDbConnector.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\Providers\ProductProvider.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\Providers\NewsProvider.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\Providers\CategoryProvider.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\SqlServerDbConnector.cs" />
+    <Compile Include="DataStorageProvider\SqlServer\SqlServerProvider.cs" />
+    <Compile Include="DataStorageProvider\Xml\XmlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoolHorse.Cms.Models\CoolHorse.Cms.Models.csproj">
@@ -67,7 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Providers\SqlServer\Scripts\sqlserver.sql" />
+    <Content Include="DataStorageProvider\SqlServer\Scripts\sqlserver.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
