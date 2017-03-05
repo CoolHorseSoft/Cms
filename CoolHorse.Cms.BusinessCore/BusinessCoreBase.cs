@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
+﻿
 
 namespace CoolHorse.Cms.BusinessCore
 {
-    using Models;
+    using ValidationService;
+using Models;
+    using System.Collections.Generic;
 
     public abstract class BusinessCoreBase<TModel, TKey> where TModel : ModelBase<TKey>
     {
         #region Public Abstract Methods
+
+        public abstract bool Validate(TModel model);
 
         public abstract TModel Create(TModel model);
 
@@ -18,6 +22,7 @@ namespace CoolHorse.Cms.BusinessCore
 
         public abstract TModel GetByKey(TKey key);
 
+        public abstract IEnumerable<ClientValidationRule> ClientRules { get; }
         #endregion
     }
 }

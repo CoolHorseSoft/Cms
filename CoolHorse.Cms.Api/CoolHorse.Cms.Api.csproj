@@ -135,6 +135,7 @@
     <Content Include="CmsAdmin\Pages\settings.htm" />
     <Content Include="CmsAdmin\Pages\topnavbar.htm" />
     <Content Include="CmsAdmin\scripts\admin.js" />
+    <Content Include="CmsAdmin\scripts\angular-ui-router.min.js" />
     <Content Include="CmsAdmin\scripts\angular.min.js" />
     <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />
     <Content Include="CmsAdmin\scripts\modernizr.min.js" />
@@ -224,8 +225,8 @@
     <Content Include="CmsAdmin\scripts\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="CmsAdmin\scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="CmsAdmin\scripts\tinymce\tinymce.min.js" />
+    <Content Include="CmsAdmin\scripts\ui-bootstrap-tpls.min.js" />
     <Content Include="CmsAdmin\scripts\ui.bootstrap.min.js" />
-    <Content Include="CmsAdmin\scripts\ui.router.js" />
     <Content Include="CmsAdmin\styles\app.css" />
     <Content Include="CmsAdmin\styles\bootstrap.css" />
     <Content Include="CmsAdmin\styles\font-awesome.min.css" />

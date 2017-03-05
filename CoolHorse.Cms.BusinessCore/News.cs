@@ -2,6 +2,7 @@
 {
     using DataStorageServices;
     using Models;
+    using ValidationService;
     using System.Collections.Generic;
 
     public class News: BusinessCoreBase<NewsModel, int>
@@ -29,6 +30,16 @@
         public override bool Delete(int key)
         {
             return DataStorageService.DeleteNews(key);
+        }
+
+        public override bool Validate(NewsModel model)
+        {
+            return ValidationService.Validate<NewsModel>(model);
+        }
+
+        public override IEnumerable<ClientValidationRule> ClientRules
+        {
+            get { return ValidationService.GenerateClientRules<NewsModel>(); }
         }
     }
 }

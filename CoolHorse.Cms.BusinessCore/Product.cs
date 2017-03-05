@@ -2,6 +2,7 @@
 {
     using DataStorageServices;
     using Models;
+    using ValidationService;
     using System.Collections.Generic;
 
     public class Product: BusinessCoreBase<ProductModel, int>
@@ -29,6 +30,16 @@
         public override bool Delete(int key)
         {
             return DataStorageService.DeleteProduct(key);
+        }
+
+        public override bool Validate(ProductModel model)
+        {
+            return ValidationService.Validate<ProductModel>(model);
+        }
+
+        public override IEnumerable<ClientValidationRule> ClientRules
+        {
+            get { return ValidationService.GenerateClientRules<ProductModel>(); }
         }
     }
 }

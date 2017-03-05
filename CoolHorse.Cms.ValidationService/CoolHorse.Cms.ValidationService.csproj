@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1065FE9A-930F-45CA-BECB-2A9B6E2BC21B}</ProjectGuid>
+    <ProjectGuid>{C046D464-96C2-440B-A761-1F7E5374F38E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoolHorse.Cms.BusinessCore</RootNamespace>
-    <AssemblyName>CoolHorse.Cms.BusinessCore</AssemblyName>
+    <RootNamespace>CoolHorse.Cms.ValidationService</RootNamespace>
+    <AssemblyName>CoolHorse.Cms.ValidationService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,34 +28,24 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessCoreBase.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="News.cs" />
-    <Compile Include="Category.cs" />
+    <Compile Include="CategoryValidator.cs" />
+    <Compile Include="ClientValidationRule.cs" />
+    <Compile Include="ProductValidator.cs" />
+    <Compile Include="NewsValidator.cs" />
+    <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoolHorse.Cms.DataStorageServices\CoolHorse.Cms.DataStorageServices.csproj">
-      <Project>{9d9aaf4e-b6f4-4587-acc5-ad187d2c31d2}</Project>
-      <Name>CoolHorse.Cms.DataStorageServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CoolHorse.Cms.Models\CoolHorse.Cms.Models.csproj">
       <Project>{221de59b-6b48-485d-8fbc-536ed47c90c6}</Project>
       <Name>CoolHorse.Cms.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CoolHorse.Cms.Utils\CoolHorse.Cms.Utils.csproj">
-      <Project>{3b90a718-390c-43da-908d-7918d4ce8ed3}</Project>
-      <Name>CoolHorse.Cms.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CoolHorse.Cms.ValidationService\CoolHorse.Cms.ValidationService.csproj">
-      <Project>{c046d464-96c2-440b-a761-1f7e5374f38e}</Project>
-      <Name>CoolHorse.Cms.ValidationService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

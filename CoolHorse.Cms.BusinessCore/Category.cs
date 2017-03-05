@@ -2,6 +2,7 @@
 {
     using DataStorageServices;
     using Models;
+    using ValidationService;
     using System.Collections.Generic;
 
     public class Category:BusinessCoreBase<CategoryModel, int>
@@ -29,6 +30,16 @@
         public override bool Delete(int key)
         {
             return DataStorageService.DeleteCategory(key);
+        }
+
+        public override bool Validate(CategoryModel model)
+        {
+            return ValidationService.Validate<CategoryModel>(model);
+        }
+
+        public override IEnumerable<ClientValidationRule> ClientRules
+        {
+            get { return ValidationService.GenerateClientRules<CategoryModel>(); }
         }
     }
 }
