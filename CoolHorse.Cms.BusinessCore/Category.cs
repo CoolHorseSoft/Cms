@@ -19,27 +19,31 @@
 
         public override CategoryModel Create(CategoryModel model)
         {
-            return DataStorageService.AddCategory(model);
+            if (Validate(model))
+                return DataStorageService.AddCategory(model);
+
+            return null;
         }
 
         public override CategoryModel Update(CategoryModel model)
         {
-            return DataStorageService.UpdateCategory(model);
+            if (Validate(model))
+                return DataStorageService.UpdateCategory(model);
+
+            return null;
         }
 
         public override bool Delete(int key)
         {
-            return DataStorageService.DeleteCategory(key);
+            if (Validate(GetByKey(key)))
+                return DataStorageService.DeleteCategory(key);
+
+            return false;
         }
 
         public override bool Validate(CategoryModel model)
         {
             return ValidationService.Validate<CategoryModel>(model);
-        }
-
-        public override IEnumerable<ClientValidationRule> ClientRules
-        {
-            get { return ValidationService.GenerateClientRules<CategoryModel>(); }
         }
     }
 }

@@ -19,27 +19,37 @@
 
         public override ProductModel Create(ProductModel model)
         {
-            return DataStorageService.AddProduct(model);
+            if (Validate(model))
+            {
+                return DataStorageService.AddProduct(model);
+            }
+
+            return null;
         }
 
         public override ProductModel Update(ProductModel model)
         {
-            return DataStorageService.UpdateProduct(model);
+            if (Validate(model))
+            {
+                return DataStorageService.UpdateProduct(model);
+            }
+
+            return null;
         }
 
         public override bool Delete(int key)
         {
-            return DataStorageService.DeleteProduct(key);
+            if (Validate(GetByKey(key)))
+            {
+                return DataStorageService.DeleteProduct(key);
+            }
+
+            return false;
         }
 
         public override bool Validate(ProductModel model)
         {
             return ValidationService.Validate<ProductModel>(model);
-        }
-
-        public override IEnumerable<ClientValidationRule> ClientRules
-        {
-            get { return ValidationService.GenerateClientRules<ProductModel>(); }
         }
     }
 }

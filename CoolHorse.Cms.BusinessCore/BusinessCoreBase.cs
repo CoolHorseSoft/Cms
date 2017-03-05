@@ -21,8 +21,6 @@ using Models;
         public abstract IEnumerable<TModel> GetAll();
 
         public abstract TModel GetByKey(TKey key);
-
-        public abstract IEnumerable<ClientValidationRule> ClientRules { get; }
         #endregion
     }
 }

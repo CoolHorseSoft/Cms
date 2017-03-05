@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryModel.cs" />
+    <Compile Include="ClientValidationRule.cs" />
     <Compile Include="ModelBase.cs" />
     <Compile Include="ProductModel.cs" />
     <Compile Include="NewsModel.cs" />

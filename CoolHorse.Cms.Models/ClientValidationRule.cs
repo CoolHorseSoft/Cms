@@ -1,4 +1,4 @@
-﻿namespace CoolHorse.Cms.ValidationService
+﻿namespace CoolHorse.Cms.Models
 {
     public class ClientValidationRule
     {

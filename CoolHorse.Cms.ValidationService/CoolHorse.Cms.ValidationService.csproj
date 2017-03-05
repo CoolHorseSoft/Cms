@@ -35,7 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryValidator.cs" />
-    <Compile Include="ClientValidationRule.cs" />
     <Compile Include="ProductValidator.cs" />
     <Compile Include="NewsValidator.cs" />
     <Compile Include="IValidator.cs" />

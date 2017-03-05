@@ -19,27 +19,31 @@
 
         public override NewsModel Create(NewsModel model)
         {
-            return DataStorageService.AddNews(model);
+            if (Validate(model))
+                return DataStorageService.AddNews(model);
+
+            return null;
         }
 
         public override NewsModel Update(NewsModel model)
         {
-            return DataStorageService.UpdateNews(model);
+            if (Validate(model))
+                return DataStorageService.UpdateNews(model);
+
+            return null;
         }
 
         public override bool Delete(int key)
         {
-            return DataStorageService.DeleteNews(key);
+            if (Validate(GetByKey(key)))
+                return DataStorageService.DeleteNews(key);
+
+            return false;
         }
 
         public override bool Validate(NewsModel model)
         {
             return ValidationService.Validate<NewsModel>(model);
-        }
-
-        public override IEnumerable<ClientValidationRule> ClientRules
-        {
-            get { return ValidationService.GenerateClientRules<NewsModel>(); }
         }
     }
 }

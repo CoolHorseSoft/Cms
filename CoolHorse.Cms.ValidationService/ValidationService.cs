@@ -1,18 +1,28 @@
 ﻿namespace CoolHorse.Cms.ValidationService
 {
     using Models;
-using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
 
     public class ValidationService
     {
         public static bool Validate<TModel>(TModel model)
         {
-            return true;
+            return LoadValidator<TModel>().Validate(model);
         }
 
-        public static IEnumerable<ClientValidationRule> GenerateClientRules<TModel>()
+        private static IValidator<TModel> LoadValidator<TModel>()
         {
-            return null;
+            Type openType = typeof(IValidator<TModel>);
+
+            IValidator<TModel> a = (IValidator<TModel>)new CategoryValidator();
+
+            Type closeType = openType.MakeGenericType(typeof(TModel));
+
+            var validator = (IValidator<TModel>)Activator.CreateInstance(openType);
+
+            return validator;
         }
     }
 }

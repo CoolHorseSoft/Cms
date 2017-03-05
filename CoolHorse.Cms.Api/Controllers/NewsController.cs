@@ -14,10 +14,6 @@
             _news = new News();
         }
 
-        /// <summary>
-        /// Get all News
-        /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public IEnumerable<NewsModel> GetAll()
         {
@@ -30,12 +26,6 @@
             return _news.GetByKey(id);
         }
 
-        /// <summary>
-        /// Update a News
-        /// </summary>
-        /// <param name="model"></param>
-        /// <see cref="NewsModel"/>
-        /// <returns></returns>
         [HttpPost]
         public NewsModel Update([FromBody]NewsModel model)
         {

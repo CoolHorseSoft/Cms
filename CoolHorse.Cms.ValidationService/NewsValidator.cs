@@ -3,15 +3,11 @@
     using Models;
     using System.Collections.Generic;
 
-    internal class NewsValidator : IValidator<NewsModel>
+    public class NewsValidator : IValidator<NewsModel>
     {
         public bool Validate(NewsModel model)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<ClientValidationRule> GenerateClientRules(NewsModel model)
-        {
+            var a = new List<int>();
             throw new System.NotImplementedException();
         }
     }
