@@ -1,6 +1,6 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'ui.bootstrap', 'ngGrid', 'ngDialog']);
+var app = angular.module('admin', ['ui.router', 'ngGrid']);
 
 app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
@@ -634,7 +634,7 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state','Utils',
 
   }]);
 
-app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', function ($scope, $http, $timeout, dialog) {
+app.controller('CategoryController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
     $scope.gridOption = {
         data: 'myData',
         rowHeight: 36,
@@ -664,6 +664,9 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     $scope.getData();
 
     $scope.saveFromDialog = function (data) {
+        if (!$('#form').valid()) {
+            return false;
+        }
         if (data) {
             data.Id >= 0 ? updateCategory(data) : createCategory(data);
         }
@@ -692,11 +695,10 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     }
 
     var openDialog = function (templateId, data) {
-        $scope.dialog = dialog.open({
-            template: templateId,
-            className: 'ngdialog-theme-default',
-            scope: $scope,
-            data: data
+        $('#form').modal({
+            backdrop: "static",
+            keyboard: false,
+            show: true
         });
     }
 
@@ -719,11 +721,13 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
     }
 
-    $scope.submitted = false;
-    $scope.validateInput = function (name, type) {
-        var input = $scope.formValidate[name];
-        return (input.$dirty || $scope.submitted) && input.$error[type];
-    };
+    $(document).ready(function () {
+        //$('#form').validate({
+        //    rules: {
+        //        categoryTitle: { required: true }
+        //    }
+        //});
+    });
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {

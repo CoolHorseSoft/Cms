@@ -1,34 +1,4 @@
-﻿<script type="text/ng-template" id="InserOrUpdate.html">
-    <div class="ngdialog-content">
-            <div class="modal-header">
-                <h4 class="modal-title ng-binding">新增类别</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="txtSlug" class="ng-binding">类别名称</label>
-                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.Title" name="categoryTitle">
-                </div>
-                <div class="form-group">
-                    <label for="txtExcerpt" class="ng-binding">描述</label>
-                    <textarea class="form-control ng-pristine ng-untouched ng-valid" id="txtExcerpt" rows="4" ng-model="ngDialogData.Description"> </textarea>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" ng-click="saveFromDialog(ngDialogData)" class="btn btn-success ng-binding">Save</button>
-                    <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
-                </div>
-            </div>
-        </div>
-</script>
-<script type="text/ng-template" id="DeleteConfirm.html">
-    <div class="ngdialog-content">
-            <p>确定删除该类别吗？</p>
-        <div>
-            <button type="button" class="btn btn-primary" ng-click="deleteFromDialog(ngDialogData)">删除</button>
-            <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">取消</button>
-        </div>
-    </div>
-</script>
-<div class="panel panel-default">
+﻿<div class="panel panel-default">
     <div class="panel-body">
         <button type="button" class="mb-sm btn btn-green" ng-click="createCategory()">
             新增</button>
