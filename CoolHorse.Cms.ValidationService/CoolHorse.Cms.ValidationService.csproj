@@ -42,6 +42,10 @@
     <Compile Include="ValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CoolHorse.Cms.DataStorageServices\CoolHorse.Cms.DataStorageServices.csproj">
+      <Project>{9d9aaf4e-b6f4-4587-acc5-ad187d2c31d2}</Project>
+      <Name>CoolHorse.Cms.DataStorageServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CoolHorse.Cms.Models\CoolHorse.Cms.Models.csproj">
       <Project>{221de59b-6b48-485d-8fbc-536ed47c90c6}</Project>
       <Name>CoolHorse.Cms.Models</Name>

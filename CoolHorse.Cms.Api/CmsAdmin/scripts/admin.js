@@ -718,6 +718,12 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         }
         openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
     }
+
+    $scope.submitted = false;
+    $scope.validateInput = function (name, type) {
+        var input = $scope.formValidate[name];
+        return (input.$dirty || $scope.submitted) && input.$error[type];
+    };
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {

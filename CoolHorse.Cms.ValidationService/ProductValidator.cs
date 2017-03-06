@@ -1,7 +1,6 @@
 ﻿namespace CoolHorse.Cms.ValidationService
 {
     using Models;
-    using System.Collections.Generic;
 
     public class ProductValidator : IValidator<ProductModel>
     {

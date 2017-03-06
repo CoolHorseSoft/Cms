@@ -1,9 +1,8 @@
-﻿namespace CoolHorse.Cms.ValidationService
+﻿using System.Linq;
+
+namespace CoolHorse.Cms.ValidationService
 {
-    using Models;
     using System;
-    using System.Collections.Generic;
-    using System.Reflection;
 
     public class ValidationService
     {
@@ -14,15 +13,16 @@
 
         private static IValidator<TModel> LoadValidator<TModel>()
         {
-            Type openType = typeof(IValidator<TModel>);
+            var validators = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeof(IValidator<TModel>).IsAssignableFrom(p)).ToList();
 
-            IValidator<TModel> a = (IValidator<TModel>)new CategoryValidator();
+            if (validators.Count() == 1)
+            {
+                return (IValidator<TModel>) Activator.CreateInstance(validators.First());
+            }
 
-            Type closeType = openType.MakeGenericType(typeof(TModel));
-
-            var validator = (IValidator<TModel>)Activator.CreateInstance(openType);
-
-            return validator;
+            throw new NotImplementedException();
         }
     }
 }
