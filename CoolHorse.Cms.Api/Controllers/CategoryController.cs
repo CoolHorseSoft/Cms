@@ -39,7 +39,12 @@
         [HttpPost]
         public CategoryModel Update([FromBody]CategoryModel model)
         {
-            return _category.Update(model);
+            if (ValidationService.ValidationService.Validate(model))
+            {
+                return _category.Update(model);
+            }
+
+            return null;
         }
 
         [HttpPost]

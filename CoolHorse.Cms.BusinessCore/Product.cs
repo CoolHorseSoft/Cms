@@ -2,10 +2,9 @@
 {
     using DataStorageServices;
     using Models;
-    using ValidationService;
     using System.Collections.Generic;
 
-    public class Product: BusinessCoreBase<ProductModel, int>
+    public class Product : BusinessCoreBase<ProductModel, int>
     {
         public override IEnumerable<ProductModel> GetAll()
         {
@@ -19,37 +18,19 @@
 
         public override ProductModel Create(ProductModel model)
         {
-            if (Validate(model))
-            {
-                return DataStorageService.AddProduct(model);
-            }
-
-            return null;
+            return DataStorageService.AddProduct(model);
         }
 
         public override ProductModel Update(ProductModel model)
         {
-            if (Validate(model))
-            {
-                return DataStorageService.UpdateProduct(model);
-            }
 
-            return null;
+            return DataStorageService.UpdateProduct(model);
         }
 
         public override bool Delete(int key)
         {
-            if (Validate(GetByKey(key)))
-            {
-                return DataStorageService.DeleteProduct(key);
-            }
 
-            return false;
-        }
-
-        public override bool Validate(ProductModel model)
-        {
-            return ValidationService.Validate<ProductModel>(model);
+            return DataStorageService.DeleteProduct(key);
         }
     }
 }

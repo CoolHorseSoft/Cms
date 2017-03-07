@@ -318,6 +318,10 @@
       <Project>{3b90a718-390c-43da-908d-7918d4ce8ed3}</Project>
       <Name>CoolHorse.Cms.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CoolHorse.Cms.ValidationService\CoolHorse.Cms.ValidationService.csproj">
+      <Project>{c046d464-96c2-440b-a761-1f7e5374f38e}</Project>
+      <Name>CoolHorse.Cms.ValidationService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
