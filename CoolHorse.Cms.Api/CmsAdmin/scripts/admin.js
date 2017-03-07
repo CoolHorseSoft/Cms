@@ -655,7 +655,13 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
             scope: $scope,
             data: data,
             closeByEscape: false,
-            closeByDocument: false
+            closeByDocument: false,
+            preCloseCallback: function (value) {
+                if ($('#form').valid()) {
+                    return true;
+                }
+                return false;
+            }
         });
     }
 
@@ -696,7 +702,7 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     }
 
     $scope.saveFromDialog = function (data, operationType) {
-        if ((operationType === 1 || operationType === 2) && data) {
+        if ((operationType === 1) && data) {
             data.Id >= 0
                 ? dataService.updateResources('/api/category/update/', data)
                 : dataService.updateResources('/api/category/create/', data);
@@ -706,8 +712,12 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
             dataService.updateResources('/api/category/Delete/',data.Id);
         }
 
-        $scope.dialog.closeAll();
+        ngDialog.closeAll();
     }
+
+    $scope.$on('ngDialog.templateLoaded', function (e, $dialog) {
+        $('#form').validate();
+    });
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {
