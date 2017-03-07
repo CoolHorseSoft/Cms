@@ -1,6 +1,6 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'ngDialog','ngGrid']);
+var app = angular.module('admin', ['ui.router', 'ngDialog', 'ngGrid']);
 
 app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
@@ -362,15 +362,15 @@ app.service('Utils', ["$window", "APP_MEDIAQUERY", function ($window, APP_MEDIAQ
 }]);
 
 app.service('dataService', ['$http', function ($http) {
-        return {
-            getResources: function(uri, success, error) {
-                $http.get(uri).success(success ? success : function() {}).error(error ? error : function() {});
-            },
-            updateResources: function(uri, params, success, error) {
-                $http.post(uri, params).success(success ? success : function() {}).error(error ? error : function() {});
-            }
-        };
-    }
+    return {
+        getResources: function (uri, success, error) {
+            $http.get(uri).success(success ? success : function () { }).error(error ? error : function () { });
+        },
+        updateResources: function (uri, params, success, error) {
+            $http.post(uri, params).success(success ? success : function () { }).error(error ? error : function () { });
+        }
+    };
+}
 ]);
 
 app.directive('sidebar', ['$rootScope', '$window', 'Utils', function ($rootScope, $window, Utils) {
@@ -532,8 +532,8 @@ app.controller('UserBlockController', ['$scope', function ($scope) {
 
 }]);
 
-app.controller('SidebarController', ['$rootScope', '$scope', '$state','Utils',
-  function ($rootScope, $scope, $state,utils) {
+app.controller('SidebarController', ['$rootScope', '$scope', '$state', 'Utils',
+  function ($rootScope, $scope, $state, utils) {
 
       var collapseList = [];
 
@@ -655,13 +655,7 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
             scope: $scope,
             data: data,
             closeByEscape: false,
-            closeByDocument: false,
-            preCloseCallback: function (value) {
-                if ($('#form').valid()) {
-                    return true;
-                }
-                return false;
-            }
+            closeByDocument: false
         });
     }
 
@@ -679,7 +673,7 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
         ]
     };
 
-    $scope.openDialog = function(operationType) {
+    $scope.openDialog = function (operationType) {
         if (operationType === 1) {
             var newItem = { Id: -1, Title: '', Description: '' };
             openDialog('InserOrUpdate.html', newItem);
@@ -702,21 +696,38 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     }
 
     $scope.saveFromDialog = function (data, operationType) {
-        if ((operationType === 1) && data) {
+        if (!$('#form').valid()) {
+            return false;
+        }
+        if ((operationType !== 1) && data) {
             data.Id >= 0
                 ? dataService.updateResources('/api/category/update/', data)
                 : dataService.updateResources('/api/category/create/', data);
         }
 
         if (operationType === 3 && data) {
-            dataService.updateResources('/api/category/Delete/',data.Id);
+            dataService.updateResources('/api/category/Delete/', data.Id);
         }
 
         ngDialog.closeAll();
     }
 
-    $scope.$on('ngDialog.templateLoaded', function (e, $dialog) {
-        $('#form').validate();
+    $scope.$on('ngDialog.opened', function (e, $dialog) {
+        $('#form').validate({
+            errorClass:'text-danger',
+            rules: {
+                txtCategoryTitle: {
+                    required: true,
+                    maxlength:12
+                }
+            },
+            messages: {
+                txtCategoryTitle: {
+                    required: "请输入类别标题",
+                    maxlength: "标题长度不能大于12个字符"
+                }
+            }
+        });
     });
 }]);
 
