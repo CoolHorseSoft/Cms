@@ -1,6 +1,6 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'ngGrid']);
+var app = angular.module('admin', ['ui.router', 'ngDialog','ngGrid']);
 
 app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
@@ -151,7 +151,6 @@ app.directive('searchOpen', ['navSearch', function (navSearch) {
     };
 
 }]);
-
 //Search button end
 
 //Toggele right settings menu start
@@ -361,6 +360,18 @@ app.service('Utils', ["$window", "APP_MEDIAQUERY", function ($window, APP_MEDIAQ
         }
     };
 }]);
+
+app.service('dataService', ['$http', function ($http) {
+        return {
+            getResources: function(uri, success, error) {
+                $http.get(uri).success(success ? success : function() {}).error(error ? error : function() {});
+            },
+            updateResources: function(uri, params, success, error) {
+                $http.post(uri, params).success(success ? success : function() {}).error(error ? error : function() {});
+            }
+        };
+    }
+]);
 
 app.directive('sidebar', ['$rootScope', '$window', 'Utils', function ($rootScope, $window, Utils) {
 
@@ -634,7 +645,20 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state','Utils',
 
   }]);
 
-app.controller('CategoryController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', 'dataService', function ($scope, $http, $timeout, ngDialog, dataService) {
+    dataService.getResources('/api/category/GetAll', function (data) { $scope.myData = data; });
+
+    var openDialog = function (templateId, data) {
+        ngDialog.open({
+            template: templateId,
+            className: 'ngdialog-theme-default',
+            scope: $scope,
+            data: data,
+            closeByEscape: false,
+            closeByDocument: false
+        });
+    }
+
     $scope.gridOption = {
         data: 'myData',
         rowHeight: 36,
@@ -649,85 +673,41 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', function ($
         ]
     };
 
-    $scope.dialog = {};
-
-    $scope.getData = function () {
-        var ngGridResourcePath = '/api/category/GetAll';
-
-        $timeout(function () {
-            $http.get(ngGridResourcePath).success(function (largeLoad) {
-                $scope.myData = largeLoad;
-            });
-        }, 100);
-    };
-
-    $scope.getData();
-
-    $scope.saveFromDialog = function (data) {
-        if (!$('#form').valid()) {
-            return false;
-        }
-        if (data) {
-            data.Id >= 0 ? updateCategory(data) : createCategory(data);
-        }
-
-        $scope.dialog.close();
-    }
-
-    $scope.deleteFromDialog = function (data) {
-        if (data) {
-            deleteCategory(data);
-        }
-
-        $scope.dialog.close();
-    }
-
-    var updateCategory = function (category) {
-        $http.post('/api/category/update/', category).success(function () { $scope.getData(); });
-    }
-
-    var deleteCategory = function (category) {
-        $http.post('/api/category/Delete/', category.Id).success(function () { $scope.getData(); });
-    }
-
-    var createCategory = function (category) {
-        $http.post('/api/category/create/', category).success(function () { $scope.getData(); });
-    }
-
-    var openDialog = function (templateId, data) {
-        $('#form').modal({
-            backdrop: "static",
-            keyboard: false,
-            show: true
-        });
-    }
-
-    $scope.createCategory = function () {
-        var newItem = { Id: -1, Title: '', Description: '' };
-        openDialog('InserOrUpdate.html', newItem);
-    }
-
-    $scope.deleteCategory = function () {
-        if ($scope.gridOption.selectedItems.length <= 0) {
+    $scope.openDialog = function(operationType) {
+        if (operationType === 1) {
+            var newItem = { Id: -1, Title: '', Description: '' };
+            openDialog('InserOrUpdate.html', newItem);
             return;
         }
-        openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
-    }
 
-    $scope.updateCategory = function () {
-        if ($scope.gridOption.selectedItems.length <= 0) {
-            return;
+        if (operationType === 2) {
+            if ($scope.gridOption.selectedItems.length <= 0) {
+                return;
+            }
+            openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
         }
-        openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
+
+        if (operationType === 3) {
+            if ($scope.gridOption.selectedItems.length <= 0) {
+                return;
+            }
+            openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
+        }
     }
 
-    $(document).ready(function () {
-        //$('#form').validate({
-        //    rules: {
-        //        categoryTitle: { required: true }
-        //    }
-        //});
-    });
+    $scope.saveFromDialog = function (data, operationType) {
+        if ((operationType === 1 || operationType === 2) && data) {
+            data.Id >= 0
+                ? dataService.updateResources('/api/category/update/', data)
+                : dataService.updateResources('/api/category/create/', data);
+        }
+
+        if (operationType === 3 && data) {
+            dataService.updateResources('/api/category/Delete/',data.Id);
+        }
+
+        $scope.dialog.closeAll();
+    }
 }]);
 
 app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {

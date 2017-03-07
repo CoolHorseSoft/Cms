@@ -138,6 +138,7 @@
     <Content Include="CmsAdmin\scripts\angular-ui-router.min.js" />
     <Content Include="CmsAdmin\scripts\angular.min.js" />
     <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />
+    <Content Include="CmsAdmin\scripts\jquery.validate.min.js" />
     <Content Include="CmsAdmin\scripts\modernizr.min.js" />
     <Content Include="CmsAdmin\scripts\ng-grid.min.js" />
     <Content Include="CmsAdmin\scripts\ngDialog.min.js" />
