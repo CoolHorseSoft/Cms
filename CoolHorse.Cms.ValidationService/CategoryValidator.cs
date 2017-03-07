@@ -12,7 +12,7 @@ namespace CoolHorse.Cms.ValidationService
         {
             var sameTitleCategoryExists =DataStorageService.GetAllCategories().Any(c =>c.Title.Equals(model.Title, StringComparison.CurrentCultureIgnoreCase) &&!c.Id.Equals(model.Id));
 
-            return sameTitleCategoryExists;
+            return !sameTitleCategoryExists;
         }
     }
 }

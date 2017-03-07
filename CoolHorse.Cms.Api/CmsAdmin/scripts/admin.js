@@ -646,7 +646,9 @@ app.controller('SidebarController', ['$rootScope', '$scope', '$state', 'Utils',
   }]);
 
 app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', 'dataService', function ($scope, $http, $timeout, ngDialog, dataService) {
-    dataService.getResources('/api/category/GetAll', function (data) { $scope.myData = data; });
+    var getData = function () {
+        dataService.getResources('/api/category/GetAll', function (data) { $scope.myData = data.Response; });
+    }
 
     var openDialog = function (templateId, data) {
         ngDialog.open({
@@ -658,6 +660,17 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
             closeByDocument: false
         });
     }
+
+    var callBackForUpdate = function(data) {
+        if (data.ErrorMessage && data.ErrorMessage !== "") {
+            alert(data.ErrorMessage);
+            return false;
+        }
+
+        return true;
+    }
+
+    getData();
 
     $scope.gridOption = {
         data: 'myData',
@@ -696,38 +709,48 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     }
 
     $scope.saveFromDialog = function (data, operationType) {
-        if (!$('#form').valid()) {
+        if ($('#form').length > 0 && !$('#form').valid()) {
             return false;
         }
-        if ((operationType !== 1) && data) {
+        if ((operationType !== 3) && data) {
             data.Id >= 0
-                ? dataService.updateResources('/api/category/update/', data)
-                : dataService.updateResources('/api/category/create/', data);
+                ? dataService.updateResources('/api/category/update/', data, function (response) {
+                    if (callBackForUpdate(response))
+                        getData();
+                    return false;
+                })
+                : dataService.updateResources('/api/category/create/', data, function (response) {
+                    if (callBackForUpdate(response))
+                        getData();
+                    return false;
+                });
         }
 
         if (operationType === 3 && data) {
-            dataService.updateResources('/api/category/Delete/', data.Id);
+            dataService.updateResources('/api/category/Delete/', data.Id, function () { getData(); });
         }
 
         ngDialog.closeAll();
     }
 
     $scope.$on('ngDialog.opened', function (e, $dialog) {
-        $('#form').validate({
-            errorClass:'text-danger',
-            rules: {
-                txtCategoryTitle: {
-                    required: true,
-                    maxlength:12
+        if ($('#form').length > 0) {
+            $('#form').validate({
+                errorClass: 'text-danger',
+                rules: {
+                    txtCategoryTitle: {
+                        required: true,
+                        maxlength: 12
+                    }
+                },
+                messages: {
+                    txtCategoryTitle: {
+                        required: "请输入类别标题",
+                        maxlength: "标题长度不能大于12个字符"
+                    }
                 }
-            },
-            messages: {
-                txtCategoryTitle: {
-                    required: "请输入类别标题",
-                    maxlength: "标题长度不能大于12个字符"
-                }
-            }
-        });
+            });
+        }
     });
 }]);
 

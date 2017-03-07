@@ -1,9 +1,9 @@
 ﻿namespace CoolHorse.Cms.Api.Controllers
 {
     using Models;
-    using System.Collections.Generic;
     using System.Web.Http;
     using BusinessCore;
+    using ValidationService;
 
     public class CategoryController : ApiController
     {
@@ -19,44 +19,43 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<CategoryModel> GetAll()
+        public ServiceResponse GetAll()
         {
-            return _category.GetAll();
+            return new ServiceResponse {Response = _category.GetAll()};
         }
 
         [HttpGet]
-        public CategoryModel GetById(int id)
+        public ServiceResponse GetById(int id)
         {
-            return _category.GetByKey(id);
+             return new ServiceResponse {Response = _category.GetByKey(id)};
         }
 
-        /// <summary>
-        /// Update a category
-        /// </summary>
-        /// <param name="model"></param>
-        /// <see cref="CategoryModel"/>
-        /// <returns></returns>
         [HttpPost]
-        public CategoryModel Update([FromBody]CategoryModel model)
+        public ServiceResponse Update([FromBody]CategoryModel model)
         {
-            if (ValidationService.ValidationService.Validate(model))
+            if (ValidationService.Validate(model))
             {
-                return _category.Update(model);
+                return new ServiceResponse {Response =  _category.Update(model)};
             }
 
-            return null;
+            return new ServiceResponse {ErrorMessage = "更新失败"};
         }
 
         [HttpPost]
-        public CategoryModel Create([FromBody]CategoryModel model)
+        public ServiceResponse Create([FromBody]CategoryModel model)
         {
-            return _category.Create(model);
+            if (ValidationService.Validate(model))
+            {
+                return new ServiceResponse {Response =  _category.Create(model)};
+            }
+
+            return new ServiceResponse {ErrorMessage = "改类别名称已存在"};
         }
 
         [HttpPost]
-        public bool Delete([FromBody]int id)
+        public ServiceResponse Delete([FromBody]int id)
         {
-            return _category.Delete(id);
+            return new ServiceResponse {Response =  _category.Delete(id)};
         }
     }
 }
