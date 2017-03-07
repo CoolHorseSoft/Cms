@@ -6,20 +6,39 @@ namespace CoolHorse.Cms.ValidationService
 
     public class ValidationService
     {
-        public static bool Validate<TModel>(TModel model)
+        public static bool DuplicateValidate<TModel>(TModel model)
         {
-            return LoadValidator<TModel>().Validate(model);
+            return LoadDuplicateValidator<TModel>().DuplicateValidate(model);
         }
 
-        private static IValidator<TModel> LoadValidator<TModel>()
+        public static bool UsageValiate<TModel>(TModel model)
+        {
+            return LoadUsageValidator<TModel>().UsageValidate(model);
+        }
+
+        private static IKeyDuplicateValidtor<TModel> LoadDuplicateValidator<TModel>()
         {
             var validators = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => typeof(IValidator<TModel>).IsAssignableFrom(p)).ToList();
+                .Where(p => typeof(IKeyDuplicateValidtor<TModel>).IsAssignableFrom(p)).ToList();
 
             if (validators.Count() == 1)
             {
-                return (IValidator<TModel>) Activator.CreateInstance(validators.First());
+                return (IKeyDuplicateValidtor<TModel>)Activator.CreateInstance(validators.First());
+            }
+
+            throw new NotImplementedException();
+        }
+
+        private static IUsageValidator<TModel> LoadUsageValidator<TModel>()
+        {
+            var validators = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeof(IUsageValidator<TModel>).IsAssignableFrom(p)).ToList();
+
+            if (validators.Count() == 1)
+            {
+                return (IUsageValidator<TModel>)Activator.CreateInstance(validators.First());
             }
 
             throw new NotImplementedException();

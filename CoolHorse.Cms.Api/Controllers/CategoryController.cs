@@ -33,29 +33,34 @@
         [HttpPost]
         public ServiceResponse Update([FromBody]CategoryModel model)
         {
-            if (ValidationService.Validate(model))
+            if (ValidationService.DuplicateValidate(model))
             {
                 return new ServiceResponse {Response =  _category.Update(model)};
             }
 
-            return new ServiceResponse {ErrorMessage = "更新失败"};
+            return new ServiceResponse { ErrorMessage = "该类别已存在，请重新输入" };
         }
 
         [HttpPost]
         public ServiceResponse Create([FromBody]CategoryModel model)
         {
-            if (ValidationService.Validate(model))
+            if (ValidationService.DuplicateValidate(model))
             {
                 return new ServiceResponse {Response =  _category.Create(model)};
             }
 
-            return new ServiceResponse {ErrorMessage = "改类别名称已存在"};
+            return new ServiceResponse { ErrorMessage = "该类别已存在，请重新输入" };
         }
 
         [HttpPost]
         public ServiceResponse Delete([FromBody]int id)
         {
-            return new ServiceResponse {Response =  _category.Delete(id)};
+            if (ValidationService.UsageValiate(new CategoryModel { Id = id }))
+            {
+                return new ServiceResponse { Response = _category.Delete(id) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该类别正在使用中，暂时无法删除" };
         }
     }
 }

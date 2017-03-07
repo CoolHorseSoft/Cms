@@ -3,8 +3,13 @@
     using CoolHorse.Cms.Models;
     using System.Collections.Generic;
 
-    public interface IValidator<TModel>
+    public interface IKeyDuplicateValidtor<TModel>
     {
-        bool Validate(TModel model);
+        bool DuplicateValidate(TModel model);
+    }
+
+    public interface IUsageValidator<TModel>
+    {
+        bool UsageValidate(TModel model);
     }
 }

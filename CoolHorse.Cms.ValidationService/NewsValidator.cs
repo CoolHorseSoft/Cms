@@ -1,13 +1,18 @@
 ﻿namespace CoolHorse.Cms.ValidationService
 {
     using Models;
-    using DataStorageServices;
+    using System;
 
-    public class NewsValidator : IValidator<NewsModel>
+    public class NewsValidator : IKeyDuplicateValidtor<NewsModel>, IUsageValidator<NewsModel>
     {
-        public bool Validate(NewsModel model)
+        public bool DuplicateValidate(NewsModel model)
         {
-            return true;
+            throw new NotImplementedException();
+        }
+
+        public bool UsageValidate(NewsModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
