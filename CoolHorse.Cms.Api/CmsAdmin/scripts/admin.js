@@ -949,7 +949,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
         selectedItems: [],
         columnDefs: [
             { field: 'Title', displayName: '标题' },
-            { field: 'Content', displayName: '内容' }
+            { field: 'DateUpdated', displayName: '最后更新' }
         ]
     };
 
@@ -1082,7 +1082,13 @@ app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$statePar
                 },
                 txtContent: {
                     editorRequired: true
+                },
+                txtTitle: {
+                    required:true
                 }
+            },
+            messages: {
+                txtTitle:"请输入标题"
             }
         });
     });
