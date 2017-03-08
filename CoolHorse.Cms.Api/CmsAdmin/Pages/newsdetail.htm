@@ -23,7 +23,9 @@
         <br/>
         <div>
             <label class="control-label">类别</label>
-            <select name="optCategory" id="optCategory" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="category" value="category.Id" ng-options="category.Title for category in availableCategories"></select>
+            <select ng-model="selectedCategory" name="optCategory" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched">  
+                <option ng-repeat="category in availableCategories" value="{{category.Id}}">{{category.Title}}</option> 
+            </select>
         </div>
     </div>
 
