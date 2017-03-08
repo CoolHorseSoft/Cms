@@ -923,7 +923,9 @@ app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog',
     });
 }]);
 
-app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {
+app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', 'dataService', function ($scope, $http, $timeout, $state, dialog, dataService) {
+    
+
     $scope.totalServerItems = 0;
 
     $scope.pagingOptions = {
@@ -1026,12 +1028,19 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
     }
 }]);
 
-app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
+app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', 'dataService', function ($scope, $http, $state, $stateParams, dataService) {
+    dataService.getResources('/api/category/GetAll', function (data) {
+        $scope.availableCategories = data.Response;
+    });
+
     $scope.model = $stateParams.model;
 
     $scope.cancel = function () { $state.go('news'); };
 
     $scope.save = function () {
+        if (!$('#newsEditForm').valid()) {
+            return false;
+        }
         $scope.model.Content = tinymce.get('txtContent').getContent();
         if ($scope.model.Id <= 0) {
             $http.post('/api/news/create', $scope.model).success(function () { $state.go('news'); });
@@ -1039,6 +1048,30 @@ app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$statePar
             $http.post('/api/news/update', $scope.model).success(function () { $state.go('news'); });
         }
     };
+
+    $.validator.addMethod('selectRequired',
+        function (value, element, params) {
+            if (!$(element).selectedIndex) {
+                return false;
+            }
+            if ($(element).val() < 0) {
+                return false;
+            }
+
+            return true;
+        },
+        "请选择类别");
+
+    $(document).ready(function(){
+        $('#newsEditForm').validate({
+            errorClass: 'text-danger',
+            rules: {
+                optCategory: {
+                    selectRequired: true
+                }
+            }
+        });
+    });
 }]);
 
 app.controller('ProductListController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', function ($scope, $http, $timeout, $state, dialog) {
