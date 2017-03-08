@@ -1,10 +1,4 @@
-﻿/**
- * Notify Addon definition as jQuery plugin
- * Adapted version to work with Bootstrap classes
- * More information http://getuikit.com/docs/addons_notify.html
- */
-
-(function ($, window, document) {
+﻿(function ($, window, document) {
 
     var containers = {},
         messages = {},
@@ -167,8 +161,6 @@
     return notify;
 
 }(jQuery, window, document));
-
-
 
 //ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
