@@ -949,6 +949,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
         selectedItems: [],
         columnDefs: [
             { field: 'Title', displayName: '标题' },
+            { field: 'Category.Title', displayName: '类别' },
             { field: 'DateUpdated', displayName: '最后更新' }
         ]
     };
@@ -1003,7 +1004,7 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
 
     $scope.edit = function (isNew) {
         if (isNew) {
-            $state.go('newsdetail', { model: { Title: "", Content: "", Id: -1,CategoryId: -1 } });
+            $state.go('newsdetail', { model: { Title: "", Content: "", Id: -1, Category: { Id: -1 } } });
         }
         else {
             if ($scope.gridOptions.selectedItems.length <= 0) {
@@ -1031,9 +1032,8 @@ app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDi
 app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', 'dataService', function ($scope, $http, $state, $stateParams, dataService) {
     $scope.availableCategories = [];
     dataService.getResources('/api/category/GetAll', function (data) {
-        $scope.availableCategories.push({ Id: -1, Title: '-请选择类别-' });
-        $scope.availableCategories = $scope.availableCategories.concat(data.Response);
-        $scope.selectedCategory = $scope.availableCategories[1].Id;
+        $scope.availableCategories = data.Response;
+        $scope.selectedCategoryId = $stateParams.model.Category.Id > 0 ? $stateParams.model.Category.Id : "";
     });
 
     $scope.model = $stateParams.model;
@@ -1047,7 +1047,7 @@ app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$statePar
             return false;
         }
         $scope.model.Content = tinymce.activeEditor.getContent();
-        $scope.model.CategoryId = $scope.selectedCategory;
+        $scope.model.Category.Id = $scope.selectedCategoryId;
         if ($scope.model.Id <= 0) {
             $http.post('/api/news/create', $scope.model).success(function () { $state.go('news'); });
         } else {
@@ -1057,7 +1057,7 @@ app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$statePar
 
     $.validator.addMethod('selectRequired',
         function (value, element, params) {
-            if ($(element).val() < 0) {
+            if ($(element).val() === "") {
                 return false;
             }
             return true;

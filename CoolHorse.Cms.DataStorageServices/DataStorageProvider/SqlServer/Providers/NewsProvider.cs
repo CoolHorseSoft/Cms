@@ -13,7 +13,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
     {
         public NewsModel AddNews(NewsModel model)
         {
-            var script = string.Format("INSERT INTO News(Title,Content,CategoryId) VALUES('{0}','{1}',{2});SELECT @@IDENTITY;",model.Title,model.Content,model.CategoryId);
+            var script = string.Format("INSERT INTO News(Title,Content,CategoryId) VALUES('{0}','{1}',{2});SELECT @@IDENTITY;",model.Title,model.Content,model.Category.Id);
 
             model.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
@@ -22,7 +22,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public NewsModel UpdateNews(NewsModel model)
         {
-            var script = string.Format("UPDATE News SET Title='{0}',Content = '{1}',CategoryId = {2} WHERE Id ={3}",model.Title,model.Content,model.CategoryId,model.Id);
+            var script = string.Format("UPDATE News SET Title='{0}',Content = '{1}',CategoryId = {2} WHERE Id ={3}",model.Title,model.Content,model.Category.Id,model.Id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
@@ -70,7 +70,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
                     model.Content = rowItem["Content"].ToString();
                     model.Id = int.Parse(rowItem["Id"].ToString());
                     model.Title = rowItem["Title"].ToString();
-                    model.CategoryId = int.Parse(rowItem["CategoryId"].ToString());
+                    model.Category = DataStorageService.FindCategoryById(int.Parse(rowItem["CategoryId"].ToString()));
                     model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());
                     model.DateUpdated = DateTime.Parse(rowItem["DateUpdated"].ToString());
                     models.Add(model);

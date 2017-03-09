@@ -10,7 +10,7 @@
         public string Title { get; set; }
 
         [DataMember]
-        public int CategoryId { get; set; }
+        public CategoryModel Category { get; set; }
 
         [DataMember]
         public string Content { get; set; }
