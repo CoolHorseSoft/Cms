@@ -125,7 +125,6 @@
     <Content Include="CmsAdmin\images\logo-single.png" />
     <Content Include="CmsAdmin\images\logo.png" />
     <Content Include="CmsAdmin\index.htm" />
-    <Content Include="CmsAdmin\Pages\app.htm" />
     <Content Include="CmsAdmin\Pages\category.htm" />
     <Content Include="CmsAdmin\Pages\footernavbar.htm" />
     <Content Include="CmsAdmin\Pages\leftnavbar.htm" />
@@ -137,7 +136,16 @@
     <Content Include="CmsAdmin\Pages\settings.htm" />
     <Content Include="CmsAdmin\Pages\topnavbar.htm" />
     <Content Include="CmsAdmin\scripts\admin.js" />
-    <Content Include="CmsAdmin\scripts\admin\categoryController.js" />
+    <Content Include="CmsAdmin\scripts\admin\appConfig.js" />
+    <Content Include="CmsAdmin\scripts\admin\appConstants.js" />
+    <Content Include="CmsAdmin\scripts\admin\appDirective.js" />
+    <Content Include="CmsAdmin\scripts\admin\appProviders.js" />
+    <Content Include="CmsAdmin\scripts\admin\appServices.js" />
+    <Content Include="CmsAdmin\scripts\admin\CategoryController.js" />
+    <Content Include="CmsAdmin\scripts\admin\NewsController.js" />
+    <Content Include="CmsAdmin\scripts\admin\NewsDetailsController.js" />
+    <Content Include="CmsAdmin\scripts\admin\ProductDetailController.js" />
+    <Content Include="CmsAdmin\scripts\admin\ProductListController.js" />
     <Content Include="CmsAdmin\scripts\angular-ui-router.min.js" />
     <Content Include="CmsAdmin\scripts\angular.min.js" />
     <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />
