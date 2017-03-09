@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/ng-grid.css">
-    <link rel="stylesheet" href="styles/ngDialog-theme-default.min.css">
-    <link rel="stylesheet" href="styles/ngDialog.min.css">
     <link rel="stylesheet" ng-href="{{app.layout.theme}}" ng-if="app.layout.theme">
 </head>
 <body ng-class="{'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed,'aside-collapsed' : app.layout.isCollapsed, 'aside-float': app.layout.isFloat}">
-    <div class="wrapper ng-scope" ng-controller="AppController">
+    <div class="wrapper ng-scope">
         <header class="topnavbar-wrapper" ng-include="'Pages/topnavbar.htm'"></header>
 
         <aside class="aside ng-scope" ng-include="'Pages/leftnavbar.htm'" ng-controller="SidebarController"></aside>
@@ -30,13 +27,14 @@
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/ocLazyLoad.min.js"></script>
-    <script src="scripts/jquery.validate.min.js"></script>
     <script src="scripts/angular-ui-router.min.js"></script>
     <script src="scripts/ui.bootstrap.min.js"></script>
     <script src="scripts/ui-bootstrap-tpls.min.js"></script>
-    <script src="scripts/ng-grid.min.js"></script>
-    <script src="scripts/ngDialog.min.js"></script>
-    <script src="scripts/modernizr.min.js"></script>
     <script src="scripts/admin.js"></script>
+    <script src="scripts/admin/appConfig.js"></script>
+    <script src="scripts/admin/appConstants.js"></script>
+    <script src="scripts/admin/appDirective.js"></script>
+    <script src="scripts/admin/appProviders.js"></script>
+    <script src="scripts/admin/appServices.js"></script>
 </body>
 </html>
