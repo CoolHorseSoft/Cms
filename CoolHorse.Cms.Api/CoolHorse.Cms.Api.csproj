@@ -137,6 +137,7 @@
     <Content Include="CmsAdmin\Pages\settings.htm" />
     <Content Include="CmsAdmin\Pages\topnavbar.htm" />
     <Content Include="CmsAdmin\scripts\admin.js" />
+    <Content Include="CmsAdmin\scripts\admin\categoryController.js" />
     <Content Include="CmsAdmin\scripts\angular-ui-router.min.js" />
     <Content Include="CmsAdmin\scripts\angular.min.js" />
     <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />
@@ -144,6 +145,8 @@
     <Content Include="CmsAdmin\scripts\modernizr.min.js" />
     <Content Include="CmsAdmin\scripts\ng-grid.min.js" />
     <Content Include="CmsAdmin\scripts\ngDialog.min.js" />
+    <Content Include="CmsAdmin\scripts\notify.js" />
+    <Content Include="CmsAdmin\scripts\ocLazyLoad.min.js" />
     <Content Include="CmsAdmin\scripts\tinymce\editor.js" />
     <Content Include="CmsAdmin\scripts\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="CmsAdmin\scripts\tinymce\plugins\anchor\plugin.min.js" />
