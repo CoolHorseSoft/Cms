@@ -1,4 +1,4 @@
-﻿app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', 'dataService', function ($scope, $http, $state, $stateParams, dataService) {
+﻿app.controller('NewsDetailsController', ['$scope', '$http', '$state', '$stateParams', '$templateCache','dataService', function ($scope, $http, $state, $stateParams,$templateCache, dataService) {
     $scope.availableCategories = [];
     dataService.getResources('/api/category/GetAll', function (data) {
         $scope.availableCategories = data.Response;
@@ -6,6 +6,10 @@
     });
 
     $scope.model = $stateParams.model;
+
+    if ($scope.model.Id <= 0) {
+        $scope.model.Content = $templateCache.get("NewsTemplate.html");
+    }
 
     $scope.cancel = function () { $state.go('news'); };
 

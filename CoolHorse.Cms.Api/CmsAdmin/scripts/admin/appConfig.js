@@ -38,7 +38,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper, $ocLazy
                 return $ocLazyLoad.load(["app","category"]);
             }]
         },
-        templateUrl: helper.basepath('category.htm')
+        templateUrl: helper.basepath('category.htm'),
+        access: { requiredLogin: true }
     }).state('news', {
         url: '/news',
         controller: 'NewsController',

@@ -1,4 +1,44 @@
-﻿<form id="newsEditForm" action="" style="position:relative">
+﻿<script type="text/ng-template" id="NewsTemplate.html">
+<div class="panel-body text-md">
+    <p>
+        Praesent bibendum eros urna, in mattis est. Curabitur a purus urna, sit amet auctor erat. Praesent pellentesque augue eu tellus facilisis pretium. Aenean sollicitudin facilisis tortor eu mollis. Vivamus feugiat faucibus enim. Sed ut semper
+               leo. Etiam feugiat risus massa. Nunc et magna in metus pharetra ultricies ac sit amet justo. Donec eu dolor sem, non auctor sapien. Suspendisse nisl nulla, interdum at fermentum eget, adipiscing in elit.
+    </p>
+    <p>Proin est sapien, convallis non hendrerit nec, laoreet ut ipsum. Praesent blandit venenatis mauris ac cursus. Nulla commodo interdum magna consectetur lacinia. Maecenas vitae adipiscing mauris. Nam sodales sollicitudin adipiscing.</p>
+    <br>
+    <div class="row">
+        <div class="col-xs-4">
+            <a href="">
+                <img src="/images/bg4.jpg" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="">
+                <img src="/images/bg5.jpg" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-4">
+            <a href="">
+                <img src="/images/bg7.jpg" class="img-responsive">
+            </a>
+        </div>
+    </div>
+    <br>
+    <p>
+        Praesent tristique dui eu nunc fringilla et iaculis magna ornare. Proin sed erat sit amet metus rhoncus tincidunt. Vivamus commodo, tortor ut interdum posuere, urna risus aliquet purus, eu fringilla dui neque quis nisi. Proin posuere gravida
+               ipsum, a pretium augue commodo eget. In id elit nulla. Donec nec magna a diam eleifend facilisis non in urna. Nam enim libero, lacinia a tristique a, accumsan sed purus. Phasellus ullamcorper rhoncus sagittis.
+    </p>
+    <p>
+        Sed eu rhoncus magna. Morbi non dui elementum nisl ultrices tincidunt. Nullam sagittis hendrerit erat, sit amet gravida ante tristique non. Nam arcu quam, aliquet eget varius sed, placerat et elit. Morbi nec luctus eros. Cras rutrum scelerisque
+               auctor. Praesent malesuada erat ut tellus egestas sagittis. Etiam feugiat risus massa. Aliquam eget turpis eget dui eleifend suscipit ac sed dolor. Sed accumsan adipiscing enim. Sed auctor dignissim fringilla. Sed id turpis tellus. Nam
+               vel tristique dolor. Ut scelerisque ligula tellus. Duis accumsan, est vel convallis dignissim, est massa pharetra ipsum, eu auctor nunc mi ac libero. Integer fermentum molestie massa at congue. Vestibulum congue tempus odio ac posuere.
+               Integer lorem metus, rutrum non rhoncus sed, fringilla interdum urna.
+    </p>
+    <hr>
+</div>
+</div>
+</script>
+<form id="newsEditForm" action="" style="position:relative">
     <div class="panel col-md-10">
         <div class="panel-body">
             <button type="button" class="mb-sm btn btn-green" ng-click="save()">
@@ -11,17 +51,6 @@
     </div>
     <div class="col-md-10">
         <div class="form-group">
-            <div>
-                <label class="control-label">模板</label>
-                <select name="select" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched">
-                    <option value="">Nothing</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                </select>
-            </div>
-            <br />
             <div>
                 <label class="control-label">类别</label>
                 <select ng-model="selectedCategoryId" name="optCategory" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"

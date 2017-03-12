@@ -25,7 +25,7 @@ app.controller('webNewsDetailsController', ['$scope', '$http', function ($scope,
 
     $http({
         method: 'GET',
-        url: '/api/news/GetById/6'
+        url: '/api/news/GetById/23'
     }).then(function (model) {
         $scope.model = model.data;
     });

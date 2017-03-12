@@ -1,17 +1,6 @@
-﻿app.controller('CategoryController', ['$scope', '$http', '$timeout', 'ngDialog', 'dataService', function ($scope, $http, $timeout, ngDialog, dataService) {
+﻿app.controller('CategoryController', ['$rootScope', '$scope', 'ngDialog', 'dataService', function ($rootScope,$scope, ngDialog, dataService) {
     var getData = function () {
         dataService.getResources('/api/category/GetAll', function (data) { $scope.myData = data.Response; });
-    }
-
-    var openDialog = function (templateId, data) {
-        ngDialog.open({
-            template: templateId,
-            className: 'ngdialog-theme-default',
-            scope: $scope,
-            data: data,
-            closeByEscape: false,
-            closeByDocument: false
-        });
     }
 
     var callBackForUpdate = function (data) {
@@ -25,24 +14,16 @@
 
     getData();
 
-    $scope.gridOption = {
-        data: 'myData',
-        rowHeight: 36,
-        headerRowHeight: 38,
-        multiSelect: false,
-        keepLastSelected: false,
-        showSelectionCheckbox: true,
-        selectedItems: [],
+    $scope.gridOption = $.extend({}, $rootScope.defaultGridOptions,{
         columnDefs: [
             { field: 'Title', displayName: '标题' },
             { field: 'Description', displayName: '类别描述' }
-        ]
-    };
+        ]});
 
     $scope.openDialog = function (operationType) {
         if (operationType === 1) {
             var newItem = { Id: -1, Title: '', Description: '' };
-            openDialog('InserOrUpdate.html', newItem);
+            $rootScope.openDialog('InserOrUpdate.html', newItem);
             return;
         }
 
@@ -50,14 +31,14 @@
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
-            openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
+            $rootScope.openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
         }
 
         if (operationType === 3) {
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
-            openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
+            $rootScope.openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
         }
     }
 

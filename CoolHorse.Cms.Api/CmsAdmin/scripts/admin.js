@@ -2,7 +2,7 @@
 //ui.bootstrap Provide the collapse directive
 var app = angular.module('admin', ['ui.router', 'oc.lazyLoad','ui.bootstrap']);
 
-app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function ($rootScope, $state, $templateCache, utils, APP_MENU) {
+app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
     $rootScope.$templateCache = $templateCache;
 
@@ -24,14 +24,17 @@ app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function
         job: 'tester',
         picture: 'images/01.jpg'
     };
+}]);
 
+app.run(["$rootScope", function ($rootScope) {
     $rootScope.userBlockVisible = false;
 
     $rootScope.toggleUserBlock = function () {
         $rootScope.userBlockVisible = !$rootScope.userBlockVisible;
     };
+}]);
 
-
+app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function ($rootScope, $state, $templateCache, utils, APP_MENU) {
     var collapseList = [];
 
     // demo: when switch from collapse to hover, close all items
@@ -95,7 +98,7 @@ app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function
             closeAllBut(-1);
         }
 
-        $scope.lastEventFromChild = isChild($index);
+        $rootScope.lastEventFromChild = isChild($index);
 
         return true;
 
@@ -111,5 +114,49 @@ app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function
 
     function isChild($index) {
         return (typeof $index === 'string') && !($index.indexOf('-') < 0);
+    }
+}]);
+
+app.run(["$rootScope", '$http', '$timeout', function ($rootScope, $http, $timeout) {
+    $rootScope.pagingOptions = {
+        pageSizes: [5, 10, 20],  // page size options
+        pageSize: 5,              // default page size
+        currentPage: 1                 // initial page
+    };
+
+    $rootScope.defaultGridOptions = {
+        data: 'myData',        
+        rowHeight: 36,
+        headerRowHeight: 38,
+        multiSelect: false,
+        pagingOptions: $rootScope.pagingOptions,
+        keepLastSelected: false,
+        showSelectionCheckbox: true,
+        selectedItems: []
+    };
+
+    $rootScope.setPagingData = function (data, page, pageSize,scope) {
+        // calc for pager
+        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+        // Store data from server
+        scope.myData = pagedData;
+        // Update server side data length
+        scope.totalServerItems = data.length;
+
+        if (!scope.$$phase) {
+            scope.$apply();
+        }
+
+    };
+}]);
+
+app.run(["$rootScope", function ($rootScope) {
+    $rootScope.openDialog = function (templateId, data, scope) {
+        scope.dialog = dialog.open({
+            template: templateId,
+            className: 'ngdialog-theme-default',
+            scope: scope,
+            data: data
+        });
     }
 }]);

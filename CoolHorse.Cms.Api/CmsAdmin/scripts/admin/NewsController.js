@@ -1,56 +1,19 @@
-﻿app.controller('NewsController', ['$scope', '$http', '$timeout', '$state', 'ngDialog', 'dataService', function ($scope, $http, $timeout, $state, dialog, dataService) {
-
-
-    $scope.totalServerItems = 0;
-
-    $scope.pagingOptions = {
-        pageSizes: [5, 10, 20],  // page size options
-        pageSize: 5,              // default page size
-        currentPage: 1                 // initial page
-    };
-
-    $scope.dialog = {};
-
-    $scope.gridOptions = {
-        data: 'myData',
-        enablePaging: true,
-        showFooter: true,
-        rowHeight: 36,
-        headerRowHeight: 38,
-        multiSelect: false,
-        pagingOptions: $scope.pagingOptions,
-        keepLastSelected: false,
-        showSelectionCheckbox: true,
-        selectedItems: [],
-        columnDefs: [
-            { field: 'Title', displayName: '标题' },
-            { field: 'Category.Title', displayName: '类别' },
-            { field: 'DateUpdated', displayName: '最后更新', cellFilter: "date:'yyyy-MM-dd'" }
-        ]
-    };
-
-    $scope.setPagingData = function (data, page, pageSize) {
-        // calc for pager
-        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        // Store data from server
-        $scope.myData = pagedData;
-        // Update server side data length
-        $scope.totalServerItems = data.length;
-
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
-
-    };
+﻿app.controller('NewsController', ['$rootScope', '$scope', '$state', 'ngDialog', 'dataService', function ($rootScope, $scope, $state, dialog, dataService) {
+    $scope.gridOptions = $.extend({}, $rootScope.defaultGridOptions,
+        {
+            enablePaging: true,
+            showFooter: true,
+            columnDefs: [
+               { field: 'Title', displayName: '标题' },
+               { field: 'Category.Title', displayName: '类别' },
+               { field: 'DateUpdated', displayName: '最后更新', cellFilter: "date:'yyyy-MM-dd'" }
+            ]
+        });
 
     $scope.getPagedDataAsync = function (pageSize, page) {
-        var ngGridResourcePath = '/api/news/GetAll';
-
-        $timeout(function () {
-            $http.get(ngGridResourcePath).success(function (largeLoad) {
-                $scope.setPagingData(largeLoad, page, pageSize);
-            });
-        }, 100);
+        dataService.getResources('/api/news/GetAll', function (largeLoad) {
+            $rootScope.setPagingData(largeLoad, page, pageSize, $scope);
+        });
     };
 
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
@@ -61,20 +24,11 @@
 
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
-    var openDialog = function (templateId, data) {
-        $scope.dialog = dialog.open({
-            template: templateId,
-            className: 'ngdialog-theme-default',
-            scope: $scope,
-            data: data
-        });
-    }
-
     $scope.delete = function () {
         if ($scope.gridOptions.selectedItems.length <= 0) {
             return;
         }
-        openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0]);
+        $scope.dialog = $rootScope.openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0], $scope);
     }
 
     $scope.edit = function (isNew) {
