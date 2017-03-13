@@ -284,7 +284,7 @@ app.factory('encryptService', function() {
     };
 });
 
-app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeout', 'fakeUserService','encryptService', function ($http, $cookies, $rootScope, $timeout, fakeUserService,encryptService) {
+app.factory('authenticationService', ['$http', '$cookieStore', '$rootScope', '$timeout', 'fakeUserService', 'encryptService', function ($http, $cookieStore, $rootScope, $timeout, fakeUserService, encryptService) {
     var service = {};
 
     service.login = login;
@@ -312,19 +312,18 @@ app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeo
     function setCredentials(username, password) {
         var authdata = encryptService.encode(username + ':' + password);
 
-        $rootScope.user.name = username;
-        $rootScope.user.authenticated = true;
+        $rootScope.user = $.extend($rootScope.user,{name:username,authenticated:true});
 
         // set default auth header for http requests
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
-        $cookies['cmsAdminAuthentication'] = $rootScope.user;
+        $cookieStore.put('cmsAdminAuthentication', $rootScope.user);
     }
 
     function clearCredentials() {
         $rootScope.user.authenticated = false;
         $rootScope.user.authenticationData = {};
-        $cookies['cmsAdminAuthentication'] = {};
+        $cookieStore.remove('cmsAdminAuthentication');
         $http.defaults.headers.common.Authorization = 'Basic';
     }
 }]);

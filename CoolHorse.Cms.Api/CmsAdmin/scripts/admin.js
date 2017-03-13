@@ -164,12 +164,12 @@ app.run(["$rootScope", function ($rootScope) {
     }
 }]);
 
-app.run(['$rootScope', '$location', '$state', '$cookies', '$http', 'encryptService', function ($rootScope, $location, $state, $cookies, $http, encryptService) {
+app.run(['$rootScope', '$location', '$state', '$cookieStore', '$http', 'encryptService', function ($rootScope, $location, $state, $cookieStore, $http, encryptService) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        //$rootScope.user = $cookies['cmsAdminAuthentication'] ? encryptService.decode($cookies['cmsAdminAuthentication']) : {};
-        //if ($rootScope.user.authenticated) {
-        //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.user.authdata;
-        //}
+        $rootScope.user = $.extend($rootScope.user, $cookieStore.get('cmsAdminAuthentication') || {});
+        if ($rootScope.user.authenticated) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.user.authdata;
+        }
         var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
         var loggedIn = $rootScope.user.authenticated;
         if (restrictedPage && !loggedIn) {
