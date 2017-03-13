@@ -1,15 +1,15 @@
 ﻿app.controller('LoginController', ['$scope', '$location', 'authenticationService', function ($scope,$location, authenticationService) {
         (function initController() {
-            authenticationService.ClearCredentials();
+            authenticationService.clearCredentials();
         })();
 
         $scope.login = function login() {
             $scope.dataLoading = true;
-            authenticationService.Login($scope.username,
+            authenticationService.login($scope.username,
                 $scope.password,
                 function(response) {
                     if (response.success) {
-                        authenticationService.SetCredentials($scope.username, $scope.password);
+                        authenticationService.setCredentials($scope.username, $scope.password);
                         $location.path('/category');
                     }
                 });

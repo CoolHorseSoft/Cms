@@ -163,16 +163,16 @@ app.run(["$rootScope", function ($rootScope) {
     }
 }]);
 
-//app.run(['$rootScope', '$location', '$cookies', '$http', function ($rootScope, $location, $cookies, $http) {
-//    $rootScope.$on("$locationChangeStart", function (event, next, current) {
-//        $rootScope.user = $cookies['globals'] || {};
-//        if ($rootScope.user.authenticated) {
-//            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
-//        }
-//        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-//        var loggedIn = $rootScope.user.authenticated;
-//        if (restrictedPage && !loggedIn) {
-//            $location.path('/login');
-//        }
-//    });
-//}]);
+app.run(['$rootScope', '$location', '$state', '$cookies', '$http', 'encryptService', function ($rootScope, $location, $state, $cookies, $http, encryptService) {
+    $rootScope.$on("$locationChangeStart", function (event, next, current) {
+        //$rootScope.user = $cookies['cmsAdminAuthentication'] ? encryptService.decode($cookies['cmsAdminAuthentication']) : {};
+        //if ($rootScope.user.authenticated) {
+        //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.user.authdata;
+        //}
+        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+        var loggedIn = $rootScope.user.authenticated;
+        if (restrictedPage && !loggedIn) {
+            $location.path('/login');
+        }
+    });
+}]);

@@ -201,8 +201,8 @@ app.service('toggleStateService', ['$rootScope', function ($rootScope) {
 
 }]);
 
-app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeout', 'fakeUserService', function ($http, $cookies, $rootScope, $timeout, fakeUserService) {
-    var Base64 = {
+app.factory('encryptService', function() {
+    return {
 
         keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
 
@@ -282,24 +282,24 @@ app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeo
             return output;
         }
     };
+});
 
+app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeout', 'fakeUserService','encryptService', function ($http, $cookies, $rootScope, $timeout, fakeUserService,encryptService) {
     var service = {};
 
-    service.Login = Login;
-    service.SetCredentials = SetCredentials;
-    service.ClearCredentials = ClearCredentials;
+    service.login = login;
+    service.setCredentials = setCredentials;
+    service.clearCredentials = clearCredentials;
 
     return service;
 
-    function Login(username, password, callback) {
+    function login(username, password, callback) {
 
-        /* Dummy authentication for testing, uses $timeout to simulate api call
-         ----------------------------------------------*/
         $timeout(function () {
             var response;
-            fakeUserService.GetByUsername(username)
+            fakeUserService.getByUsername(username)
                 .then(function (user) {
-                    if (user !== null && user.password === password) {
+                    if (user && user.password === password) {
                         response = { success: true };
                     } else {
                         response = { success: false, message: 'Username or password is incorrect' };
@@ -309,26 +309,22 @@ app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeo
         }, 1000);
     }
 
-    function SetCredentials(username, password) {
-        var authdata = Base64.encode(username + ':' + password);
+    function setCredentials(username, password) {
+        var authdata = encryptService.encode(username + ':' + password);
 
         $rootScope.user.name = username;
         $rootScope.user.authenticated = true;
-        $rootScope.user.authenticationData = authdata;
 
         // set default auth header for http requests
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
 
-        // store user details in globals cookie that keeps user logged in for 1 week (or until they logout)
-        var cookieExp = new Date();
-        cookieExp.setDate(cookieExp.getDate() + 7);
-        $cookies.putObject('globals', $rootScope.user, { expires: cookieExp });
+        $cookies['cmsAdminAuthentication'] = $rootScope.user;
     }
 
-    function ClearCredentials() {
+    function clearCredentials() {
         $rootScope.user.authenticated = false;
         $rootScope.user.authenticationData = {};
-        $cookies['globals'] = {};
+        $cookies['cmsAdminAuthentication'] = {};
         $http.defaults.headers.common.Authorization = 'Basic';
     }
 }]);
@@ -336,22 +332,22 @@ app.factory('authenticationService', ['$http', '$cookies', '$rootScope', '$timeo
 app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $filter, $q) {
         var service = {};
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.GetByUsername = GetByUsername;
-        service.Create = Create;
-        service.Update = Update;
-        service.Delete = Delete;
+        service.getAll = getAll;
+        service.getById = getById;
+        service.getByUsername = getByUsername;
+        service.create = create;
+        service.update = update;
+        service.deleteuser = deleteuser;
 
         return service;
 
-        function GetAll() {
+        function getAll() {
             var deferred = $q.defer();
             deferred.resolve(getUsers());
             return deferred.promise;
         }
 
-        function GetById(id) {
+        function getById(id) {
             var deferred = $q.defer();
             var filtered = $filter('filter')(getUsers(), { id: id });
             var user = filtered.length ? filtered[0] : null;
@@ -359,7 +355,7 @@ app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $
             return deferred.promise;
         }
 
-        function GetByUsername(username) {
+        function getByUsername(username) {
             var deferred = $q.defer();
             var filtered = $filter('filter')(getUsers(), { username: username });
             var user = filtered.length ? filtered[0] : null;
@@ -367,7 +363,7 @@ app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $
             return deferred.promise;
         }
 
-        function Create(user) {
+        function create(user) {
             var deferred = $q.defer();
 
             // simulate api call with $timeout
@@ -399,7 +395,7 @@ app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $
             return deferred.promise;
         }
 
-        function Update(user) {
+        function update(user) {
             var deferred = $q.defer();
 
             var users = getUsers();
@@ -415,7 +411,7 @@ app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $
             return deferred.promise;
         }
 
-        function Delete(id) {
+        function deleteuser(id) {
             var deferred = $q.defer();
 
             var users = getUsers();
@@ -436,7 +432,7 @@ app.factory('fakeUserService',['$timeout', '$filter', '$q', function($timeout, $
 
         function getUsers() {
             if (!localStorage.users) {
-                localStorage.users = JSON.stringify([]);
+                localStorage.users = JSON.stringify([{ username: 'admin', password: 'admin' }]);
             }
 
             return JSON.parse(localStorage.users);
