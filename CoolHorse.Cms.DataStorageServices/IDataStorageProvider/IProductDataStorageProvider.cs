@@ -7,9 +7,9 @@
     {
         #region Product
 
-        ProductModel AddProduct(ProductModel categoryModel);
+        ProductModel AddProduct(ProductModel model);
 
-        ProductModel UpdateProduct(ProductModel categoryModel);
+        ProductModel UpdateProduct(ProductModel model);
 
         bool DeleteProduct(int id);
 

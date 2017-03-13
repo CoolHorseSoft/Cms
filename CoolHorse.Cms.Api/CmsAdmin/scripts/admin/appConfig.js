@@ -30,6 +30,16 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     // Application Routes
     // -----------------------------------   
     $stateProvider
+    .state('user', {
+        url: '/user',
+        controller: 'UserController',
+        resolve: {
+            deps: ["$ocLazyLoad", function ($ocLazyLoad) {
+                return $ocLazyLoad.load(["app", "user"]);
+            }]
+        },
+        templateUrl: helper.basepath('user.htm')
+    })
     .state('login', {
         url: '/login',
         controller: 'LoginController',

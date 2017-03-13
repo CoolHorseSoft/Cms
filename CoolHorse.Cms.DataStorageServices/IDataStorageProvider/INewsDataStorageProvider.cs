@@ -7,9 +7,9 @@
     {
         #region News
 
-        NewsModel AddNews(NewsModel categoryModel);
+        NewsModel AddNews(NewsModel model);
 
-        NewsModel UpdateNews(NewsModel categoryModel);
+        NewsModel UpdateNews(NewsModel model);
 
         bool DeleteNews(int id);
 

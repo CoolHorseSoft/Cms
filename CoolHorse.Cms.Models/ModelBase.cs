@@ -1,14 +1,13 @@
 ﻿namespace CoolHorse.Cms.Models
 {
     using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+    using System.Runtime.Serialization;
 
     [DataContract]
     public abstract class ModelBase<TKey>
     {
         #region Properties
-		
+
         [DataMember]
         public TKey Id { get; set; }
 
@@ -17,6 +16,6 @@ using System.Runtime.Serialization;
 
         [DataMember]
         public DateTime DateUpdated { get; set; }
-		#endregion
+        #endregion
     }
 }

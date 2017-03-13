@@ -3,6 +3,11 @@
     "heading": "true"
 },
 {
+    "text": "用户管理",
+    "sref": "user",
+    "icon": "fa fa-user"
+},
+{
     "text": "类别管理",
     "sref": "category",
     "icon": "fa fa-reorder"
@@ -50,6 +55,11 @@ app.constant('LAZY_LOAD_MODULES',
           "styles/ngDialog-theme-default.min.css",
           "styles/ngDialog.min.css"
         ]
+    },
+    {
+        name: 'user',
+        module: true,
+        files: ["scripts/admin/UserController.js"]
     },
     {
         name: 'login',

@@ -7,9 +7,9 @@
     {
         #region Category
 
-        CategoryModel AddCategory(CategoryModel categoryModel);
+        CategoryModel AddCategory(CategoryModel model);
 
-        CategoryModel UpdateCategory(CategoryModel categoryModel);
+        CategoryModel UpdateCategory(CategoryModel model);
 
         bool DeleteCategory(int id);
 

@@ -101,6 +101,7 @@
     <Compile Include="App_Start\JsonContentNegotiator.cs" />
     <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -125,6 +126,7 @@
     <Content Include="CmsAdmin\images\logo-single.png" />
     <Content Include="CmsAdmin\images\logo.png" />
     <Content Include="CmsAdmin\index.htm" />
+    <Content Include="CmsAdmin\Pages\user.htm" />
     <Content Include="CmsAdmin\Pages\category.htm" />
     <Content Include="CmsAdmin\Pages\footernavbar.htm" />
     <Content Include="CmsAdmin\Pages\leftnavbar.htm" />
@@ -142,6 +144,7 @@
     <Content Include="CmsAdmin\scripts\admin\appDirective.js" />
     <Content Include="CmsAdmin\scripts\admin\appProviders.js" />
     <Content Include="CmsAdmin\scripts\admin\appServices.js" />
+    <Content Include="CmsAdmin\scripts\admin\UserController.js" />
     <Content Include="CmsAdmin\scripts\admin\CategoryController.js" />
     <Content Include="CmsAdmin\scripts\admin\LoginController.js" />
     <Content Include="CmsAdmin\scripts\admin\NewsController.js" />
