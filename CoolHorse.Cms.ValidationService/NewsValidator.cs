@@ -7,12 +7,12 @@
     {
         public bool DuplicateValidate(NewsModel model)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool UsageValidate(NewsModel model)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

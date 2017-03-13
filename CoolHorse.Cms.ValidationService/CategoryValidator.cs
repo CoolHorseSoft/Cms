@@ -17,7 +17,14 @@ namespace CoolHorse.Cms.ValidationService
 
         public bool UsageValidate(CategoryModel model)
         {
-            throw new NotImplementedException();
+            var categoryUsed = DataStorageService.GetAllNews().Any(n => n.Category.Id.Equals(model.Id));
+
+            if (!categoryUsed)
+            {
+                categoryUsed = DataStorageService.GetAllProducts().Any(n => n.Category.Id.Equals(model.Id));
+            }
+
+            return !categoryUsed;
         }
     }
 }

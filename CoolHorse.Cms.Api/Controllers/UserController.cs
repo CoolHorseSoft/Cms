@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Http;
     using BusinessCore;
+    using ValidationService;
 
     public class UserController : ApiController
     {
@@ -15,33 +16,46 @@
         }
 
         [HttpGet]
-        public IEnumerable<UserModel> GetAll()
+        public ServiceResponse GetAll()
         {
-            return _user.GetAll();
+            return new ServiceResponse {Response =_user.GetAll()};
         }
 
         [HttpGet]
-        public UserModel GetById(int id)
+        public ServiceResponse GetById(int id)
         {
-            return _user.GetByKey(id);
+            return new ServiceResponse {Response =_user.GetByKey(id)};
         }
 
         [HttpPost]
-        public UserModel Update([FromBody]UserModel model)
+        public ServiceResponse Update([FromBody]UserModel model)
         {
-            return _user.Update(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _user.Update(model) };
+            }
+            return new ServiceResponse { ErrorMessage = "该用户已存在，请重新输入" };
         }
 
         [HttpPost]
-        public UserModel Create([FromBody]UserModel model)
+        public ServiceResponse Create([FromBody]UserModel model)
         {
-            return _user.Create(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _user.Create(model) };
+            }
+            return new ServiceResponse { ErrorMessage = "该用户已存在，请重新输入" };
         }
 
         [HttpPost]
-        public bool Delete([FromBody]int id)
+        public ServiceResponse Delete([FromBody]int id)
         {
-            return _user.Delete(id);
+            if (ValidationService.UsageValiate(new CategoryModel { Id = id }))
+            {
+                return new ServiceResponse { Response = _user.Delete(id) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该用户暂时无法删除" };
         }
     }
 }

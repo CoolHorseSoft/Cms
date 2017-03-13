@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Http;
     using BusinessCore;
+    using ValidationService;
 
     public class ProductController : ApiController
     {
@@ -19,15 +20,15 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<ProductModel> GetAll()
+        public ServiceResponse GetAll()
         {
-            return _product.GetAll();
+            return new ServiceResponse { Response = _product.GetAll()};
         }
 
         [HttpGet]
-        public ProductModel GetById(int id)
+        public ServiceResponse GetById(int id)
         {
-            return _product.GetByKey(id);
+            return new ServiceResponse { Response = _product.GetByKey(id)};
         }
 
         /// <summary>
@@ -37,21 +38,36 @@
         /// <see cref="ProductModel"/>
         /// <returns></returns>
         [HttpPost]
-        public ProductModel Update([FromBody]ProductModel model)
+        public ServiceResponse Update([FromBody]ProductModel model)
         {
-            return _product.Update(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _product.Update(model) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该产品已存在，请重新输入" };
         }
 
         [HttpPost]
-        public ProductModel Create([FromBody]ProductModel model)
+        public ServiceResponse Create([FromBody]ProductModel model)
         {
-            return _product.Create(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _product.Create(model) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该产品已存在，请重新输入" };
         }
 
         [HttpPost]
-        public bool Delete([FromBody]int id)
+        public ServiceResponse Delete([FromBody]int id)
         {
-            return _product.Delete(id);
+            if (ValidationService.UsageValiate(new CategoryModel { Id = id }))
+            {
+                return new ServiceResponse { Response = _product.Delete(id) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该产品无法删除" };
         }
     }
 }

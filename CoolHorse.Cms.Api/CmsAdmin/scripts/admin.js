@@ -158,7 +158,8 @@ app.run(["$rootScope", function ($rootScope) {
             template: templateId,
             className: 'ngdialog-theme-default',
             scope: scope,
-            data: data
+            data: data,
+            closeByDocument:false
         });
     }
 }]);

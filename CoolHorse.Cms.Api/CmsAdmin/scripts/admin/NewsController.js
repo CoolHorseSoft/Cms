@@ -12,7 +12,7 @@
 
     $scope.getPagedDataAsync = function (pageSize, page) {
         dataService.getResources('/api/news/GetAll', function (largeLoad) {
-            $rootScope.setPagingData(largeLoad, page, pageSize, $scope);
+            $rootScope.setPagingData(largeLoad.Response, page, pageSize, $scope);
         });
     };
 
@@ -28,7 +28,7 @@
         if ($scope.gridOptions.selectedItems.length <= 0) {
             return;
         }
-        $scope.dialog = $rootScope.openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0], $scope, dialog);
+        $rootScope.openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0], $scope, dialog);
     }
 
     $scope.edit = function (isNew) {
@@ -45,15 +45,11 @@
 
     $scope.deleteFromDialog = function (data) {
         if (data) {
-            deleteData(data);
+            dataService.updateResources('/api/news/Delete', data.Id, function () {
+                $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+            });
         }
 
-        $scope.dialog.close();
-    }
-
-    var deleteData = function (model) {
-        $http.post('/api/news/Delete', model.Id).success(function () {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-        });
+        dialog.closeAll();
     }
 }]);

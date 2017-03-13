@@ -7,12 +7,12 @@
     {
         public bool DuplicateValidate(ProductModel model)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool UsageValidate(ProductModel model)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

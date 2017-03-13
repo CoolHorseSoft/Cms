@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Http;
     using BusinessCore;
+    using ValidationService;
 
     public class NewsController : ApiController
     {
@@ -15,33 +16,48 @@
         }
 
         [HttpGet]
-        public IEnumerable<NewsModel> GetAll()
+        public ServiceResponse GetAll()
         {
-            return _news.GetAll();
+            return new ServiceResponse { Response = _news.GetAll() };
         }
 
         [HttpGet]
-        public NewsModel GetById(int id)
+        public ServiceResponse GetById(int id)
         {
-            return _news.GetByKey(id);
+            return new ServiceResponse { Response = _news.GetByKey(id) };
         }
 
         [HttpPost]
-        public NewsModel Update([FromBody]NewsModel model)
+        public ServiceResponse Update([FromBody]NewsModel model)
         {
-            return _news.Update(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _news.Update(model) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该新闻已存在，请重新输入" };
         }
 
         [HttpPost]
-        public NewsModel Create([FromBody]NewsModel model)
+        public ServiceResponse Create([FromBody]NewsModel model)
         {
-            return _news.Create(model);
+            if (ValidationService.DuplicateValidate(model))
+            {
+                return new ServiceResponse { Response = _news.Create(model) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该新闻已存在，请重新输入" };
         }
 
         [HttpPost]
-        public bool Delete([FromBody]int id)
+        public ServiceResponse Delete([FromBody]int id)
         {
-            return _news.Delete(id);
+            if (ValidationService.UsageValiate(new CategoryModel { Id = id }))
+            {
+                return new ServiceResponse { Response = _news.Delete(id) };
+            }
+
+            return new ServiceResponse { ErrorMessage = "该新闻无法删除" };
         }
     }
 }

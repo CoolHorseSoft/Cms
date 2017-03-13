@@ -22,7 +22,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
         public UserModel UpdateUser(UserModel model)
         {
-            var script = string.Format("UPDATE [User] SET Title='{0}',Content = '{1}' WHERE Id ={2}",model.UserName,model.Password,model.Id);
+            var script = string.Format("UPDATE [User] SET UserName='{0}',Password = '{1}' WHERE Id ={2}", model.UserName, model.Password, model.Id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 

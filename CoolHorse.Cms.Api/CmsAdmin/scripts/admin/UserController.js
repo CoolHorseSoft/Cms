@@ -1,6 +1,6 @@
 ﻿app.controller('UserController', ['$rootScope', '$scope', 'ngDialog', 'dataService', function ($rootScope,$scope, ngDialog, dataService) {
     var getData = function () {
-        dataService.getResources('/api/user/GetAll', function (data) { $scope.myData = data; });
+        dataService.getResources('/api/user/GetAll', function (data) { $scope.myData = data.Response; });
     }
 
     var callBackForUpdate = function (data) {
@@ -22,7 +22,7 @@
 
     $scope.openDialog = function(operationType) {
         if (operationType === 1) {
-            var newItem = { Id: -1, Title: '', Description: '' };
+            var newItem = { Id: -1, UserName: '', Password: '' };
             $rootScope.openDialog('InserOrUpdate.html', newItem, $scope, ngDialog);
             return;
         }
@@ -83,15 +83,21 @@
             $('#form').validate({
                 errorClass: 'text-danger',
                 rules: {
-                    txtCategoryTitle: {
+                    txtUserName: {
                         required: true,
                         maxlength: 12
+                    },
+                    txtPassword: {
+                        required: true
                     }
                 },
                 messages: {
-                    txtCategoryTitle: {
+                    txtUserName: {
                         required: "请输入用户名",
                         maxlength: "用户名长度不能大于12个字符"
+                    },
+                    txtPassword: {
+                        required: "请输入用户密码"
                     }
                 }
             });
