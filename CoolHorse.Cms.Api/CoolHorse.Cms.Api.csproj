@@ -128,6 +128,7 @@
     <Content Include="CmsAdmin\Pages\category.htm" />
     <Content Include="CmsAdmin\Pages\footernavbar.htm" />
     <Content Include="CmsAdmin\Pages\leftnavbar.htm" />
+    <Content Include="CmsAdmin\Pages\login.htm" />
     <Content Include="CmsAdmin\Pages\newsdetail.htm" />
     <Content Include="CmsAdmin\Pages\newslist.htm" />
     <Content Include="CmsAdmin\Pages\productdetail.htm" />
@@ -142,10 +143,12 @@
     <Content Include="CmsAdmin\scripts\admin\appProviders.js" />
     <Content Include="CmsAdmin\scripts\admin\appServices.js" />
     <Content Include="CmsAdmin\scripts\admin\CategoryController.js" />
+    <Content Include="CmsAdmin\scripts\admin\LoginController.js" />
     <Content Include="CmsAdmin\scripts\admin\NewsController.js" />
     <Content Include="CmsAdmin\scripts\admin\NewsDetailsController.js" />
     <Content Include="CmsAdmin\scripts\admin\ProductDetailController.js" />
     <Content Include="CmsAdmin\scripts\admin\ProductListController.js" />
+    <Content Include="CmsAdmin\scripts\angular-cookie.min.js" />
     <Content Include="CmsAdmin\scripts\angular-ui-router.min.js" />
     <Content Include="CmsAdmin\scripts\angular.min.js" />
     <Content Include="CmsAdmin\scripts\jquery-3.1.1.min.js" />

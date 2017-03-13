@@ -1,6 +1,6 @@
 ﻿//ui.router  Provide route services
 //ui.bootstrap Provide the collapse directive
-var app = angular.module('admin', ['ui.router', 'oc.lazyLoad','ui.bootstrap']);
+var app = angular.module('admin', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap','ngCookies']);
 
 app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state, $templateCache) {
     $rootScope.$state = $state;
@@ -22,7 +22,9 @@ app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state,
     $rootScope.user = {
         name: 'Alexandre',
         job: 'tester',
-        picture: 'images/01.jpg'
+        picture: 'images/01.jpg',
+        authenticated: false,
+        authenticationData: {}
     };
 }]);
 
@@ -159,4 +161,18 @@ app.run(["$rootScope", function ($rootScope) {
             data: data
         });
     }
+}]);
+
+app.run(['$rootScope', '$location', '$cookies', '$http', function ($rootScope, $location, $cookies, $http) {
+    $rootScope.$on("$locationChangeStart", function (event, next, current) {
+        $rootScope.user = $cookies['globals'] || {};
+        if ($rootScope.user.authenticated) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
+        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+        var loggedIn = $rootScope.user.authenticated;
+        if (restrictedPage && !loggedIn) {
+            $location.path('/login');
+        }
+    });
 }]);

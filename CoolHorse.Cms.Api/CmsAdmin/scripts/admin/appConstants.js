@@ -52,10 +52,15 @@ app.constant('LAZY_LOAD_MODULES',
         ]
     },
     {
+        name: 'login',
+        module: true,
+        files: ["scripts/admin/LoginController.js"]
+    },
+    {
         name: "category",
         module: true,
         files: [
-          "scripts/admin/CategoryController.js",
+          "scripts/admin/CategoryController.js"
         ]
     },
     {

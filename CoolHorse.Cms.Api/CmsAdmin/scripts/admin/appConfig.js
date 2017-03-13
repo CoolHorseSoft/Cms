@@ -16,8 +16,8 @@ app.config([
     }
 ]);
 
-app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider', '$ocLazyLoadProvider',
-function ($stateProvider, $locationProvider, $urlRouterProvider, helper, $ocLazyLoadProvider) {
+app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
+function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     'use strict';
 
     // Set the following to true to enable the HTML5 Mode
@@ -30,6 +30,16 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper, $ocLazy
     // Application Routes
     // -----------------------------------   
     $stateProvider
+    .state('login', {
+        url: '/login',
+        controller: 'LoginController',
+        resolve: {
+            deps: ["$ocLazyLoad", function ($ocLazyLoad) {
+                return $ocLazyLoad.load(["app", "login"]);
+            }]
+        },
+        templateUrl: helper.basepath('login.htm')
+        })
     .state('category', {
         url: '/category',
         controller: 'CategoryController',
@@ -38,8 +48,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper, $ocLazy
                 return $ocLazyLoad.load(["app","category"]);
             }]
         },
-        templateUrl: helper.basepath('category.htm'),
-        access: { requiredLogin: true }
+        templateUrl: helper.basepath('category.htm')
     }).state('news', {
         url: '/news',
         controller: 'NewsController',
