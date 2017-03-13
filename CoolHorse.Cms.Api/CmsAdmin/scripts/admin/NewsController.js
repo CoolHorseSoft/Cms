@@ -28,7 +28,7 @@
         if ($scope.gridOptions.selectedItems.length <= 0) {
             return;
         }
-        $scope.dialog = $rootScope.openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0], $scope);
+        $scope.dialog = $rootScope.openDialog('DeleteConfirm.html', $scope.gridOptions.selectedItems[0], $scope, dialog);
     }
 
     $scope.edit = function (isNew) {

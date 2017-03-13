@@ -22,9 +22,9 @@
         $scope.model.Content = tinymce.activeEditor.getContent();
         $scope.model.Category.Id = $scope.selectedCategoryId;
         if ($scope.model.Id <= 0) {
-            $http.post('/api/news/create', $scope.model).success(function () { $state.go('news'); });
+            dataService.updateResources('/api/news/create', $scope.model, function() { $state.go('news'); });
         } else {
-            $http.post('/api/news/update', $scope.model).success(function () { $state.go('news'); });
+            dataService.updateResources('/api/news/update', $scope.model, function () { $state.go('news'); });
         }
     };
 

@@ -34,7 +34,7 @@ app.run(["$rootScope", function ($rootScope) {
     };
 }]);
 
-app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function ($rootScope, $state, $templateCache, utils, APP_MENU) {
+app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function ($rootScope, $state, $templateCache, utils, appMenu) {
     var collapseList = [];
 
     // demo: when switch from collapse to hover, close all items
@@ -68,7 +68,7 @@ app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function
                (isActive(item) ? ' active' : '');
     };
 
-    $rootScope.menuItems = APP_MENU;
+    $rootScope.menuItems = appMenu;
 
     // Handle sidebar collapse items
     // ----------------------------------- 
@@ -117,7 +117,7 @@ app.run(["$rootScope", "$state", '$templateCache', 'Utils', 'APP_MENU', function
     }
 }]);
 
-app.run(["$rootScope", '$http', '$timeout', function ($rootScope, $http, $timeout) {
+app.run(["$rootScope", function ($rootScope) {
     $rootScope.pagingOptions = {
         pageSizes: [5, 10, 20],  // page size options
         pageSize: 5,              // default page size
@@ -151,7 +151,7 @@ app.run(["$rootScope", '$http', '$timeout', function ($rootScope, $http, $timeou
 }]);
 
 app.run(["$rootScope", function ($rootScope) {
-    $rootScope.openDialog = function (templateId, data, scope) {
+    $rootScope.openDialog = function (templateId, data, scope,dialog) {
         scope.dialog = dialog.open({
             template: templateId,
             className: 'ngdialog-theme-default',

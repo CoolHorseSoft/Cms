@@ -20,10 +20,10 @@
             { field: 'Description', displayName: '类别描述' }
         ]});
 
-    $scope.openDialog = function (operationType) {
+    $scope.openDialog = function(operationType) {
         if (operationType === 1) {
             var newItem = { Id: -1, Title: '', Description: '' };
-            $rootScope.openDialog('InserOrUpdate.html', newItem);
+            $rootScope.openDialog('InserOrUpdate.html', newItem, $scope, ngDialog);
             return;
         }
 
@@ -31,46 +31,52 @@
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
-            $rootScope.openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0]);
+            $rootScope.openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0], $scope, ngDialog);
         }
 
         if (operationType === 3) {
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
-            $rootScope.openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0]);
+            $rootScope.openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0], $scope, ngDialog);
         }
-    }
+    };
 
-    $scope.saveFromDialog = function (data, operationType) {
+    $scope.saveFromDialog = function(data, operationType) {
         if ($('#form').length > 0 && !$('#form').valid()) {
             return false;
         }
         if ((operationType !== 3) && data) {
             data.Id >= 0
-                ? dataService.updateResources('/api/category/update/', data, function (response) {
-                    if (callBackForUpdate(response)) {
-                        getData();
-                        ngDialog.closeAll();
-                    }
-                    return false;
-                })
-                : dataService.updateResources('/api/category/create/', data, function (response) {
-                    if (callBackForUpdate(response)) {
-                        getData();
-                        ngDialog.closeAll();
-                    }
-                    return false;
-                });
+                ? dataService.updateResources('/api/category/update/',
+                    data,
+                    function(response) {
+                        if (callBackForUpdate(response)) {
+                            getData();
+                            ngDialog.closeAll();
+                        }
+                        return false;
+                    })
+                : dataService.updateResources('/api/category/create/',
+                    data,
+                    function(response) {
+                        if (callBackForUpdate(response)) {
+                            getData();
+                            ngDialog.closeAll();
+                        }
+                        return false;
+                    });
         }
 
         if (operationType === 3 && data) {
-            dataService.updateResources('/api/category/Delete/', data.Id, function () {
-                getData();
-                ngDialog.closeAll();
-            });
+            dataService.updateResources('/api/category/Delete/',
+                data.Id,
+                function() {
+                    getData();
+                    ngDialog.closeAll();
+                });
         }
-    }
+    };
 
     $scope.$on('ngDialog.opened', function (e, $dialog) {
         if ($('#form').length > 0) {
