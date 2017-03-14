@@ -14,6 +14,24 @@
                     <label for="txtDescription" class="ng-binding">密码</label>
                     <input type="password" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.Password" name="txtPassword" id="txtPassword">
                 </div>
+                <div class="form-group">
+                    <label class="ng-binding">权限组选择</label>
+                    <div class="checkbox c-checkbox" data-ng-repeat="availableRoleGroup in ngDialogData.allAvailableRoleGroups">
+                        <label>
+                            <input type="checkbox" value="{{availableRoleGroup.Id}}" ng-checked="isGroupSelected(ngDialogData,availableRoleGroup.Id)" ng-click="updateGroupSelection($event,ngDialogData,availableRoleGroup)">
+                            <span class="fa fa-check"></span>{{availableRoleGroup.RoleGroupName}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="ng-binding">权限选择</label>
+                    <div class="checkbox c-checkbox" data-ng-repeat="availableRole in ngDialogData.allAvailableRoles">
+                        <label>
+                            <input type="checkbox" value="{{availableRole.Id}}" ng-checked="isSelected(ngDialogData,availableRole.Id)" ng-click="updateSelection($event,ngDialogData,availableRole.Id)">
+                            <span class="fa fa-check"></span>{{availableRole.RoleName}}
+                        </label>
+                    </div>
+                </div>
                 <div class="modal-buttons">
                     <button type="button" ng-click="saveFromDialog(ngDialogData,1)" class="btn btn-success ng-binding">Save</button>
                     <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>

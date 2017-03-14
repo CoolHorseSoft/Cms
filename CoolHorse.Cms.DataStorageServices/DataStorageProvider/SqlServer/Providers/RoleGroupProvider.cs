@@ -52,9 +52,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             var models = PopulateRoleGroup(ds);
 
-            var model=  models.Count == 1 ? models.First() : null;
-
-            return DataStorageService.GetRoleGroupRole(model);
+            return models.Count == 1 ? models.First() : null;
         }
 
         public IEnumerable<RoleGroupModel> GetAllRoleGroups()
@@ -63,9 +61,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
-            var models =  PopulateRoleGroup(ds);
-
-            return DataStorageService.GetRoleGroupRole(models);
+            return PopulateRoleGroup(ds);
         }
 
         private IList<RoleGroupModel> PopulateRoleGroup(DataSet ds)
@@ -82,6 +78,7 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
                     model.Description = rowItem["Description"].ToString();
                     model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());
                     model.DateUpdated = DateTime.Parse(rowItem["DateUpdated"].ToString());
+                    model = DataStorageService.GetRoleGroupRole(model);
                     models.Add(model);
                 }
             }

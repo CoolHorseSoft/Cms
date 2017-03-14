@@ -3,6 +3,14 @@
         dataService.getResources('/api/user/GetAll', function (data) { $scope.myData = data.Response; });
     }
 
+    var getAllRoles = function () {
+        dataService.getResources('/api/role/GetAll', function (data) { $scope.allAvailableRoles = data.Response; });
+    }
+
+    var getAllRoleGroups = function () {
+        dataService.getResources('/api/rolegroup/GetAll', function (data) { $scope.allAvailableRoleGroups = data.Response; });
+    }
+
     var callBackForUpdate = function (data) {
         if (data.ErrorMessage && data.ErrorMessage !== "") {
             $.notify(data.ErrorMessage, { status: 'danger', pos: 'top-center', timeout: 500 });
@@ -13,6 +21,40 @@
     }
 
     getData();
+    getAllRoles();
+    getAllRoleGroups();
+
+    $scope.isSelected = function (userModel, roleId) {
+        var existingRole = $.grep(userModel.Roles, function (v, i) { return v.Id === roleId });
+        return (existingRole && existingRole.length > 0);
+    }
+
+    $scope.updateSelection = function (e, userModel, roleId) {
+        if (e.target.checked) {
+            userModel.Roles.push({ Id: roleId });
+        } else {
+            var existingRole = $.grep(userModel.Roles, function (v, i) { return v.Id === roleId });
+            if (existingRole.length === 1) {
+                userModel.Roles.splice($.inArray(existingRole[0], userModel.Roles), 1);
+            }
+        }
+    }
+
+    $scope.isGroupSelected = function (userModel, groupId) {
+        var existingRoleGroup = $.grep(userModel.RoleGroups, function (v, i) { return v.Id === groupId });
+        return (existingRoleGroup && existingRoleGroup.length > 0);
+    }
+
+    $scope.updateGroupSelection = function (e, userModel, groupModel) {
+        if (e.target.checked) {
+            userModel.RoleGroups.push(groupModel);
+        } else {
+            var existingRoleGroup = $.grep(userModel.RoleGroups, function (v, i) { return v.Id === groupModel.Id });
+            if (existingRoleGroup.length === 1) {
+                userModel.RoleGroups.splice($.inArray(existingRoleGroup[0], userModel.RoleGroups), 1);
+            }
+        }
+    }
 
     $scope.gridOption = $.extend({}, $rootScope.defaultGridOptions,{
         columnDefs: [
@@ -22,7 +64,8 @@
 
     $scope.openDialog = function(operationType) {
         if (operationType === 1) {
-            var newItem = { Id: -1, UserName: '', Password: '' };
+            var newItem = { Id: -1, UserName: '', Password: '', Roles: [], RoleGroups:[]};
+            $.extend(newItem, { allAvailableRoles: $scope.allAvailableRoles, allAvailableRoleGroups: $scope.allAvailableRoleGroups });
             $rootScope.openDialog('InserOrUpdate.html', newItem, $scope, ngDialog);
             return;
         }
@@ -31,6 +74,7 @@
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
+            $.extend($scope.gridOption.selectedItems[0], { allAvailableRoles: $scope.allAvailableRoles, allAvailableRoleGroups: $scope.allAvailableRoleGroups });
             $rootScope.openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0], $scope, ngDialog);
         }
 
@@ -38,6 +82,7 @@
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
+            $.extend($scope.gridOption.selectedItems[0], { allAvailableRoles: $scope.allAvailableRoles, allAvailableRoleGroups: $scope.allAvailableRoleGroups });
             $rootScope.openDialog('DeleteConfirm.html', $scope.gridOption.selectedItems[0], $scope, ngDialog);
         }
     };

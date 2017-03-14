@@ -17,6 +17,10 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             model.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
+            DataStorageService.AddUserRole(model);
+
+            DataStorageService.AddUserRoleGroup(model);
+
             return model;
         }
 
@@ -26,11 +30,19 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
+            DataStorageService.UpdateUserRole(model);
+
+            DataStorageService.UpdateUserRoleGroup(model);
+
             return model;
         }
 
         public bool DeleteUser(int id)
         {
+            DataStorageService.DeleteUserRole(id);
+
+            DataStorageService.DeleteUserRoleGroup(id);
+
             var script =string.Format("DELETE FROM [User] WHERE Id = {0}",id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
@@ -72,6 +84,8 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
                     model.Password = rowItem["Password"].ToString();
                     model.DateCreated = DateTime.Parse(rowItem["DateCreated"].ToString());
                     model.DateUpdated = DateTime.Parse(rowItem["DateUpdated"].ToString());
+                    model = DataStorageService.GetUserRoles(model);
+                    model = DataStorageService.GetUserRoleGroups(model);
                     models.Add(model);
                 }
             }

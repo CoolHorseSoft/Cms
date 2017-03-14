@@ -5,7 +5,7 @@
 
     public static partial class DataStorageService
     {
-        #region RoleGroup
+        #region RoleGroupRole
         public static RoleGroupModel AddRoleGroupRole(RoleGroupModel model)
         {
             return Provider.AddRoleGroupRole(model);
