@@ -3,6 +3,10 @@
         dataService.getResources('/api/rolegroup/GetAll', function (data) { $scope.myData = data.Response; });
     }
 
+    var getAllRoles = function() {
+        dataService.getResources('/api/role/GetAll', function (data) { $scope.allAvailableRoles = data.Response; });
+    }
+
     var callBackForUpdate = function (data) {
         if (data.ErrorMessage && data.ErrorMessage !== "") {
             $.notify(data.ErrorMessage, { status: 'danger', pos: 'top-center', timeout: 500 });
@@ -13,6 +17,23 @@
     }
 
     getData();
+    getAllRoles();
+
+    $scope.isSelected = function (roleGroupModel,roleId) {
+        var existingRole = $.grep(roleGroupModel.Roles, function(v, i) { return v.Id === roleId });
+        return (existingRole && existingRole.length > 0);
+    }
+
+    $scope.updateSelection = function (e, roleGroupModel, roleId) {
+        if (e.target.checked) {
+            roleGroupModel.Roles.push({ Id: roleId });
+        } else {
+            var existingRole = $.grep(roleGroupModel.Roles, function (v, i) { return v.Id === roleId });
+            if (existingRole.length === 1) {
+                roleGroupModel.Roles.splice($.inArray(existingRole[0], roleGroupModel.Roles), 1);
+            }
+        }
+    }
 
     $scope.gridOption = $.extend({}, $rootScope.defaultGridOptions,{
         columnDefs: [
@@ -23,7 +44,8 @@
 
     $scope.openDialog = function(operationType) {
         if (operationType === 1) {
-            var newItem = { Id: -1, UserName: '', Password: '' };
+            var newItem = { Id: -1, UserName: '', Password: '', Roles: [] };
+            $.extend(newItem, { allAvailableRoles: $scope.allAvailableRoles });
             $rootScope.openDialog('InserOrUpdate.html', newItem, $scope, ngDialog);
             return;
         }
@@ -32,6 +54,7 @@
             if ($scope.gridOption.selectedItems.length <= 0) {
                 return;
             }
+            $.extend($scope.gridOption.selectedItems[0], { allAvailableRoles: $scope.allAvailableRoles });
             $rootScope.openDialog('InserOrUpdate.html', $scope.gridOption.selectedItems[0], $scope, ngDialog);
         }
 

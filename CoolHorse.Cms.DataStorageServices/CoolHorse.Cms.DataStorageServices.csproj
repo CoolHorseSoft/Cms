@@ -41,9 +41,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStorageProvider\SqlServer\Providers\RoleGroupRoleProvider.cs" />
     <Compile Include="DataStorageProvider\SqlServer\Providers\RoleGroupProvider.cs" />
     <Compile Include="DataStorageProvider\SqlServer\Providers\RoleProvider.cs" />
     <Compile Include="DataStorageProvider\SqlServer\Providers\UserProvider.cs" />
+    <Compile Include="DataStorageService\RoleGroupRoleDataStorageService.cs" />
     <Compile Include="DataStorageService\RoleGroupDataStorageService.cs" />
     <Compile Include="DataStorageService\RoleDataStorageService.cs" />
     <Compile Include="DataStorageService\UserDataStorageService.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="DataStorageService\NewsDataStorageService.cs" />
     <Compile Include="DataStorageService\CategoryDataStorageService.cs" />
     <Compile Include="DataStorageService.cs" />
+    <Compile Include="IDataStorageProvider\IRoleGroupRoleDataStorageProvider.cs" />
     <Compile Include="IDataStorageProvider\IRoleGroupDataStorageProvider.cs" />
     <Compile Include="IDataStorageProvider\IRoleDataStorageProvider.cs" />
     <Compile Include="IDataStorageProvider\IUserDataStorageProvider.cs" />

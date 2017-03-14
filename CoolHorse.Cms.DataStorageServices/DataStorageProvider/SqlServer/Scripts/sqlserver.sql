@@ -28,6 +28,26 @@ CREATE TABLE [dbo].[RoleGroup](
 ) ON [PRIMARY]
 GO
 
+IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[RoleGroupRole]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].[RoleGroupRole](
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[RoleGroupId] INT NOT NULL,
+	[RoleId] INT NOT NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+
+IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[UserRole]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].[UserRole](
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[UserId] INT NOT NULL,
+	[RoleId] INT NOT NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+
 IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[User]') and OBJECTPROPERTY(id, N'IsTable') = 1)
 CREATE TABLE [dbo].[User](
 	[Id] INT IDENTITY(1,1) NOT NULL,

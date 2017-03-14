@@ -17,6 +17,8 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             model.Id = _dbConnector.GetIntegerValue(new SqlCommand(script));
 
+            DataStorageService.AddRoleGroupRole(model);
+
             return model;
         }
 
@@ -25,6 +27,8 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
             var script = string.Format("UPDATE [RoleGroup] SET RoleGroupName='{0}',Description = '{1}' WHERE Id ={2}", model.RoleGroupName, model.Description, model.Id);
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
+
+            DataStorageService.UpdateRoleGroupRole(model);
 
             return model;
         }
@@ -35,18 +39,22 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             _dbConnector.ExecuteCommand(new SqlCommand(script));
 
+            DataStorageService.DeleteRoleGroupRole(id);
+
             return true;
         }
 
         public RoleGroupModel FindRoleGroupById(int id)
         {
-            var script =string.Format("SELECT * FROM [RoleGroup] WHERE Id = {0}",id);
+            var script = string.Format("SELECT * FROM [RoleGroup] WHERE Id={0};",id);
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
             var models = PopulateRoleGroup(ds);
 
-            return models.Count == 1 ? models.First() : null;
+            var model=  models.Count == 1 ? models.First() : null;
+
+            return DataStorageService.GetRoleGroupRole(model);
         }
 
         public IEnumerable<RoleGroupModel> GetAllRoleGroups()
@@ -55,7 +63,9 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 
             var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
 
-            return PopulateRoleGroup(ds);
+            var models =  PopulateRoleGroup(ds);
+
+            return DataStorageService.GetRoleGroupRole(models);
         }
 
         private IList<RoleGroupModel> PopulateRoleGroup(DataSet ds)

@@ -14,9 +14,20 @@
                     <label for="txtDescription" class="ng-binding">描述</label>
                     <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.Description" name="txtRoleGroupDesc" id="txtRoleGroupDesc">
                 </div>
-                <div class="modal-buttons">
-                    <button type="button" ng-click="saveFromDialog(ngDialogData,1)" class="btn btn-success ng-binding">Save</button>
-                    <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
+                <div class="form-group">
+                    <label class="ng-binding">权限选择</label>
+                    <div class="checkbox c-checkbox" data-ng-repeat="availableRole in ngDialogData.allAvailableRoles">
+                        <label>
+                            <input type="checkbox" value="{{availableRole.Id}}" ng-checked="isSelected(ngDialogData,availableRole.Id)" ng-click="updateSelection($event,ngDialogData,availableRole.Id)">
+                            <span class="fa fa-check"></span>{{availableRole.RoleName}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="modal-buttons">
+                        <button type="button" ng-click="saveFromDialog(ngDialogData,1)" class="btn btn-success ng-binding">Save</button>
+                        <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,11 +47,14 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <button type="button" class="mb-sm btn btn-green" ng-click="openDialog(1)">
-            新增</button>
+            新增
+        </button>
         <button type="button" class="mb-sm btn btn-primary" ng-click="openDialog(2)">
-            修改</button>
+            修改
+        </button>
         <button type="button" class="mb-sm btn btn-default" ng-click="openDialog(3)">
-            删除</button>
+            删除
+        </button>
         <form class="form-horizontal ng-pristine ng-valid">
             <div class="input-group">
                 <input type="text" placeholder="输入搜索条件..." class="form-control">
