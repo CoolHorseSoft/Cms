@@ -8,6 +8,16 @@
     "icon": "fa fa-user"
 },
 {
+    "text": "权限管理",
+    "sref": "role",
+    "icon": "fa fa-user"
+},
+{
+    "text": "权限组管理",
+    "sref": "rolegroup",
+    "icon": "fa fa-user"
+},
+{
     "text": "类别管理",
     "sref": "category",
     "icon": "fa fa-reorder"
@@ -60,6 +70,16 @@ app.constant('LAZY_LOAD_MODULES',
         name: 'user',
         module: true,
         files: ["scripts/admin/UserController.js"]
+    },
+    {
+        name: 'role',
+        module: true,
+        files: ["scripts/admin/RoleController.js"]
+    },
+    {
+        name: 'rolegroup',
+        module: true,
+        files: ["scripts/admin/RoleGroupController.js"]
     },
     {
         name: 'login',

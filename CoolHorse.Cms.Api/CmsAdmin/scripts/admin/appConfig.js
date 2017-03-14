@@ -24,7 +24,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     // You may have to set <base> tag in index and a routing configuration in your server
     $locationProvider.html5Mode(false);
 
-    $urlRouterProvider.otherwise('/category');
+    $urlRouterProvider.otherwise('/user');
 
     // 
     // Application Routes
@@ -39,6 +39,26 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
             }]
         },
         templateUrl: helper.basepath('user.htm')
+    })
+    .state('role', {
+        url: '/role',
+        controller: 'RoleController',
+        resolve: {
+            deps: ["$ocLazyLoad", function ($ocLazyLoad) {
+                return $ocLazyLoad.load(["app", "role"]);
+            }]
+        },
+        templateUrl: helper.basepath('role.htm')
+    })
+    .state('rolegroup', {
+        url: '/rolegroup',
+        controller: 'RoleGroupController',
+        resolve: {
+            deps: ["$ocLazyLoad", function ($ocLazyLoad) {
+                return $ocLazyLoad.load(["app", "rolegroup"]);
+            }]
+        },
+        templateUrl: helper.basepath('rolegroup.htm')
     })
     .state('login', {
         url: '/login',

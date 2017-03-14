@@ -1,0 +1,63 @@
+﻿<script type="text/ng-template" id="InserOrUpdate.html">
+    <span id="errorMessage" style="display:none"></span>
+    <form id="form" style="margin:0">
+        <div class="ngdialog-content">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding">新增权限</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="txtCategoryTitle" class="ng-binding">权限名称</label>
+                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.RoleName" name="txtRoleName" id="txtRoleName">
+                </div>
+                <div class="form-group">
+                    <label for="txtDescription" class="ng-binding">描述</label>
+                    <input type="text" class="form-control ng-pristine ng-valid valid ng-touched" ng-model="ngDialogData.Description" name="txtRoleDesc" id="txtRoleDesc">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" ng-click="saveFromDialog(ngDialogData,1)" class="btn btn-success ng-binding">Save</button>
+                    <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="DeleteConfirm.html">
+    <div class="ngdialog-content">
+        <p>确定删除该权限吗？</p>
+        <div>
+            <button type="button" class="btn btn-primary" ng-click="saveFromDialog(ngDialogData,3)">删除</button>
+            <button type="button" class="btn btn-default ng-binding" data-dismiss="modal" ng-click="closeThisDialog()">取消</button>
+        </div>
+    </div>
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <button type="button" class="mb-sm btn btn-green" ng-click="openDialog(1)">
+            新增</button>
+        <button type="button" class="mb-sm btn btn-primary" ng-click="openDialog(2)">
+            修改</button>
+        <button type="button" class="mb-sm btn btn-default" ng-click="openDialog(3)">
+            删除</button>
+        <form class="form-horizontal ng-pristine ng-valid">
+            <div class="input-group">
+                <input type="text" placeholder="输入搜索条件..." class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <em class="fa fa-search"></em>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="table-responsive">
+        <div ng-grid="gridOption">
+        </div>
+    </div>
+</div>
+
+<script src="scripts/notify.js"></script>

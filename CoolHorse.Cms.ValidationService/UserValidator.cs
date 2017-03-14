@@ -17,7 +17,7 @@ namespace CoolHorse.Cms.ValidationService
 
         public bool UsageValidate(UserModel model)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

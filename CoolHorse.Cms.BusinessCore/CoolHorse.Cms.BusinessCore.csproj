@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessCoreBase.cs" />
+    <Compile Include="RoleGroup.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="News.cs" />

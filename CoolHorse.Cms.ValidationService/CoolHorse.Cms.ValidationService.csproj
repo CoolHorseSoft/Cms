@@ -34,6 +34,8 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoleGroupValidator.cs" />
+    <Compile Include="RoleValidator.cs" />
     <Compile Include="UserValidator.cs" />
     <Compile Include="CategoryValidator.cs" />
     <Compile Include="ProductValidator.cs" />
