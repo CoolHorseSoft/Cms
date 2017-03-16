@@ -91,10 +91,13 @@
         if ($('#form').length > 0 && !$('#form').valid()) {
             return false;
         }
-        if ((operationType !== 3) && data) {
-            data.Id >= 0
+        //var user = { Id: data.Id, UserName: data.UserName, Password: data.Password, Roles: data.Roles, RoleGroups: data.RoleGroups };
+        var user = data;
+
+        if ((operationType !== 3) && user) {
+            user.Id >= 0
                 ? dataService.updateResources('/api/user/Update/',
-                    data,
+                    user,
                     function(response) {
                         if (callBackForUpdate(response)) {
                             getData();
@@ -103,7 +106,7 @@
                         return false;
                     })
                 : dataService.updateResources('/api/user/Create/',
-                    data,
+                    user,
                     function(response) {
                         if (callBackForUpdate(response)) {
                             getData();
@@ -113,9 +116,9 @@
                     });
         }
 
-        if (operationType === 3 && data) {
+        if (operationType === 3 && user) {
             dataService.updateResources('/api/user/Delete/',
-                data.Id,
+                user.Id,
                 function() {
                     getData();
                     ngDialog.closeAll();

@@ -10,18 +10,18 @@
     <link rel="stylesheet" ng-href="{{app.layout.theme}}" ng-if="app.layout.theme">
 </head>
 <body ng-class="{'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed,'aside-collapsed' : app.layout.isCollapsed, 'aside-float': app.layout.isFloat}">
-    <div class="wrapper ng-scope">
-        <header class="topnavbar-wrapper" ng-include="'Pages/topnavbar.htm'"></header>
+    <div class="ng-scope" ng-class="{'wrapper':user.authenticated}">
+        <header class="topnavbar-wrapper" ng-include="'Pages/topnavbar.htm'" collapse="!user.authenticated"></header>
+        
+        <aside class="aside ng-scope" ng-include="'Pages/leftnavbar.htm'" collapse="!user.authenticated"></aside>
 
-        <aside class="aside ng-scope" ng-include="'Pages/leftnavbar.htm'"></aside>
-
-        <aside ng-include="'Pages/rightsidebar.htm'" class="offsidebar"></aside>
+        <aside ng-include="'Pages/rightsidebar.htm'" class="offsidebar" collapse="!user.authenticated"></aside>
 
         <section>
             <div ui-view="" autoscroll="false" class="content-wrapper"></div>
         </section>
 
-        <footer ng-include="'Pages/footernavbar.htm'" style="clear:both;"></footer>
+        <footer ng-include="'Pages/footernavbar.htm'" style="clear:both;" collapse="!user.authenticated"></footer>
     </div>
 
     <script src="scripts/jquery-3.1.1.min.js"></script>

@@ -166,15 +166,15 @@ app.run(["$rootScope", function ($rootScope) {
 
 app.run(['$rootScope', '$location','$http', '$cookieStore', function ($rootScope, $location,$http, $cookieStore) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        $rootScope.user = $.extend($rootScope.user,{ authenticationData: $cookieStore.get('cmsAdminAuthentication') });
+        $rootScope.user = $.extend($rootScope.user, { authenticationData: $cookieStore.get('cmsAdminAuthentication') });
 
-        var logged = ($rootScope.user.authenticated || $rootScope.user.authenticationData.length > 0);
-
-        if (logged) {
-            $http.defaults.headers.common['Authorization'] = $rootScope.user.authenticationData;
+        if ($rootScope.user.authenticationData.length > 0) {
+            $rootScope.user.authenticated = true;
         }
-        
-        if (!logged) {
+
+        if ($rootScope.user.authenticated) {
+            $http.defaults.headers.common['Authorization'] = $rootScope.user.authenticationData;
+        } else {
             $location.path('/login');
         }
     });

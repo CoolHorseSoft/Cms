@@ -133,7 +133,7 @@ app.service('dataService', ['$http', function ($http) {
             return $http.get(uri).success(success ? success : function () { }).error(error ? error : function () { });
         },
         updateResources: function (uri, params, success, error) {
-            return $http.post(uri).success(success ? success : function () { }).error(error ? error : function () { });
+            return $http.post(uri, params).success(success ? success : function () { }).error(error ? error : function () { });
         }
     };
 }
