@@ -24,7 +24,7 @@ app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state,
         job: 'tester',
         picture: 'images/01.jpg',
         authenticated: false,
-        authenticationData: {}
+        authenticationData:''
     };
 }]);
 
@@ -164,15 +164,17 @@ app.run(["$rootScope", function ($rootScope) {
     }
 }]);
 
-app.run(['$rootScope', '$location', '$state', '$cookieStore', '$http', 'encryptService', function ($rootScope, $location, $state, $cookieStore, $http, encryptService) {
+app.run(['$rootScope', '$location','$http', '$cookieStore', function ($rootScope, $location,$http, $cookieStore) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        $rootScope.user = $.extend($rootScope.user, $cookieStore.get('cmsAdminAuthentication') || {});
-        if ($rootScope.user.authenticated) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.user.authdata;
+        $rootScope.user = $.extend($rootScope.user,{ authenticationData: $cookieStore.get('cmsAdminAuthentication') });
+
+        var logged = ($rootScope.user.authenticated || $rootScope.user.authenticationData.length > 0);
+
+        if (logged) {
+            $http.defaults.headers.common['Authorization'] = $rootScope.user.authenticationData;
         }
-        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-        var loggedIn = $rootScope.user.authenticated;
-        if (restrictedPage && !loggedIn) {
+        
+        if (!logged) {
             $location.path('/login');
         }
     });

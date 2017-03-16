@@ -1,4 +1,6 @@
-﻿namespace CoolHorse.Cms.Api.Controllers
+﻿using System;
+
+namespace CoolHorse.Cms.Api.Controllers
 {
     using Models;
     using System.Collections.Generic;
@@ -25,6 +27,12 @@
         public ServiceResponse GetById(int id)
         {
             return new ServiceResponse {Response =_user.GetByKey(id)};
+        }
+
+        [HttpPost]
+        public ServiceResponse Authenticate([FromBody]UserModel model)
+        {
+            return new ServiceResponse { Response = Guid.NewGuid().ToString() };
         }
 
         [HttpPost]
