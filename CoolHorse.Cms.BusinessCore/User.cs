@@ -33,5 +33,15 @@
             return DataStorageService.DeleteUser(key);
 
         }
+
+        public string Authenticate(string userName, string password)
+        {
+            return DataStorageService.Authenticate(userName, password);
+        }
+
+        public UserModel GetUserByAuthenticate(string authentication)
+        {
+            return DataStorageService.GetUserByAuthenticate(authentication);
+        }
     }
 }

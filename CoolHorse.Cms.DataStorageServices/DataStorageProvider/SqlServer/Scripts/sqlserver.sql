@@ -8,6 +8,16 @@ CREATE TABLE [dbo].[User](
 ) ON [PRIMARY]
 GO
 
+IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[UserAuthentication]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+CREATE TABLE [dbo].[UserAuthentication](
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[UserId] NVARCHAR(20) NOT NULL,
+	[Authentication] NVARCHAR(100) NOT NULL,
+	[DateCreated] DATETIME NOT NULL DEFAULT (getdate()),
+	[DateUpdated] DATETIME NOT NULL DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+
 IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE id = OBJECT_ID(N'[dbo].[Role]') and OBJECTPROPERTY(id, N'IsTable') = 1)
 CREATE TABLE [dbo].[Role](
 	[Id] INT IDENTITY(1,1) NOT NULL,

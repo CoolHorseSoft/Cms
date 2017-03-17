@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
+﻿namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
 {
     using System;
     using System.Collections.Generic;
@@ -8,9 +6,47 @@ namespace CoolHorse.Cms.DataStorageServices.Providers.SqlServer
     using System.Data;
     using System.Data.SqlClient;
     using Models;
+    using System.Linq;
 
     public partial class SqlServerProvider : ProviderBase, IDataStorageProvider
     {
+        public string Authenticate(string userName, string password)
+        {
+            var script = string.Format("SELECT [Id] FROM [User] WHERE UserName='{0}' AND [Password] = '{1}';",userName,password);
+
+            var userId = _dbConnector.GetIntegerValue(new SqlCommand(script));
+
+            if (userId > 0)
+            {
+                var guid = Guid.NewGuid().ToString();
+
+                script = string.Format("INSERT INTO UserAuthentication(UserId,Authentication) VALUES ({0},'{1}')",userId, guid);
+
+                _dbConnector.ExecuteCommand(new SqlCommand(script));
+
+                return guid;
+            }
+
+            return string.Empty;
+        }
+
+        public UserModel GetUserByAuthenticate(string authentication)
+        {
+            var script = string.Format("SELECT [User].* FROM [User] INNER JOIN [UserAuthentication] ON [User].Id = [UserAuthentication].UserId WHERE [UserAuthentication].Authentication = '{0}'", authentication);
+
+            var ds = _dbConnector.ExecuteCommandsDataSet(new SqlCommand(script));
+
+            var models = PopulateUser(ds);
+
+            var model = models.Count == 1 ? models.First() : null;
+
+             DataStorageService.AddUserRole(model);
+
+            DataStorageService.AddUserRoleGroup(model);
+
+            return model;
+        }
+
         public UserModel AddUser(UserModel model)
         {
             var script = string.Format("INSERT INTO [User](UserName,Password) VALUES('{0}','{1}');SELECT @@IDENTITY;",model.UserName,model.Password);

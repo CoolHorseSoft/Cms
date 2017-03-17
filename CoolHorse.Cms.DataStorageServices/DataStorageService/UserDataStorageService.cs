@@ -30,6 +30,16 @@
         {
             return Provider.GetAllUsers();
         }
+
+        public static string Authenticate(string userName, string password)
+        {
+            return Provider.Authenticate(userName,password);
+        }
+
+        public static UserModel GetUserByAuthenticate(string authentication)
+        {
+            return Provider.GetUserByAuthenticate(authentication);
+        }
         #endregion
     }
 }

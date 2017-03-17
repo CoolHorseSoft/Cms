@@ -17,6 +17,10 @@
 
         IEnumerable<UserModel> GetAllUsers();
 
+        string Authenticate(string userName, string password);
+
+        UserModel GetUserByAuthenticate(string authentication);
+
         #endregion
     }
 }

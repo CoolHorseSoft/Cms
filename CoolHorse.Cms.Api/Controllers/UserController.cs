@@ -32,7 +32,13 @@ namespace CoolHorse.Cms.Api.Controllers
         [HttpPost]
         public ServiceResponse Authenticate([FromBody]UserModel model)
         {
-            return new ServiceResponse { Response = Guid.NewGuid().ToString() };
+            return new ServiceResponse { Response = _user.Authenticate(model.UserName,model.Password) };
+        }
+
+        [HttpPost]
+        public ServiceResponse GetUserByAuthenticate([FromBody]string authentication)
+        {
+            return new ServiceResponse { Response = _user.GetUserByAuthenticate(authentication) };
         }
 
         [HttpPost]

@@ -24,7 +24,7 @@ app.run(["$rootScope", "$state", '$templateCache', function ($rootScope, $state,
         job: 'tester',
         picture: 'images/01.jpg',
         authenticated: false,
-        authenticationData:''
+        authenticationData: ''
     };
 }]);
 
@@ -164,12 +164,17 @@ app.run(["$rootScope", function ($rootScope) {
     }
 }]);
 
-app.run(['$rootScope', '$location','$http', '$cookieStore', function ($rootScope, $location,$http, $cookieStore) {
+app.run(['$rootScope', '$location', '$http', '$cookieStore', 'dataService', function ($rootScope, $location, $http, $cookieStore, dataService) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
         $rootScope.user = $.extend($rootScope.user, { authenticationData: $cookieStore.get('cmsAdminAuthentication') });
 
         if ($rootScope.user.authenticationData.length > 0) {
             $rootScope.user.authenticated = true;
+
+            dataService.getResources('/api/user/GetUserByAuthenticate', $rootScope.user.authenticationData)
+                .then(function(data) {
+                    $rootScope.user.name = data.Response.UserName;
+                });
         }
 
         if ($rootScope.user.authenticated) {

@@ -221,7 +221,7 @@ app.factory('authenticationService', ['$cookieStore', '$rootScope', '$http', '$l
     }
 
     function setAuthenticateCookie(authenticationData) {
-        $rootScope.user = $.extend($rootScope.user, { name: username, authenticated: true, authenticationData: authenticationData.data.Response });
+        $rootScope.user = $.extend($rootScope.user, { name: username, authenticationData: authenticationData.data.Response });
         // set default auth header for http requests
         $http.defaults.headers.common['Authorization'] = $rootScope.user.authenticationData;
 
